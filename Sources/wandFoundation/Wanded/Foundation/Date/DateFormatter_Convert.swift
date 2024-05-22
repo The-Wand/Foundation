@@ -18,11 +18,18 @@
 /// Created by Alex Kozin
 /// 2020 El Machine
 
-import Foundation
+#if canImport(Foundation)
+import Foundation.NSDate
 import wand
 
-public func | (date: Date?, style: (date: DateFormatter.Style,
-                                    time: DateFormatter.Style)) -> String? {
+/// Convert
+///
+/// let date: Date? = style|
+///
+@inline(__always)
+public
+func | (date: Date?, style: (date: DateFormatter.Style,
+                             time: DateFormatter.Style)) -> String? {
 
     guard let date else {
         return nil
@@ -32,8 +39,13 @@ public func | (date: Date?, style: (date: DateFormatter.Style,
     return formatter.string(from: date)
 }
 
-//Format
-public func | (date: Date?, format: String) -> String? {
+/// Format
+///
+/// let string: String? = date | format
+///
+@inline(__always)
+public
+func | (date: Date?, format: String) -> String? {
     guard let date else {
         return nil
     }
@@ -42,14 +54,18 @@ public func | (date: Date?, format: String) -> String? {
     return formatter.string(from: date)
 }
 
-//DateFormatter
+/// Obtain
+///
+/// let formatter: DateFormatter = some|
+///
 extension DateFormatter: Obtain {
 
-    public 
-    static func obtain(by wand: Wand?) -> Self {
+    @inline(__always)
+    public
+    static
+    func obtain(by wand: Wand?) -> Self {
         let formatter = Self()
 
-        //TODO: both is required?
         if let style: (date: DateFormatter.Style,
                        time: DateFormatter.Style) = wand?.get() {
 
@@ -71,8 +87,14 @@ extension DateFormatter: Obtain {
 
 }
 
-//Shortcuts
-public postfix func | (style: (date: DateFormatter.Style,
+/// Shortcuts
+///
+/// let formatter: DateFormatter = style|
+///
+@inline(__always)
+public
+postfix
+func | (style: (date: DateFormatter.Style,
                                time: DateFormatter.Style)) -> DateFormatter {
 
     let formatter = DateFormatter()
@@ -82,7 +104,14 @@ public postfix func | (style: (date: DateFormatter.Style,
     return formatter
 }
 
-public postfix func | (format: String) -> DateFormatter {
+/// Shortcuts
+///
+/// let formatter: DateFormatter = format|
+///
+@inline(__always)
+public
+postfix 
+func | (format: String) -> DateFormatter {
 
     let formatter = DateFormatter()
     formatter.dateFormat = format
@@ -90,7 +119,13 @@ public postfix func | (format: String) -> DateFormatter {
     return formatter
 }
 
-public func | (formatter: DateFormatter, date: Date?) -> String? {
+/// Shortcuts
+///
+/// let result: String? = formatter | date
+///
+@inline(__always)
+public
+func | (formatter: DateFormatter, date: Date?) -> String? {
 
     guard let date else {
         return nil
@@ -98,3 +133,5 @@ public func | (formatter: DateFormatter, date: Date?) -> String? {
 
     return formatter.string(from: date)
 }
+
+#endif

@@ -24,7 +24,7 @@ import wand
 
 /// Obtain
 ///
-/// let pedometer: CMPedometer = nil|
+/// let session: URLSession = config|
 ///
 @available(visionOS, unavailable)
 extension URLSession: Obtain {

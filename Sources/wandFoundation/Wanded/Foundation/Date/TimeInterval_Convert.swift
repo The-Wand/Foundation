@@ -18,66 +18,36 @@
 /// Created by Alex Kozin
 /// 2020 El Machine
 
+
 #if canImport(Foundation)
-import Foundation.NSData
+import Foundation.NSDate
 import wand
 
-/// Convert
-///
-/// let data: Data? = url|
-///
-@inline(__always)
-public
-postfix
-func |(url: URL) -> Data? {
-    try? Data(contentsOf: url)
-}
 
 /// Convert
 ///
-/// let data: Data? = url|
+/// let timestamp: Int = date|
 ///
-@inline(__always)
-public
-postfix
-func |(url: URL?) -> Data? {
-    guard let url else {
-        return nil
+extension TimeInterval: Obtain {
+
+    @inline(__always)
+    public
+    static
+    func obtain(by wand: wand.Wand?) -> Double {
+        (wand?.get() ?? Date()).timeIntervalSince1970
     }
-    
-    return url|
+
 }
 
 /// Convert
 ///
-/// let data: Data = string|
+/// let timestamp: Int = date|
 ///
 @inline(__always)
 public
 postfix 
-func |(string: String) -> Data {
-    string.data(using: .utf8)!
-}
-
-/// Convert
-///
-/// let data: Data = string | .utf8
-///
-@inline(__always)
-public
-func |(string: String, encoding: String.Encoding) -> Data {
-    string.data(using: encoding)!
-}
-
-/// Convert
-///
-/// let data: Data = string | .utf8
-///
-@inline(__always)
-public
-postfix
-func |<T: Codable>(model: T) -> Data {
-    try! JSONEncoder().encode(model)
+func |(date: Date?) -> TimeInterval {
+    ( date ?? Date() ).timeIntervalSince1970
 }
 
 #endif

@@ -18,35 +18,52 @@
 /// Created by Alex Kozin
 /// 2020 El Machine
 
-import Foundation
+
+#if canImport(Foundation)
+import Foundation.NSDate
 import wand
 
-extension Date {
-
-    static public postfix func |(piped: Date.Type) -> Int {
-        Int(Date().timeIntervalSince1970)
-    }
-
-    static public postfix func |(piped: Date.Type) -> TimeInterval {
-        Date().timeIntervalSince1970
-    }
-
+/// Convert
+///
+/// let date: Date = interval|
+///
+@inline(__always)
+public
+postfix
+func |(interval: TimeInterval) -> Date {
+    Date(timeIntervalSince1970: interval)
 }
 
-public postfix func |(piped: TimeInterval) -> Date {
-    Date(timeIntervalSince1970: piped)
+/// Convert
+///
+/// let date: Date = int|
+///
+@inline(__always)
+public
+postfix
+func |(int: Int) -> Date {
+    TimeInterval(int)|
 }
 
-public postfix func |(piped: Int) -> Date {
-    Date(timeIntervalSince1970: TimeInterval(piped))
+/// Convert
+///
+/// let date: Date? = components|
+///
+@inline(__always)
+public
+postfix
+func | (components: DateComponents) -> Date? {
+    Calendar.current.date(from: components)
 }
 
-//DateComponents
-public postfix func | (piped: DateComponents) -> Date? {
-    Calendar.current.date(from: piped)
-}
-
-public postfix func |(date: Date) -> String? {
+/// Convert
+///
+/// let string: String? = date|
+///
+@inline(__always)
+public
+postfix
+func |(date: Date) -> String {
 
     let formatted: String?
 
@@ -57,7 +74,7 @@ public postfix func |(date: Date) -> String? {
     }
 
 
-    return formatted
+    return formatted!
 }
 
-
+#endif
