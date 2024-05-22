@@ -41,7 +41,7 @@ class JSONObject_Tests: XCTestCase {
         waitForExpectations()
     }
 
-    @available(iOS 16, tvOS 16, watchOS 9, *)
+    @available(iOS 16, macOS 13, tvOS 16, watchOS 9, *)
     func test_URL_Array() {
         let e = expectation()
 
@@ -76,7 +76,7 @@ class JSONObject_Tests: XCTestCase {
         waitForExpectations()
     }
 
-    @available(iOS 16, tvOS 16, watchOS 9, *)
+    @available(iOS 16, macOS 13, tvOS 16, watchOS 9, *)
     func test_URL_Dictionary() {
         let e = expectation()
 

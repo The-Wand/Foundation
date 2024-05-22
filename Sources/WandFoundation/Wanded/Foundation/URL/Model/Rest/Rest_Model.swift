@@ -22,6 +22,7 @@
 import Foundation
 import Wand
 
+@available(visionOS, unavailable)
 public
 protocol Rest_Model: Model, Asking, Codable {
 
@@ -38,23 +39,7 @@ protocol Rest_Model: Model, Asking, Codable {
 
 }
 
-public
-extension Ask {
-
-    class Get: Ask {
-    }
-
-    class Post: Ask {
-    }
-
-    class Put: Ask {
-    }
-
-    class Delete: Ask {
-    }
-
-}
-
+@available(visionOS, unavailable)
 extension Rest_Model {
 
     public
@@ -105,6 +90,23 @@ extension Rest_Model {
         
     }
     
+}
+
+public
+extension Ask {
+
+    class Get: Ask {
+    }
+
+    class Post: Ask {
+    }
+
+    class Put: Ask {
+    }
+
+    class Delete: Ask {
+    }
+
 }
 
 //public

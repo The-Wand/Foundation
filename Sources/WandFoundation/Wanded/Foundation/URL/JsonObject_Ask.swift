@@ -41,6 +41,7 @@ func | (path: String, handler: @escaping ([Any])->() ) -> Wand {
 ///
 /// }
 ///
+@available(visionOS, unavailable)
 @inline(__always)
 @discardableResult
 public
@@ -93,6 +94,7 @@ func | (path: String, handler: @escaping ([String: Any])->() ) -> Wand {
 ///
 /// }
 ///
+@available(visionOS, unavailable)
 @inline(__always)
 @discardableResult
 public
