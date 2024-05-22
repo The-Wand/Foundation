@@ -43,6 +43,6 @@ let package = Package(
 
     targets: [
         .target(name: "wandFoundation", dependencies: ["Wand"]),
-        .testTarget(name: "wandTests", dependencies: ["Wand"])
+        .testTarget(name: "wandTests", dependencies: ["wandFoundation"])
     ]
 )

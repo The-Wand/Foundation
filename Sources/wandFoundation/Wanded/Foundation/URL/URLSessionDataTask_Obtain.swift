@@ -30,7 +30,8 @@ import wand
 extension URLSessionDataTask: Obtain {
 
     @inline(__always)
-    public static func obtain(by wand: Wand?) -> Self {
+    public 
+    static func obtain(by wand: Wand?) -> Self {
 
         let wand = wand ?? Wand()
 
@@ -38,6 +39,7 @@ extension URLSessionDataTask: Obtain {
         let request: URLRequest = wand.obtain()
 
         let task = session.dataTask(with: request) { data, response, error in
+            
             if let error = error {
                 wand.add(error)
                 return
@@ -68,6 +70,7 @@ extension URLSessionDataTask: Obtain {
 
             wand.add(httpResponse)
             wand.add(data)
+
         } as! Self
 
         return task

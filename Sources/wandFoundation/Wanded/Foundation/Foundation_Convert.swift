@@ -18,41 +18,41 @@
 /// Created by Alex Kozin
 /// 2020 El Machine
 
-#if canImport(CoreMotion) && !targetEnvironment(simulator) && !os(macOS)
-import CoreMotion
-import XCTest
-
-import wand_core_motion
+#if canImport(Foundation)
+import Foundation.NSBundle
 import wand
 
-class CMAltimeter_Tests: XCTestCase {
+/// Convert
+///
+/// let range: NSRange = (0, 1)|
+///
+@inline(__always)
+public
+postfix
+func |(p: (loc: Int, len: Int)) -> NSRange {
+    NSMakeRange(p.loc, p.len)
+}
 
-//    func test_<#T#>_one() {
-//        let e = expectation()
-//        e.assertForOverFulfill = true
-//
-//        |.one { (<#t#>: <#T#>) in
-//            e.fulfill()
-//        }
-//
-//        waitForExpectations()
-//    }
-//
-//    func test_<#T#>_while() {
-//        let e = expectation()
-//        e.assertForOverFulfill = false
-//
-//        |.while { (<#t#>: <#T#>) in
-//            e.fulfill()
-//        }
-//
-//        waitForExpectations()
-//    }
+/// Convert
+///
+/// let indexSet: IndexSet = 0|
+///
+@inline(__always)
+public
+postfix
+func |(i: Int) -> IndexSet {
+    IndexSet(integer: i)
+}
 
-    func test_CMAltimeter() {
-        XCTAssertNotNil(CMAltimeter.self|)
-    }
-
+/// Convert
+///
+/// let indexSet: IndexSet = [0, 1, 2]|
+///
+@inline(__always)
+public
+postfix
+func |<S>(p: S) -> IndexSet where S: Sequence, S.Element == Int {
+    IndexSet(p)
 }
 
 #endif

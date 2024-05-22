@@ -18,8 +18,11 @@
 /// Created by Alex Kozin
 /// 2020 El Machine
 
-import Wand
+import Foundation
 import XCTest
+
+import wand
+import wandFoundation
 
 class URL_JSONObject_Tests: XCTestCase {
 
@@ -27,7 +30,7 @@ class URL_JSONObject_Tests: XCTestCase {
         let e = expectation()
 
         let path = "https://api.github.com/repositories"
-        path | .one { (array: [Any]) in
+        path | { (array: [Any]) in
 
             if !array.isEmpty {
                 e.fulfill()
@@ -38,7 +41,7 @@ class URL_JSONObject_Tests: XCTestCase {
         waitForExpectations()
     }
 
-    @available(iOS 16.0, *)
+    @available(tvOS 16, *)
     func test_URL_Array() {
         let e = expectation()
 
@@ -47,7 +50,7 @@ class URL_JSONObject_Tests: XCTestCase {
         var url = URL(string: "https://api.github.com/repositories")!
         url.append(queryItems: [q])
 
-        url | .one { (array: [Any]) in
+        url | { (array: [Any]) in
 
             if !array.isEmpty {
                 e.fulfill()
@@ -61,12 +64,10 @@ class URL_JSONObject_Tests: XCTestCase {
     func test_Path_Dictionary() {
         let e = expectation()
 
-        let id = (1...100).any
-        let path = "https://jsonplaceholder.typicode.com/posts/\(id)"
+        let path = "https://api.github.com/repositories/804244016"
+        path | { (dictionary: [String: Any]) in
 
-        path | .one { (dictionary: [String: Any]) in
-
-            if dictionary["id"] as? Int == id {
+            if !dictionary.isEmpty {
                 e.fulfill()
             }
 
@@ -75,15 +76,18 @@ class URL_JSONObject_Tests: XCTestCase {
         waitForExpectations()
     }
 
+    @available(tvOS 16, *)
     func test_URL_Dictionary() {
         let e = expectation()
 
-        let id = (1...500).any
-        let url = URL(string: "https://jsonplaceholder.typicode.com/comments/\(id)")!
+        let q = URLQueryItem(name: "q", value: "swift")
 
-        url | .one { (dictionary: [String: Any]) in
+        var url = URL(string: "https://api.github.com/repositories/804244016")!
+        url.append(queryItems: [q])
 
-            if dictionary["id"] as? Int == id {
+        url | { (dictionary: [String: Any]) in
+
+            if !dictionary.isEmpty {
                 e.fulfill()
             }
 

@@ -18,19 +18,32 @@
 /// Created by Alex Kozin
 /// 2020 El Machine
 
+#if canImport(Foundation)
 import Foundation
 import wand
 
-//let url: URL = string|
-public postfix func |(piped: String) -> URL {
-    (piped|)!
+/// Convert
+///
+/// let url: URL = string|
+///
+@inline(__always)
+public
+postfix
+func |(string: String) -> URL {
+    (string|)!
 }
 
-public postfix func |(piped: String?) -> URL {
+@inline(__always)
+public
+postfix
+func |(piped: String?) -> URL {
     (piped!)|
 }
 
-public postfix func |(piped: String?) -> URL? {
+@inline(__always)
+public
+postfix
+func |(piped: String?) -> URL? {
     guard let piped = piped else {
         return nil
     }
@@ -38,15 +51,29 @@ public postfix func |(piped: String?) -> URL? {
     return piped|
 }
 
-public postfix func |(piped: String) -> URL? {
+@inline(__always)
+public
+postfix
+func |(piped: String) -> URL? {
     URL(string: piped)
 }
 
-//let string: String = url|
-public postfix func |(piped: URL) -> String {
+/// Convert
+///
+/// let string: String = url|
+///
+@inline(__always)
+public
+postfix
+func |(piped: URL) -> String {
     piped.absoluteString
 }
 
-public postfix func |(piped: URL?) -> String? {
+@inline(__always)
+public
+postfix
+func |(piped: URL?) -> String? {
     piped?.absoluteString
 }
+
+#endif

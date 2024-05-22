@@ -18,42 +18,37 @@
 /// Created by Alex Kozin
 /// 2020 El Machine
 
-#if canImport(CoreMotion) && !targetEnvironment(simulator) && !os(macOS)
-import CoreMotion
-import XCTest
-
-import wand_core_motion
+#if canImport(Foundation)
+import Foundation.NSBundle
 import wand
 
-class CMPedometer_Tests: XCTestCase {
+extension Wand {
 
-    func test_CMPedometerEvent() {
-        let e = expectation()
-        e.assertForOverFulfill = false
+    public 
+    typealias Resource = (name: String, type: String)
 
-        |.one { (event: CMPedometerEvent) in
-            e.fulfill()
-        }
+}
 
-        waitForExpectations()
-    }
+/// Convert
+///
+/// let url: URL = resource|
+///
+@inline(__always)
+public
+postfix
+func | (resource: Wand.Resource) -> URL {
+    Bundle.main.url(forResource: resource.name, withExtension: resource.type)!
+}
 
-    //Test it while walking
-    func test_CMPedometerData() {
-        let e = expectation()
-        e.assertForOverFulfill = false
-
-        |{ (location: CMPedometerData) in
-            e.fulfill()
-        }
-
-        waitForExpectations()
-    }
-
-    func test_CMPedometer() {
-        XCTAssertNotNil(CMPedometer.self|)
-    }
-
+/// Convert
+///
+/// let string: String = resource|
+///
+@inline(__always)
+public
+postfix
+func | (resource: Wand.Resource) -> String {
+    Bundle.main.path(forResource: resource.name, ofType: resource.type)!
 }
 
 #endif

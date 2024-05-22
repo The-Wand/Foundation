@@ -18,23 +18,32 @@
 /// Created by Alex Kozin
 /// 2020 El Machine
 
-#if canImport(CoreMotion)
-import CoreMotion.CMPedometer
+#if canImport(Foundation)
+import Foundation.NSTimeZone
 import wand
 
-/// Obtain
 ///
-/// let pedometer: CMPedometer = nil|
+/// Convert
 ///
-@available(macOS, unavailable)
-@available(visionOS, unavailable)
-extension CMMotionManager: Obtain {
+/// let timeZone: TimeZone? = "usUs"|
+///
+@inline(__always)
+public
+postfix
+func |(string: String) -> TimeZone? {
+    TimeZone(identifier: string) ?? TimeZone(abbreviation: string)
+}
 
-    @inline(__always)
-    public static func obtain(by wand: Wand?) -> Self {
-        Self()
-    }
-     
+///
+/// Convert
+///
+/// let timeZone: TimeZone? = seconds|
+///
+@inline(__always)
+public
+postfix
+func |(seconds: Int) -> TimeZone? {
+    TimeZone(secondsFromGMT: seconds)
 }
 
 #endif
