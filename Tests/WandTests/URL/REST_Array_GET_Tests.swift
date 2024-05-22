@@ -17,29 +17,32 @@
 ///
 /// Created by Alex Kozin
 /// 2020 El Machine
-//
-//import Wand
-//import XCTest
-//
-//class Codable_Array_GET_Tests: XCTestCase {
-//
+
+import Foundation
+import XCTest
+
+import Wand
+import WandFoundation
+
+class Codable_Array_GET_Tests: XCTestCase {
+
+    @available(iOS 16.0, *)
+    func test_Codable_Array() {
+        let e = expectation()
+
+        |.get { (result: [GitHubAPI.Repo]) in
+
+            if !result.isEmpty {
+                e.fulfill()
+            }
+
+        }
+
+        waitForExpectations()
+    }
+
 //    @available(iOS 16.0, *)
-//    func test_any_Codable_Array() {
-//        let e = expectation()
-//
-//        |.get { (result: [GitHubAPI.Repo]) in
-//
-//            if !result.isEmpty {
-//                e.fulfill()
-//            }
-//
-//        }
-//
-//        waitForExpectations()
-//    }
-//
-//    @available(iOS 16.0, *)
-//    func test_argument_Codable_Array() {
+//    func test_Query_to_Codable_Array() {
 //        let e = expectation()
 //
 //        let query = "ios"
@@ -55,7 +58,7 @@
 //    }
 //
 //    @available(iOS 16.0, *)
-//    func test_Path_Codable_Array() {
+//    func test_Path_to_Codable_Array() {
 //        let e = expectation()
 //
 //        let path = "https://api.github.com/repositories?q=ios"
@@ -69,7 +72,7 @@
 //    }
 //
 //    @available(iOS 16.0, *)
-//    func test_URL_Codable_Array() {
+//    func test_URL_to_Codable_Array() {
 //        let e = expectation()
 //
 //        let path = "https://api.github.com/repositories?q=ios"
@@ -82,6 +85,5 @@
 //
 //        waitForExpectations()
 //    }
-//
-//
-//}
+
+}

@@ -21,8 +21,8 @@
 import Foundation.NSTextCheckingResult
 import XCTest
 
-import wand
-import wandFoundation
+import Wand
+import WandFoundation
 
 class NSTextCheckingResultCheckingType_Tests: XCTestCase {
 

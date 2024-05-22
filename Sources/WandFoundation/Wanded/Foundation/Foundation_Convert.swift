@@ -18,28 +18,41 @@
 /// Created by Alex Kozin
 /// 2020 El Machine
 
-import Foundation
-
+#if canImport(Foundation)
+import Foundation.NSBundle
 import Wand
 
-internal
-struct Point: Equatable, Any_ {
-
-    let id: Int
-
-    let x, y, z: Float
-    var t: TimeInterval
-
-
-    static var any: Point {
-        .init(id: .any(in: 0...4), x: .any, y: .any, z: .any, t: .any)
-    }
+/// Convert
+///
+/// let range: NSRange = (0, 1)|
+///
+@inline(__always)
+public
+postfix
+func |(p: (loc: Int, len: Int)) -> NSRange {
+    NSMakeRange(p.loc, p.len)
 }
 
-extension Point: AskingNil, Wanded {
-
-    static func wand<T>(_ wand: Wand, asks ask: Ask<T>) {
-        _ = wand.answer(the: ask)
-    }
-
+/// Convert
+///
+/// let indexSet: IndexSet = 0|
+///
+@inline(__always)
+public
+postfix
+func |(i: Int) -> IndexSet {
+    IndexSet(integer: i)
 }
+
+/// Convert
+///
+/// let indexSet: IndexSet = [0, 1, 2]|
+///
+@inline(__always)
+public
+postfix
+func |<S>(p: S) -> IndexSet where S: Sequence, S.Element == Int {
+    IndexSet(p)
+}
+
+#endif

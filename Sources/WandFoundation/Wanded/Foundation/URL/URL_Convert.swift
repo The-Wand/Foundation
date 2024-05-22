@@ -18,28 +18,62 @@
 /// Created by Alex Kozin
 /// 2020 El Machine
 
+#if canImport(Foundation)
 import Foundation
-
 import Wand
 
-internal
-struct Point: Equatable, Any_ {
-
-    let id: Int
-
-    let x, y, z: Float
-    var t: TimeInterval
-
-
-    static var any: Point {
-        .init(id: .any(in: 0...4), x: .any, y: .any, z: .any, t: .any)
-    }
+/// Convert
+///
+/// let url: URL = string|
+///
+@inline(__always)
+public
+postfix
+func |(string: String) -> URL {
+    (string|)!
 }
 
-extension Point: AskingNil, Wanded {
+@inline(__always)
+public
+postfix
+func |(piped: String?) -> URL {
+    (piped!)|
+}
 
-    static func wand<T>(_ wand: Wand, asks ask: Ask<T>) {
-        _ = wand.answer(the: ask)
+@inline(__always)
+public
+postfix
+func |(piped: String?) -> URL? {
+    guard let piped = piped else {
+        return nil
     }
 
+    return piped|
 }
+
+@inline(__always)
+public
+postfix
+func |(piped: String) -> URL? {
+    URL(string: piped)
+}
+
+/// Convert
+///
+/// let string: String = url|
+///
+@inline(__always)
+public
+postfix
+func |(piped: URL) -> String {
+    piped.absoluteString
+}
+
+@inline(__always)
+public
+postfix
+func |(piped: URL?) -> String? {
+    piped?.absoluteString
+}
+
+#endif

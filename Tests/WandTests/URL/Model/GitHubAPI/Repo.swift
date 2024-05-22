@@ -17,20 +17,23 @@
 ///
 /// Created by Alex Kozin
 /// 2020 El Machine
-//
-//import Foundation
-//
-//public extension GitHubAPI {
-//
-//    struct Repo: Codable {
-//
-//        let id: Int
-//
-//        let name: String?
-//        let description: String?
-//
-//        let watchers: Int?
-//
-//    }
-//
-//}
+
+import Foundation
+
+import WandFoundation
+
+public 
+extension GitHubAPI {
+
+    struct Repo: Codable {
+
+        let id: Int
+
+        let name: String?
+        let description: String?
+
+        let watchers: Int?
+
+    }
+
+}

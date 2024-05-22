@@ -18,28 +18,32 @@
 /// Created by Alex Kozin
 /// 2020 El Machine
 
-import Foundation
-
+#if canImport(Foundation)
+import Foundation.NSTimeZone
 import Wand
 
-internal
-struct Point: Equatable, Any_ {
-
-    let id: Int
-
-    let x, y, z: Float
-    var t: TimeInterval
-
-
-    static var any: Point {
-        .init(id: .any(in: 0...4), x: .any, y: .any, z: .any, t: .any)
-    }
+///
+/// Convert
+///
+/// let timeZone: TimeZone? = "usUs"|
+///
+@inline(__always)
+public
+postfix
+func |(string: String) -> TimeZone? {
+    TimeZone(identifier: string) ?? TimeZone(abbreviation: string)
 }
 
-extension Point: AskingNil, Wanded {
-
-    static func wand<T>(_ wand: Wand, asks ask: Ask<T>) {
-        _ = wand.answer(the: ask)
-    }
-
+///
+/// Convert
+///
+/// let timeZone: TimeZone? = seconds|
+///
+@inline(__always)
+public
+postfix
+func |(seconds: Int) -> TimeZone? {
+    TimeZone(secondsFromGMT: seconds)
 }
+
+#endif

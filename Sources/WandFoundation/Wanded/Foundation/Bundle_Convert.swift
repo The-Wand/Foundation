@@ -18,28 +18,38 @@
 /// Created by Alex Kozin
 /// 2020 El Machine
 
-import Foundation
+#if canImport(Foundation)
+import Foundation.NSBundle
 
 import Wand
 
-internal
-struct Point: Equatable, Any_ {
+extension Wand {
 
-    let id: Int
-
-    let x, y, z: Float
-    var t: TimeInterval
-
-
-    static var any: Point {
-        .init(id: .any(in: 0...4), x: .any, y: .any, z: .any, t: .any)
-    }
-}
-
-extension Point: AskingNil, Wanded {
-
-    static func wand<T>(_ wand: Wand, asks ask: Ask<T>) {
-        _ = wand.answer(the: ask)
-    }
+    public 
+    typealias Resource = (name: String, type: String)
 
 }
+
+/// Convert
+///
+/// let url: URL = resource|
+///
+@inline(__always)
+public
+postfix
+func | (resource: Wand.Resource) -> URL {
+    Bundle.main.url(forResource: resource.name, withExtension: resource.type)!
+}
+
+/// Convert
+///
+/// let string: String = resource|
+///
+@inline(__always)
+public
+postfix
+func | (resource: Wand.Resource) -> String {
+    Bundle.main.path(forResource: resource.name, ofType: resource.type)!
+}
+
+#endif

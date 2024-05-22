@@ -18,28 +18,36 @@
 /// Created by Alex Kozin
 /// 2020 El Machine
 
+#if canImport(Foundation)
 import Foundation
-
 import Wand
 
-internal
-struct Point: Equatable, Any_ {
+/// Ask
+///
+/// "https://api.github.com/gists" | { (data: Data) in
+///
+/// }
+///
+@available(visionOS, unavailable)
+extension Data: Asking, Wanded {
 
-    let id: Int
-
-    let x, y, z: Float
-    var t: TimeInterval
-
-
-    static var any: Point {
-        .init(id: .any(in: 0...4), x: .any, y: .any, z: .any, t: .any)
-    }
-}
-
-extension Point: AskingNil, Wanded {
-
+    @inline(__always)
+    public
     static func wand<T>(_ wand: Wand, asks ask: Ask<T>) {
-        _ = wand.answer(the: ask)
+
+        //Save ask
+        guard wand.answer(the: ask) else {
+            return
+        }
+
+        //Request for a first time
+
+        //Make request
+        let task: URLSessionDataTask = wand.obtain()
+        task.resume()
+
     }
 
 }
+
+#endif

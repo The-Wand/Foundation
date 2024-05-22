@@ -17,56 +17,74 @@
 ///
 /// Created by Alex Kozin
 /// 2020 El Machine
-//
-//import Wand
-//
-//extension GitHubAPI.Repo: GitHubAPI.Model {
-//
-//    public static var path: String {
-//        base! + "repositories"
-//    }
-//
-//}
-//
-////https://api.github.com/repositories/42
-//@discardableResult
-//func |(id: Int,
-//       get: Ask<GitHubAPI.Repo>.Get) -> Pipe {
-//
-//    let pipe = Pipe()
-//
-//    let path = GitHubAPI.Repo.path + "/\(id)"
-//    pipe.store(path)
-//    pipe.store(Rest.Method.GET)
-//
-//    return pipe | get
-//}
-//
-////https://api.github.com/repositories
-//@discardableResult
-//prefix func |(get: Ask<[GitHubAPI.Repo]>.Get) -> Pipe {
-//
-//    let pipe = Pipe()
-//
-//    let path = GitHubAPI.Repo.path
-//    pipe.store(path)
-//
-//    pipe.store(Rest.Method.GET)
-//
-//    return pipe | get
-//}
-//
-////https://api.github.com/repositories?q=ios
-//@discardableResult
-//func |(query: String,
-//       get: Ask<[GitHubAPI.Repo]>.Get) -> Pipe {
-//
-//    let pipe = Pipe()
-//
-//    let path = GitHubAPI.Repo.path + "?q=\(query)"
-//    pipe.store(path)
-//
-//    pipe.store(Rest.Method.GET)
-//
-//    return pipe | get
-//}
+
+import Foundation
+
+import Wand
+import WandFoundation
+
+extension GitHubAPI.Repo: GitHubAPI.Model {    
+
+    public static var path: String {
+        base! + "repositories"
+    }
+
+}
+
+/// Get Model
+/// 
+/// 42 | .get { (repo: Repo) in
+///
+/// }
+///
+@discardableResult
+func |(id: Int,
+       get: Ask<GitHubAPI.Repo>.Get) -> Wand {
+
+    let wand: Wand = nil
+
+    let path = GitHubAPI.Repo.path + "/\(id)"
+    wand.save(path)
+    wand.save(Rest.Method.GET)
+
+    return wand | get
+}
+
+/// Get Model
+///
+/// |.get { (repos: [Repo]) in
+///
+/// }
+///
+@discardableResult
+prefix func |(get: Ask<[GitHubAPI.Repo]>.Get) -> Wand {
+
+    let wand = Wand()
+
+    let path = GitHubAPI.Repo.path
+    wand.save(path)
+
+    wand.save(Rest.Method.GET)
+
+    return wand | get
+}
+
+/// Get Model
+///
+/// query | .get { (repos: [Repo]) in
+///
+/// }
+///
+@discardableResult
+func |(query: String,
+       get: Ask<[GitHubAPI.Repo]>.Get) -> Wand {
+
+    let wand = Wand()
+
+    let path = GitHubAPI.Repo.path + "?q=\(query)"
+    wand.save(path)
+
+    wand.save(Rest.Method.GET)
+
+    return wand | get
+}

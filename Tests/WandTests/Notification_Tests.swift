@@ -21,8 +21,8 @@
 import Foundation
 import XCTest
 
-import wand
-import wandFoundation
+import Wand
+import WandFoundation
 
 private
 extension Notification.Name {

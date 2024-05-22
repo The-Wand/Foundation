@@ -21,7 +21,7 @@
 import Foundation
 import XCTest
 
-import wand
+import Wand
 
 /// Test Unit
 //struct Unit {

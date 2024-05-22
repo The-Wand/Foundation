@@ -34,15 +34,15 @@ let package = Package(
     ],
 
     products: [
-        .library(name: "Wand_Foundation", targets: ["wandFoundation"])
+        .library(name: "Wand_Foundation", targets: ["WandFoundation"])
     ],
 
     dependencies: [
-        .package(url: "https://github.com/el-machine/Wand.git", from: "1.1.1-rc.5")
+        .package(url: "https://github.com/el-machine/Wand.git", from: "1.1.2")
     ],
 
     targets: [
-        .target(name: "wandFoundation", dependencies: ["Wand"]),
-        .testTarget(name: "wandTests", dependencies: ["wandFoundation"])
+        .target(name: "WandFoundation", dependencies: ["Wand"]),
+        .testTarget(name: "wandTests", dependencies: ["WandFoundation"])
     ]
 )

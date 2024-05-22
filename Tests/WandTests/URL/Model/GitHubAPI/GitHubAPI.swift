@@ -17,28 +17,36 @@
 ///
 /// Created by Alex Kozin
 /// 2020 El Machine
-//
-//import Wand
-//
-//public struct GitHubAPI {
-//
-//    public typealias Model = GitHubAPI_Model
-//
-//}
-//
-//public protocol GitHubAPI_Model: Rest.Model {
-//
-//}
-//
-//public extension GitHubAPI_Model {
-//
-//    static var base: String? {
-//        "https://api.github.com/"
-//    }
-//
-//    static var headers: [String : String]? {
-//        ["Accept": "application/json",
-//         "Content-Type": "application/json"]
-//    }
-//
-//}
+
+import Foundation
+
+import WandFoundation
+
+public 
+struct GitHubAPI {
+
+    public 
+    typealias Model = GitHubAPI_Model
+
+}
+
+public 
+protocol GitHubAPI_Model: Rest.Model {
+
+}
+
+public 
+extension GitHubAPI_Model {
+
+    static 
+    var base: String? {
+        "https://api.github.com/"
+    }
+
+    static 
+    var headers: [String : String]? {
+        ["Accept": "application/json",
+         "Content-Type": "application/json"]
+    }
+
+}

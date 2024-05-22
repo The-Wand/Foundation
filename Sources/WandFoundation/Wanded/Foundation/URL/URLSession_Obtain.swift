@@ -18,28 +18,32 @@
 /// Created by Alex Kozin
 /// 2020 El Machine
 
-import Foundation
-
+#if canImport(Foundation)
+import Foundation.NSURLSession
 import Wand
 
-internal
-struct Point: Equatable, Any_ {
+/// Obtain
+///
+/// let session: URLSession = config|
+///
+@available(visionOS, unavailable)
+extension URLSession: Obtain {
 
-    let id: Int
+    @inline(__always)
+    public static func obtain(by wand: Wand?) -> Self {
 
-    let x, y, z: Float
-    var t: TimeInterval
+        let session: Self
 
+        if let config: URLSessionConfiguration = wand?.get() {
+            session = Self(configuration: config)
+        } else {
+            session = Self.shared as! Self
+        }
 
-    static var any: Point {
-        .init(id: .any(in: 0...4), x: .any, y: .any, z: .any, t: .any)
+        return session
     }
+
 }
 
-extension Point: AskingNil, Wanded {
+#endif
 
-    static func wand<T>(_ wand: Wand, asks ask: Ask<T>) {
-        _ = wand.answer(the: ask)
-    }
-
-}

@@ -18,28 +18,37 @@
 /// Created by Alex Kozin
 /// 2020 El Machine
 
+#if canImport(Foundation)
 import Foundation
-
 import Wand
 
-internal
-struct Point: Equatable, Any_ {
+public
+struct Rest {
 
-    let id: Int
+    public
+    typealias Model = Rest_Model
 
-    let x, y, z: Float
-    var t: TimeInterval
+    public
+    enum Method: String {
+        
+        case GET
+        case POST
+        case HEAD
+        case PUT
+        case PATCH
+        case DELETE
 
+        var timeout: TimeInterval {
+            switch self {
+                case .POST, .PUT, .PATCH:
+                    return 30
+                default:
+                    return 15
+            }
+        }
 
-    static var any: Point {
-        .init(id: .any(in: 0...4), x: .any, y: .any, z: .any, t: .any)
     }
+
 }
 
-extension Point: AskingNil, Wanded {
-
-    static func wand<T>(_ wand: Wand, asks ask: Ask<T>) {
-        _ = wand.answer(the: ask)
-    }
-
-}
+#endif

@@ -18,28 +18,36 @@
 /// Created by Alex Kozin
 /// 2020 El Machine
 
-import Foundation
 
+#if canImport(Foundation)
+import Foundation.NSDate
 import Wand
 
-internal
-struct Point: Equatable, Any_ {
 
-    let id: Int
+/// Convert
+///
+/// let timestamp: Int = date|
+///
+extension TimeInterval: Obtain {
 
-    let x, y, z: Float
-    var t: TimeInterval
-
-
-    static var any: Point {
-        .init(id: .any(in: 0...4), x: .any, y: .any, z: .any, t: .any)
-    }
-}
-
-extension Point: AskingNil, Wanded {
-
-    static func wand<T>(_ wand: Wand, asks ask: Ask<T>) {
-        _ = wand.answer(the: ask)
+    @inline(__always)
+    public
+    static
+    func obtain(by wand: Wand?) -> Double {
+        (wand?.get() ?? Date()).timeIntervalSince1970
     }
 
 }
+
+/// Convert
+///
+/// let timestamp: Int = date|
+///
+@inline(__always)
+public
+postfix 
+func |(date: Date?) -> TimeInterval {
+    ( date ?? Date() ).timeIntervalSince1970
+}
+
+#endif

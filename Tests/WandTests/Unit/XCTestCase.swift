@@ -21,7 +21,7 @@
 import Foundation
 import XCTest
 
-import wand
+import Wand
 
 /// Asking
 extension XCTestCase {

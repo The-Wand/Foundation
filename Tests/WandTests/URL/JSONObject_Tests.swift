@@ -21,10 +21,10 @@
 import Foundation
 import XCTest
 
-import wand
-import wandFoundation
+import Wand
+import WandFoundation
 
-class URL_JSONObject_Tests: XCTestCase {
+class JSONObject_Tests: XCTestCase {
 
     func test_Path_Array() {
         let e = expectation()

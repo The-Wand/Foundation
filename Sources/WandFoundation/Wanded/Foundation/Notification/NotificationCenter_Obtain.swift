@@ -18,28 +18,15 @@
 /// Created by Alex Kozin
 /// 2020 El Machine
 
-import Foundation
-
+import Foundation.NSNotification
 import Wand
 
-internal
-struct Point: Equatable, Any_ {
+extension NotificationCenter: Obtain {
 
-    let id: Int
-
-    let x, y, z: Float
-    var t: TimeInterval
-
-
-    static var any: Point {
-        .init(id: .any(in: 0...4), x: .any, y: .any, z: .any, t: .any)
-    }
-}
-
-extension Point: AskingNil, Wanded {
-
-    static func wand<T>(_ wand: Wand, asks ask: Ask<T>) {
-        _ = wand.answer(the: ask)
+    @inline(__always)
+    public
+    static func obtain(by wand: Wand?) -> Self {
+        Self.default as! Self
     }
 
 }
