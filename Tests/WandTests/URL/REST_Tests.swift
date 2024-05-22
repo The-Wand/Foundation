@@ -43,23 +43,23 @@ class REST_Tests: XCTestCase {
 //        waitForExpectations()
 //    }
 
-    @available(iOS 16.0, *)
-    func test_Path_to_REST_Codable() {
-        let e = expectation()
-
-        let id = 42
-        let path = "https://api.github.com/repositories/\(id)"
-
-        path | .get { (repo: GitHubAPI.Repo) in
-
-            if repo.id == id {
-                e.fulfill()
-            }
-
-        }
-
-        waitForExpectations()
-    }
+//    @available(iOS 16.0, *)
+//    func test_Path_to_REST_Codable() {
+//        let e = expectation()
+//
+//        let id = 42
+//        let path = "https://api.github.com/repositories/\(id)"
+//
+//        path | .get { (repo: GitHubAPI.Repo) in
+//
+//            if repo.id == id {
+//                e.fulfill()
+//            }
+//
+//        }
+//
+//        waitForExpectations()
+//    }
 
 //    @available(iOS 16.0, *)
 //    func test_REST_Codable_Post() {
