@@ -70,6 +70,7 @@ extension Ask {
 
 }
 
+@available(visionOS, unavailable)
 public
 extension Ask where T: Rest.Model {
 

@@ -19,17 +19,9 @@
 import Foundation
 import Wand
 
-/**Pipable
-
- postfix |(data: Data) -> some RestModel
- postfix |(raw: Dictionary) -> some RestModel
-
- infix | (url: URL, reply: (some RestModel)->() ) -> Pipe
-
- */
-
 extension Data {
 
+    @inline(__always)
     postfix
     public
     static
@@ -37,6 +29,7 @@ extension Data {
         try JSONDecoder().decode(T.self, from: data)
     }
 
+    @inline(__always)
     postfix
     public
     static
@@ -44,6 +37,7 @@ extension Data {
         try? JSONSerialization.jsonObject(with: raw, options: []) as? [String : Any]
     }
 
+    @inline(__always)
     postfix
     public
     static
@@ -55,45 +49,24 @@ extension Data {
 
 extension Dictionary {
 
-    static public postfix func |(p: Self) -> Data {
+    @inline(__always)
+    postfix
+    public
+    static
+    func |(p: Self) -> Data {
         try! JSONSerialization.data(withJSONObject: p, options: [])
     }
 
-}
-
-public postfix func |<T: Rest.Model>(raw: [String: Any]?) throws -> T {
-    try (raw!)|
-}
-
-public postfix func |<T: Model>(raw: [String: Any]) throws -> T {
-    try JSONDecoder().decode(T.self, from: raw|)
 }
 
 extension Array {
 
-    static public postfix func |(p: Self) -> Data {
+    @inline(__always)
+    postfix
+    public
+    static
+    func |(p: Self) -> Data {
         try! JSONSerialization.data(withJSONObject: p, options: [])
     }
 
-    static public postfix func |<T: Model>(raw: Self) throws -> [T] {
-        try JSONDecoder().decode([T].self, from: raw|)
-    }
-
-}
-
-public
-postfix func |(resource: Wand.Resource) throws -> Data {
-    try Data(contentsOf: resource|)
-}
-
-public
-postfix func |<T: Decodable> (resource: Wand.Resource) throws -> T {
-    let data: Data = try Data(contentsOf: resource|)
-    return try data|
-}
-
-public
-postfix func |(resource: Wand.Resource) throws -> [String: Any]? {
-    let data: Data = try Data(contentsOf: resource|)
-    return try data|
 }
