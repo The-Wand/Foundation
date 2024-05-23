@@ -92,8 +92,8 @@ extension DateFormatter: Obtain {
 /// let formatter: DateFormatter = style|
 ///
 @inline(__always)
-public
 postfix
+public
 func | (style: (date: DateFormatter.Style,
                                time: DateFormatter.Style)) -> DateFormatter {
 
@@ -109,8 +109,8 @@ func | (style: (date: DateFormatter.Style,
 /// let formatter: DateFormatter = format|
 ///
 @inline(__always)
-public
-postfix 
+postfix
+public 
 func | (format: String) -> DateFormatter {
 
     let formatter = DateFormatter()

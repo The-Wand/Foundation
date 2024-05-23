@@ -18,11 +18,9 @@
 /// Created by Alex Kozin
 /// 2020 El Machine
 
-
 #if canImport(Foundation)
 import Foundation.NSDate
 import Wand
-
 
 /// Convert
 ///
@@ -44,8 +42,8 @@ extension TimeInterval: Obtain {
 /// let timestamp: Int = date|
 ///
 @inline(__always)
-public
-postfix 
+postfix
+public 
 func |(date: Date?) -> TimeInterval {
     ( date ?? Date() ).timeIntervalSince1970
 }

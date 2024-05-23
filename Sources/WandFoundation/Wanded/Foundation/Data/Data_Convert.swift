@@ -27,8 +27,8 @@ import Wand
 /// let data: Data? = url|
 ///
 @inline(__always)
-public
 postfix
+public
 func |(url: URL) -> Data? {
     try? Data(contentsOf: url)
 }
@@ -38,8 +38,8 @@ func |(url: URL) -> Data? {
 /// let data: Data? = url|
 ///
 @inline(__always)
-public
 postfix
+public
 func |(url: URL?) -> Data? {
     guard let url else {
         return nil
@@ -53,8 +53,8 @@ func |(url: URL?) -> Data? {
 /// let data: Data = string|
 ///
 @inline(__always)
-public
-postfix 
+postfix
+public 
 func |(string: String) -> Data {
     string.data(using: .utf8)!
 }
@@ -74,8 +74,8 @@ func |(string: String, encoding: String.Encoding) -> Data {
 /// let data: Data = string | .utf8
 ///
 @inline(__always)
-public
 postfix
+public
 func |<T: Codable>(model: T) -> Data {
     try! JSONEncoder().encode(model)
 }

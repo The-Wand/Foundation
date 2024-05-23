@@ -27,22 +27,22 @@ import Wand
 /// let url: URL = string|
 ///
 @inline(__always)
-public
 postfix
+public
 func |(string: String) -> URL {
     (string|)!
 }
 
 @inline(__always)
-public
 postfix
+public
 func |(piped: String?) -> URL {
     (piped!)|
 }
 
 @inline(__always)
-public
 postfix
+public
 func |(piped: String?) -> URL? {
     guard let piped = piped else {
         return nil
@@ -52,8 +52,8 @@ func |(piped: String?) -> URL? {
 }
 
 @inline(__always)
-public
 postfix
+public
 func |(piped: String) -> URL? {
     URL(string: piped)
 }
@@ -63,15 +63,15 @@ func |(piped: String) -> URL? {
 /// let string: String = url|
 ///
 @inline(__always)
-public
 postfix
+public
 func |(piped: URL) -> String {
     piped.absoluteString
 }
 
 @inline(__always)
-public
 postfix
+public
 func |(piped: URL?) -> String? {
     piped?.absoluteString
 }

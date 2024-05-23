@@ -28,8 +28,8 @@ import Wand
 ///
 /// }
 ///
-@inline(__always)
 @discardableResult
+@inline(__always)
 public
 func | (path: String, handler: @escaping ([Any])->() ) -> Wand {
     URL(string: path)! | handler
@@ -42,8 +42,8 @@ func | (path: String, handler: @escaping ([Any])->() ) -> Wand {
 /// }
 ///
 @available(visionOS, unavailable)
-@inline(__always)
 @discardableResult
+@inline(__always)
 public
 func | (url: URL, handler: @escaping ([Any])->() ) -> Wand {
 
@@ -80,8 +80,8 @@ func | (url: URL, handler: @escaping ([Any])->() ) -> Wand {
 ///
 /// }
 ///
-@inline(__always)
 @discardableResult
+@inline(__always)
 public
 func | (path: String, handler: @escaping ([String: Any])->() ) -> Wand {
     URL(string: path)! | handler
@@ -95,8 +95,8 @@ func | (path: String, handler: @escaping ([String: Any])->() ) -> Wand {
 /// }
 ///
 @available(visionOS, unavailable)
-@inline(__always)
 @discardableResult
+@inline(__always)
 public
 func | (url: URL, handler: @escaping ([String: Any])->() ) -> Wand {
 

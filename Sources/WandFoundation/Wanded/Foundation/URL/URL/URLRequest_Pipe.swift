@@ -33,7 +33,7 @@ extension URLRequest: Obtain {
     public static func obtain(by wand: Wand?) -> Self {
 
         guard let wand else {
-            fatalError()
+            fatalError("No context")
         }
 
         let url: URL = wand.get() ?? {

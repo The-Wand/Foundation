@@ -28,8 +28,8 @@ import Wand
 /// let timeZone: TimeZone? = "usUs"|
 ///
 @inline(__always)
-public
 postfix
+public
 func |(string: String) -> TimeZone? {
     TimeZone(identifier: string) ?? TimeZone(abbreviation: string)
 }
@@ -40,8 +40,8 @@ func |(string: String) -> TimeZone? {
 /// let timeZone: TimeZone? = seconds|
 ///
 @inline(__always)
-public
 postfix
+public
 func |(seconds: Int) -> TimeZone? {
     TimeZone(secondsFromGMT: seconds)
 }

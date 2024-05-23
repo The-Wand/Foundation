@@ -32,7 +32,8 @@ extension Notification: Asking, Wanded {
 
     @inline(__always)
     public
-    static func wand<T>(_ wand: Wand, asks ask: Ask<T>) {
+    static 
+    func wand<T>(_ wand: Wand, asks ask: Ask<T>) {
 
         let name: Notification.Name = wand.get()!
         let key = name.rawValue
@@ -65,15 +66,15 @@ extension Notification: Asking, Wanded {
 
 }
 
-@inline(__always)
 @discardableResult
+@inline(__always)
 public
 func | (name: Notification.Name, handler: @escaping (Notification)->() ) -> Wand {
     Wand(for: name) | .every(handler: handler)
 }
 
-@inline(__always)
 @discardableResult
+@inline(__always)
 public
 func | (name: Notification.Name, ask: Ask<Notification>) -> Wand {
     Wand(for: name) | ask

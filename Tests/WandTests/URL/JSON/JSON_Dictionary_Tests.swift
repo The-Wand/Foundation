@@ -24,44 +24,9 @@ import XCTest
 import Wand
 import WandFoundation
 
-class JSONObject_Tests: XCTestCase {
+class JSON_Dictionary_Tests: XCTestCase {
 
-    func test_Path_Array() {
-        let e = expectation()
-
-        let path = "https://api.github.com/repositories"
-        path | { (array: [Any]) in
-
-            if !array.isEmpty {
-                e.fulfill()
-            }
-
-        }
-
-        waitForExpectations()
-    }
-
-    @available(iOS 16, macOS 13, tvOS 16, watchOS 9, *)
-    func test_URL_Array() {
-        let e = expectation()
-
-        let q = URLQueryItem(name: "q", value: "swift")
-
-        var url = URL(string: "https://api.github.com/repositories")!
-        url.append(queryItems: [q])
-
-        url | { (array: [Any]) in
-
-            if !array.isEmpty {
-                e.fulfill()
-            }
-
-        }
-
-        waitForExpectations()
-    }
-
-    func test_Path_Dictionary() {
+    func test_Path_to_Dictionary() {
         let e = expectation()
 
         let path = "https://api.github.com/repositories/804244016"

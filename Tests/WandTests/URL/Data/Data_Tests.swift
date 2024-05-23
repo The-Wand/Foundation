@@ -18,37 +18,41 @@
 /// Created by Alex Kozin
 /// 2020 El Machine
 
-#if canImport(Foundation)
 import Foundation
+import XCTest
+
 import Wand
+import WandFoundation
 
-public
-struct Rest {
+class Data_Tests: XCTestCase {
 
-    public
-    typealias Model = Rest_Model
+    func test_Path_Data() {
+        let e = expectation()
 
-    public
-    enum Method: String {
-        
-        case GET
-        case POST
-        case HEAD
-        case PUT
-        case PATCH
-        case DELETE
+        "https://api.github.com/gists" | .one { (data: Data) in
 
-        var timeout: TimeInterval {
-            switch self {
-                case .POST, .PUT, .PATCH:
-                    return 30
-                default:
-                    return 15
+            if !data.isEmpty {
+                e.fulfill()
             }
+
         }
 
+        waitForExpectations()
+    }
+
+    func test_URL_Data() {
+        let e = expectation()
+
+        let url = URL(string: "https://jsonplaceholder.typicode.com/posts")
+        url | .one { (data: Data) in
+
+            if !data.isEmpty {
+                e.fulfill()
+            }
+
+        }
+
+        waitForExpectations()
     }
 
 }
-
-#endif

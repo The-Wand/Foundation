@@ -20,7 +20,6 @@
 
 #if canImport(Foundation)
 import Foundation.NSBundle
-
 import Wand
 
 extension Wand {
@@ -35,8 +34,8 @@ extension Wand {
 /// let url: URL = resource|
 ///
 @inline(__always)
-public
 postfix
+public
 func | (resource: Wand.Resource) -> URL {
     Bundle.main.url(forResource: resource.name, withExtension: resource.type)!
 }
@@ -46,8 +45,8 @@ func | (resource: Wand.Resource) -> URL {
 /// let string: String = resource|
 ///
 @inline(__always)
-public
 postfix
+public
 func | (resource: Wand.Resource) -> String {
     Bundle.main.path(forResource: resource.name, ofType: resource.type)!
 }

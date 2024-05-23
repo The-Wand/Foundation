@@ -18,6 +18,7 @@
 /// Created by Alex Kozin
 /// 2020 El Machine
 
+#if canImport(Foundation)
 import Foundation.NSNotification
 import Wand
 
@@ -25,8 +26,11 @@ extension NotificationCenter: Obtain {
 
     @inline(__always)
     public
-    static func obtain(by wand: Wand?) -> Self {
+    static 
+    func obtain(by wand: Wand?) -> Self {
         Self.default as! Self
     }
 
 }
+
+#endif

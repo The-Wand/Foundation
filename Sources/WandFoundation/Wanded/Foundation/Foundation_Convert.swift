@@ -27,8 +27,8 @@ import Wand
 /// let range: NSRange = (0, 1)|
 ///
 @inline(__always)
-public
 postfix
+public
 func |(p: (loc: Int, len: Int)) -> NSRange {
     NSMakeRange(p.loc, p.len)
 }
@@ -38,8 +38,8 @@ func |(p: (loc: Int, len: Int)) -> NSRange {
 /// let indexSet: IndexSet = 0|
 ///
 @inline(__always)
-public
 postfix
+public
 func |(i: Int) -> IndexSet {
     IndexSet(integer: i)
 }
@@ -49,8 +49,8 @@ func |(i: Int) -> IndexSet {
 /// let indexSet: IndexSet = [0, 1, 2]|
 ///
 @inline(__always)
-public
 postfix
+public
 func |<S>(p: S) -> IndexSet where S: Sequence, S.Element == Int {
     IndexSet(p)
 }

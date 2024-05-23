@@ -18,7 +18,6 @@
 /// Created by Alex Kozin
 /// 2020 El Machine
 
-
 #if canImport(Foundation)
 import Foundation.NSDate
 import Wand
@@ -28,8 +27,8 @@ import Wand
 /// let date: Date = interval|
 ///
 @inline(__always)
-public
 postfix
+public
 func |(interval: TimeInterval) -> Date {
     Date(timeIntervalSince1970: interval)
 }
@@ -39,8 +38,8 @@ func |(interval: TimeInterval) -> Date {
 /// let date: Date = int|
 ///
 @inline(__always)
-public
 postfix
+public
 func |(int: Int) -> Date {
     TimeInterval(int)|
 }
@@ -50,8 +49,8 @@ func |(int: Int) -> Date {
 /// let date: Date? = components|
 ///
 @inline(__always)
-public
 postfix
+public
 func | (components: DateComponents) -> Date? {
     Calendar.current.date(from: components)
 }
@@ -61,8 +60,8 @@ func | (components: DateComponents) -> Date? {
 /// let string: String? = date|
 ///
 @inline(__always)
-public
 postfix
+public
 func |(date: Date) -> String {
 
     let formatted: String?

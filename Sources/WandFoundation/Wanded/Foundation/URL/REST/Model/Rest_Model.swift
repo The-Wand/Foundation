@@ -34,9 +34,6 @@ protocol Rest_Model: Model, Asking, Codable {
     static 
     var headers: [String : String]? {get}
 
-//    static
-//    func wand<T>(_ wand: Wand, asks ask: Ask<T>)
-
 }
 
 @available(visionOS, unavailable)
@@ -84,8 +81,7 @@ extension Rest_Model {
             } catch(let e) {
                 wand.add(e)
             }
-
-            wand.close()
+            
         }
         
     }
@@ -109,39 +105,29 @@ extension Ask {
 
 }
 
-//public
-//extension Ask {
-//
-//    static 
-//    func get(handler: @escaping (T)->() ) -> Get {
-//        .one(handler: handler)
-//    }
-//
-//    static 
-//    func post(handler: @escaping (T)->() ) -> Post {
-//        Post.one(handler: handler)
-//    }
-//
-//    static 
-//    func put(handler: @escaping (T)->() ) -> Put {
-//        .one(handler: handler)
-//    }
-//
-//    static 
-//    func delete(handler: @escaping (T)->() ) -> Delete {
-//        .one(handler: handler)
-//    }
-//
-//}
+public
+extension Ask {
 
-//public
-//extension Ask where T == Array<Any> {
-//
-//    static func get(handler: @escaping (T)->() ) -> Get {
-//        .one(handler: handler)
-//    }
-//
-//}
-//
+    static 
+    func get(handler: @escaping (T)->() ) -> Get {
+        .one(handler: handler)
+    }
+
+    static 
+    func post(handler: @escaping (T)->() ) -> Post {
+        Post.one(handler: handler)
+    }
+
+    static 
+    func put(handler: @escaping (T)->() ) -> Put {
+        .one(handler: handler)
+    }
+
+    static 
+    func delete(handler: @escaping (T)->() ) -> Delete {
+        .one(handler: handler)
+    }
+
+}
 
 #endif

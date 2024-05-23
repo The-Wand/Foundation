@@ -24,14 +24,19 @@ import XCTest
 import Wand
 import WandFoundation
 
-class Data_Tests: XCTestCase {
+class REST_Tests: XCTestCase {
 
-    func test_Path_Data_one() {
+    @available(iOS 16.0, *)
+    func test_Argument_to_REST_Codable() {
         let e = expectation()
 
-        "https://api.github.com/gists" | .one { (data: Data) in
+        let id = 804244016
+        id | .get { (repo: GitHubAPI.Repo) in
 
-            if !data.isEmpty {
+            if
+                repo.id == id,
+                repo.name == "Wand-Foundation"
+            {
                 e.fulfill()
             }
 
@@ -40,13 +45,15 @@ class Data_Tests: XCTestCase {
         waitForExpectations()
     }
 
-    func test_URL_Data_one() {
+    @available(iOS 16.0, *)
+    func test_Path_to_REST_Codable() {
         let e = expectation()
 
-        let url = URL(string: "https://jsonplaceholder.typicode.com/posts")
-        url | .one { (data: Data) in
+        let id = 42
+        let path = "https://api.github.com/repositories/\(id)"
+        path | .get { (repo: GitHubAPI.Repo) in
 
-            if !data.isEmpty {
+            if repo.id == id {
                 e.fulfill()
             }
 

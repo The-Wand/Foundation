@@ -17,21 +17,39 @@
 ///
 /// Created by Alex Kozin
 /// 2020 El Machine
-//
-//import Foundation
-//
-//extension Array: Model where Element: Model {
-//
-//}
-//
-//extension Array: Rest.Model where Element: Rest.Model {
-//
-//    public static var base: String? {
-//        Element.base
-//    }
-//
-//    public static var path: String {
-//        Element.path
-//    }
-//
-//}
+
+#if canImport(Foundation)
+import Foundation
+import Wand
+
+@available(visionOS, unavailable)
+public
+struct Rest {
+
+    public
+    typealias Model = Rest_Model
+
+    public
+    enum Method: String {
+        
+        case GET
+        case POST
+        case HEAD
+        case PUT
+        case PATCH
+        case DELETE
+
+        var timeout: TimeInterval {
+            switch self {
+                case .POST, .PUT, .PATCH:
+                    return 30
+                default:
+                    return 15
+            }
+        }
+
+    }
+
+}
+
+#endif
