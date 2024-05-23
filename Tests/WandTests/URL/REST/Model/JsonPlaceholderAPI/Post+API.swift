@@ -17,28 +17,39 @@
 ///
 /// Created by Alex Kozin
 /// 2020 El Machine
-//
-//import Wand
-//
-//public struct JSONplaceholderAPI {
-//
-//    public typealias Model = JSONplaceholderAPI_Model
-//    
-//}
-//
-//public protocol JSONplaceholderAPI_Model: Rest.Model {
-//
-//}
-//
-//public extension JSONplaceholderAPI_Model {
-//
-//    static var base: String? {
-//        "https://jsonplaceholder.typicode.com/"
-//    }
-//
-//    static var headers: [String : String]? {
-//        ["Accept": "application/json",
-//         "Content-Type": "application/json"]
-//    }
-//
-//}
+
+import Foundation
+
+import Wand
+import WandFoundation
+
+extension TypicodeAPI.Post: TypicodeAPI.Model {
+
+    public static var path: String {
+        base! + "posts"
+    }
+
+
+
+    /// Put Model
+    ///
+    /// model | .put { (done: Model) in
+    ///
+    /// }
+    ///
+    @discardableResult
+    static 
+    func |(model: Self,
+           put: Ask<Self>.Put) -> Wand {
+
+        let wand: Wand = nil
+
+        let path = Self.path + "/\(model.id)"
+        wand.save(path)
+
+        wand.save(model)
+
+        return wand | put
+    }
+
+}

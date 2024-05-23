@@ -20,28 +20,27 @@
 
 import Foundation
 
-public
-extension TypicodeAPI {
+import WandFoundation
 
-    struct Post: Codable {
+public struct TypicodeAPI {
 
-        let id: Int
-
-        let userId: Int
-        let title: String?
-        let body: String?
-
-    }
+    public typealias Model = TypicodeAPI_Model
 
 }
 
-extension TypicodeAPI.Post: Any_ {
+public protocol TypicodeAPI_Model: Rest.Model {
 
-    static var any: Self {
-        Self(id: .any,
-             userId: .any,
-             title: .any,
-             body: .any)
+}
+
+public extension TypicodeAPI_Model {
+
+    static var base: String? {
+        "https://jsonplaceholder.typicode.com/"
     }
-    
+
+    static var headers: [String : String]? {
+        ["Accept": "application/json",
+         "Content-Type": "application/json"]
+    }
+
 }

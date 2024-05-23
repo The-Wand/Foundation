@@ -18,30 +18,53 @@
 /// Created by Alex Kozin
 /// 2020 El Machine
 
+#if canImport(Foundation)
 import Foundation
+import Wand
 
-public
-extension TypicodeAPI {
-
-    struct Post: Codable {
-
-        let id: Int
-
-        let userId: Int
-        let title: String?
-        let body: String?
-
-    }
-
-}
-
-extension TypicodeAPI.Post: Any_ {
-
-    static var any: Self {
-        Self(id: .any,
-             userId: .any,
-             title: .any,
-             body: .any)
-    }
+/// Ask
+///
+/// dto | .put { (done: DTO) in
+///
+/// }
+///
+@available(visionOS, unavailable)
+@inline(__always)
+@discardableResult
+public func |<T: Rest.Model> (dto: T, put: Ask<T>.Put) -> Wand {
     
+    let wand: Wand = nil
+
+    let path = T.path
+    wand.save(path)
+
+    let body: Data = dto|
+    wand.save(body)
+
+    return wand | put
 }
+
+/// Ask
+///
+/// wand | .post { (done: T) in
+///
+/// }
+///
+@available(visionOS, unavailable)
+@inline(__always)
+@discardableResult
+public func |<T: Rest.Model> (wand: Wand, put: Ask<T>.Put) -> Wand {
+
+    wand.save(Rest.Method.PUT)
+
+    _ = wand.answer(the: put)
+    return wand | .one { (data: Data) in
+
+        let model: T = wand.get()!
+        wand.add(model)
+
+    }
+
+}
+
+#endif

@@ -24,7 +24,7 @@ import Wand
 
 @available(visionOS, unavailable)
 public
-protocol Rest_Model: Model, Asking, Codable {
+protocol Rest_Model: Model, Codable {
 
     static 
     var base: String? {get}
@@ -50,40 +50,6 @@ extension Rest_Model {
     var headers: [String : String]? {
         nil
     }
-
-    @inline(__always)
-    public
-    static
-    func wand<T>(_ wand: Wand, asks ask: Ask<T>) {
-
-        guard wand.answer(the: ask) else {
-            return
-        }
-        
-        wand | .one { (data: Data) in
-
-            do {
-
-                if
-                    let method: Rest.Method = wand.get(),
-                    method != .GET,
-                    let object: Self = wand.get()
-                {
-                    wand.add(object)
-                } else {
-
-                    let D = T.self as! Decodable.Type
-                    let parsed = try JSONDecoder().decode(D.self, from: data)
-
-                    wand.add(parsed as! T)
-                }
-            } catch(let e) {
-                wand.add(e)
-            }
-            
-        }
-        
-    }
     
 }
 
@@ -105,7 +71,7 @@ extension Ask {
 }
 
 public
-extension Ask {
+extension Ask where T: Rest.Model {
 
     static 
     func get(handler: @escaping (T)->() ) -> Get {

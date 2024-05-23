@@ -25,6 +25,51 @@ import Wand
 
 /// Ask
 ///
+/// wand | .get { (array: [Rest.Model]) in
+///
+/// }
+///
+@available(visionOS, unavailable)
+@inline(__always)
+@discardableResult
+public
+func |<T: Rest.Model> (wand: Wand, get: Ask<[T]>.Get) -> Wand {
+
+    let wand: Wand = nil
+
+    let path = T.path
+    wand.save(path)
+    wand.save(Rest.Method.GET)
+
+    _ = wand.answer(the: get)
+
+    return wand | .one { (data: Data) in
+
+        do {
+
+            if
+                let method: Rest.Method = wand.get(),
+                method != .GET,
+                let object: T = wand.get()
+            {
+                wand.add(object)
+            } else {
+
+                let D = [T].self as Decodable.Type
+                let parsed = try JSONDecoder().decode(D.self, from: data)
+
+                wand.add(parsed as! [T])
+            }
+        } catch(let e) {
+            wand.add(e)
+        }
+
+    }
+
+}
+
+/// Ask
+///
 /// | { (array: [Rest.Model]) in
 ///
 /// }
@@ -76,50 +121,32 @@ func |<C, T: Rest.Model> (context: C?, handler: @escaping ([T])->() ) -> Wand {
 @available(visionOS, unavailable)
 @inline(__always)
 @discardableResult
-public func |<C, T: Rest.Model> (context: C?, get: Ask<[T]>.Get) -> Wand {
+public 
+func |<C, T: Rest.Model> (context: C?, get: Ask<[T]>.Get) -> Wand {
     Wand.attach(to: context) | get
 }
 
-/// Ask
-///
-/// wand | .get { (array: [Rest.Model]) in
-///
-/// }
-///
-@available(visionOS, unavailable)
-@inline(__always)
-@discardableResult
-public func |<T: Rest.Model> (wand: Wand, get: Ask<[T]>.Get) -> Wand {
+public
+extension Ask {//} where T == [any Rest.Model] {
 
-    let wand: Wand = nil
+    static
+    func get(handler: @escaping (T)->() ) -> Get {
+        .one(handler: handler)
+    }
 
-    let path = T.path
-    wand.save(path)
-    wand.save(Rest.Method.GET)
+    static
+    func post(handler: @escaping (T)->() ) -> Post {
+        Post.one(handler: handler)
+    }
 
-    _ = wand.answer(the: get)
+    static
+    func put(handler: @escaping (T)->() ) -> Put {
+        .one(handler: handler)
+    }
 
-    return wand | .one { (data: Data) in
-
-        do {
-
-            if
-                let method: Rest.Method = wand.get(),
-                method != .GET,
-                let object: T = wand.get()
-            {
-                wand.add(object)
-            } else {
-
-                let D = [T].self as Decodable.Type
-                let parsed = try JSONDecoder().decode(D.self, from: data)
-
-                wand.add(parsed as! [T])
-            }
-        } catch(let e) {
-            wand.add(e)
-        }
-
+    static
+    func delete(handler: @escaping (T)->() ) -> Delete {
+        .one(handler: handler)
     }
 
 }

@@ -26,60 +26,18 @@ import WandFoundation
 
 class REST_POST_Tests: XCTestCase {
 
-//    @available(iOS 16.0, *)
-//    func test_Codable_to_REST() {
-//        let e = expectation()
-//
-//        let repo: GitHubAPI.Repo = .any
-//        repo | .post { (done: GitHubAPI.Repo) in
-//
-//            e.fulfill()
-//
-//        }
-//
-//        waitForExpectations()
-//    }
-//
-//    @available(iOS 16.0, *)
-//    func test_REST_Codable_Put() {
-//        let e = expectation()
-//
-//        let id = (1...100).any
-//
-//        let post = JSONplaceholderAPI.Post(id: id,
-//                                           userId: .any,
-//                                           title: .any,
-//                                           body: nil)
-//        post | .put { (done: JSONplaceholderAPI.Post) in
-//
-//            if done.id == id {
-//                e.fulfill()
-//            }
-//
-//        }
-//
-//        waitForExpectations()
-//    }
-//
-//    @available(iOS 16.0, *)
-//    func test_REST_Codable_Delete() {
-//        let e = expectation()
-//
-//        let id = (1...100).any
-//
-//        let post = JSONplaceholderAPI.Post(id: id,
-//                                           userId: .any,
-//                                           title: nil,
-//                                           body: nil)
-//        post | .delete { (done: JSONplaceholderAPI.Post) in
-//
-//            if done.id == id {
-//                e.fulfill()
-//            }
-//
-//        }
-//
-//        waitForExpectations()
-//    }
+    @available(iOS 16.0, *)
+    func test_Codable_to_REST() {
+        let e = expectation()
+
+        let repo: TypicodeAPI.Post = .any
+        repo | .post { (done: TypicodeAPI.Post) in
+
+            e.fulfill()
+
+        }
+
+        waitForExpectations()
+    }
 
 }
