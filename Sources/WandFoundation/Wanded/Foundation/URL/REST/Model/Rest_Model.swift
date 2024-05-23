@@ -73,7 +73,6 @@ extension Rest_Model {
                 } else {
 
                     let D = T.self as! Decodable.Type
-                    
                     let parsed = try JSONDecoder().decode(D.self, from: data)
 
                     wand.add(parsed as! T)

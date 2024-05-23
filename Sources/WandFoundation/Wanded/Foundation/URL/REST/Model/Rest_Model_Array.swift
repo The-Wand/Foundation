@@ -25,26 +25,11 @@ import Wand
 
 /// Ask
 ///
-/// |.get { (array: [Rest.Model]) in
+/// | { (array: [Rest.Model]) in
 ///
 /// }
 ///
-//@available(visionOS, unavailable)
-//@discardableResult
-//@inline(__always)
-//postfix
-//public
-//func |<T: Rest.Model> (get: Ask<[T]>.Get) -> Wand {
-//
-//    let wand: Wand = nil
-//
-//    let path = T.path
-//    wand.save(path)
-//    wand.save(Rest.Method.GET)
-//
-//    return wand | get
-//}
-
+@available(visionOS, unavailable)
 @discardableResult
 @inline(__always)
 prefix
@@ -53,13 +38,13 @@ func |<T: Rest.Model> (handler: @escaping ([T])->() ) -> Wand {
     nil | .get(handler: handler)
 }
 
-@discardableResult
-@inline(__always)
-public 
-func |<C, T: Rest.Model> (context: C?, handler: @escaping ([T])->() ) -> Wand {
-    Wand.attach(to: context) | .get(handler: handler)
-}
-
+/// Ask
+///
+/// |.get { (array: [Rest.Model]) in
+///
+/// }
+///
+@available(visionOS, unavailable)
 @discardableResult
 @inline(__always)
 prefix
@@ -68,12 +53,40 @@ func |<T: Rest.Model> (get: Ask<[T]>.Get) -> Wand {
     nil | get
 }
 
+/// Ask
+///
+/// context | { (array: [Rest.Model]) in
+///
+/// }
+///
+@available(visionOS, unavailable)
+@discardableResult
+@inline(__always)
+public
+func |<C, T: Rest.Model> (context: C?, handler: @escaping ([T])->() ) -> Wand {
+    Wand.attach(to: context) | .get(handler: handler)
+}
+
+/// Ask
+///
+/// context | .get { (array: [Rest.Model]) in
+///
+/// }
+///
+@available(visionOS, unavailable)
 @inline(__always)
 @discardableResult
 public func |<C, T: Rest.Model> (context: C?, get: Ask<[T]>.Get) -> Wand {
     Wand.attach(to: context) | get
 }
 
+/// Ask
+///
+/// wand | .get { (array: [Rest.Model]) in
+///
+/// }
+///
+@available(visionOS, unavailable)
 @inline(__always)
 @discardableResult
 public func |<T: Rest.Model> (wand: Wand, get: Ask<[T]>.Get) -> Wand {
@@ -99,7 +112,6 @@ public func |<T: Rest.Model> (wand: Wand, get: Ask<[T]>.Get) -> Wand {
             } else {
 
                 let D = [T].self as Decodable.Type
-
                 let parsed = try JSONDecoder().decode(D.self, from: data)
 
                 wand.add(parsed as! [T])
@@ -113,43 +125,3 @@ public func |<T: Rest.Model> (wand: Wand, get: Ask<[T]>.Get) -> Wand {
 }
 
 #endif
-
-//extension Notification: Asking, Wanded {
-//
-//    @inline(__always)
-//    public
-//    static
-//    func wand<T>(_ wand: Wand, asks ask: Ask<T>) {
-
-
-
-
-//
-//import Foundation
-//
-//extension Array: Model where Element: Model {
-//
-//}
-//
-//extension Array: Rest.Model where Element: Rest.Model {
-//
-//    public static var base: String? {
-//        Element.base
-//    }
-//
-//    public static var path: String {
-//        Element.path
-//    }
-//
-//}
-
-
-//public
-//extension Ask where T == Array<Any> {
-//
-//    static func get(handler: @escaping (T)->() ) -> Get {
-//        .one(handler: handler)
-//    }
-//
-//}
-//
