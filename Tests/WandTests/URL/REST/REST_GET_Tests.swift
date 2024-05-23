@@ -24,7 +24,7 @@ import XCTest
 import Wand
 import WandFoundation
 
-class REST_Tests: XCTestCase {
+class REST_GET_Tests: XCTestCase {
 
     @available(iOS 16.0, *)
     func test_Argument_to_REST_Codable() {

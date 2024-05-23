@@ -27,20 +27,13 @@ import WandFoundation
 class REST_POST_Tests: XCTestCase {
 
 //    @available(iOS 16.0, *)
-//    func test_REST_Codable_Post() {
+//    func test_Codable_to_REST() {
 //        let e = expectation()
 //
-//        let id = (1...100).any
+//        let repo: GitHubAPI.Repo = .any
+//        repo | .post { (done: GitHubAPI.Repo) in
 //
-//        let post = JSONplaceholderAPI.Post(id: id,
-//                                           userId: .any,
-//                                           title: .any,
-//                                           body: .any)
-//        post | .post { (done: JSONplaceholderAPI.Post) in
-//
-//            if done.id == id {
-//                e.fulfill()
-//            }
+//            e.fulfill()
 //
 //        }
 //

@@ -37,3 +37,14 @@ extension GitHubAPI {
     }
 
 }
+
+extension GitHubAPI.Repo: Any_ {
+
+    static var any: Self {
+        Self(id: .any,
+             name: .any,
+             description: .any,
+             watchers: .any)
+    }
+
+}
