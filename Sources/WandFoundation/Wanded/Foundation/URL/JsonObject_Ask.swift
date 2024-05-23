@@ -28,6 +28,7 @@ import Wand
 ///
 /// }
 ///
+@available(visionOS, unavailable)
 @discardableResult
 @inline(__always)
 public
@@ -80,6 +81,7 @@ func | (url: URL, handler: @escaping ([Any])->() ) -> Wand {
 ///
 /// }
 ///
+@available(visionOS, unavailable)
 @discardableResult
 @inline(__always)
 public
