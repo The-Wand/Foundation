@@ -21,28 +21,20 @@
 import Foundation
 import XCTest
 
+import WandFoundation
 import Wand
 
-/// Test Unit
-//struct Unit {
-//
-//}
+class ImageTestCase: XCTestCase {
 
-extension TimeInterval {
+    internal
+    let url: URL = "https://www.apple.com/ac/structured-data/images/open_graph_logo.png"|
 
-    static var `default` = 4.2
-
-}
-
-///Performance
-extension [XCTMetric] {
-
-    static
-    var `default`: Self = {[
-        XCTCPUMetric(),
-        XCTClockMetric(),
-        XCTMemoryMetric(),
-        XCTStorageMetric(),
-    ]}()
+    internal
+    lazy
+    var image: UIImage = url|
+    
+    internal
+    lazy
+    var inSize = image.size
 
 }

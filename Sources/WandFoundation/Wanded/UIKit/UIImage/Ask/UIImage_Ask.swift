@@ -18,31 +18,38 @@
 /// Created by Alex Kozin
 /// 2020 El Machine
 
-import Foundation
-import XCTest
+#if canImport(UIKit)
+import UIKit.UIImage
+
+public
+typealias Image = UIImage
 
 import Wand
 
-/// Test Unit
-//struct Unit {
-//
-//}
-
-extension TimeInterval {
-
-    static var `default` = 4.2
+extension Image: Wanded {
 
 }
 
-///Performance
-extension [XCTMetric] {
+/// Ask
+/// - .scale
+/// - .fit
+/// - .fill
+///
+/// - .round
+///
+/// image | .operation(to:) { done: Image in
+///
+/// }
+///
+@inline(__always)
+@discardableResult
+public
+func | (image: Image?, ask: Ask<Image>) -> Wand {
 
-    static
-    var `default`: Self = {[
-        XCTCPUMetric(),
-        XCTClockMetric(),
-        XCTMemoryMetric(),
-        XCTStorageMetric(),
-    ]}()
+    let wand = Wand.to(image)
+    _ = wand.answer(the: ask, check: true)
+    return wand
 
 }
+
+#endif

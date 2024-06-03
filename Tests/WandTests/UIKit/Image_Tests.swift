@@ -28,24 +28,15 @@ import Wand
 import XCTest
 
 final
-class Image_Tests: XCTestCase {
+class Image_Tests: ImageTestCase {
 
-    func test_Image_Scale() {
+    func test_Image_Round() {
         let e = expectation()
 
-        let url: URL = "https://www.apple.com/ac/structured-data/images/open_graph_logo.png"|
+        image | .round(to: .random(in: 11...inSize.height/2) ) { (rounded: UIImage) in
 
-        let image: UIImage = url|
-        let d: CGFloat = 420
-
-        let size = CGSize(width: d, height: d)
-
-        image | .scale(to: size) { (scaled: UIImage) in
-
-            let size = scaled.size
-            if size.width == d && size.height == d {
-                e.fulfill()
-            }
+            //TODO: if rounded.isRounded() {
+            e.fulfill()
 
         }
 

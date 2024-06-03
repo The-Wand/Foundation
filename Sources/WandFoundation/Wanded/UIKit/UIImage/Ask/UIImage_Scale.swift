@@ -18,31 +18,42 @@
 /// Created by Alex Kozin
 /// 2020 El Machine
 
-import Foundation
-import XCTest
-
+#if canImport(UIKit)
+import UIKit.UIImage
 import Wand
 
-/// Test Unit
-//struct Unit {
-//
-//}
+public
+extension Ask where T == UIImage {
 
-extension TimeInterval {
+    class Scale: Ask {
+    }
 
-    static var `default` = 4.2
-
-}
-
-///Performance
-extension [XCTMetric] {
-
+    @discardableResult
+    @inline(__always)
     static
-    var `default`: Self = {[
-        XCTCPUMetric(),
-        XCTClockMetric(),
-        XCTMemoryMetric(),
-        XCTStorageMetric(),
-    ]}()
+    func scale (to size: CGSize, done: @escaping (UIImage)->() ) -> Self {
+        .one().scale(to: size, done: done)
+    }
+
+    @discardableResult
+    @inline(__always)
+    func scale (to size: CGSize, done: @escaping (UIImage)->() ) -> Self {
+
+        let once = self.once
+        handler = { image in
+
+            let scaled = UIGraphicsImageRenderer(size: size).image { c in
+                image.draw(in: CGRect(origin: .zero, size: size))
+            }
+
+            done(scaled)
+            return once
+        }
+
+        return self
+
+    }
 
 }
+
+#endif

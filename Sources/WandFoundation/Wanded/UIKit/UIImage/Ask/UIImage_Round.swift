@@ -22,51 +22,41 @@
 import UIKit.UIImage
 import Wand
 
-/// Convert
-///
-/// let image: UIImage? = path|
-///
-@inline(__always)
-postfix
 public
-func |(url: URL) -> UIImage {
-    Image(data: try! Data(contentsOf: url ) )!
-}
+extension Ask where T == UIImage {
 
-extension Image {
-
-    /// Convert
-    ///
-    /// image | .alwaysTemplate
-    ///
-    @inline(__always)
-    public
-    static
-    func | (image: Image, renderingMode: RenderingMode) -> Image {
-        image.withRenderingMode(renderingMode)
+    class Round: Ask {
     }
 
-    /// Convert
-    ///
-    /// let view: UIImageView = image|
-    ///
+    @available(iOS 13.0, *)
+    @discardableResult
     @inline(__always)
-    postfix
-    public
     static
-    func | (image: Image) -> UIImageView {
-        UIImageView(image: image)
+    func round(to radius: CGFloat, done: @escaping (UIImage)->() ) -> Self {
+        .one().round(to: radius, done: done)
     }
 
-    /// Convert
-    ///
-    /// let view: UIImageView = image | .alwaysTemplate
-    ///
+    @available(iOS 13.0, *)
+    @discardableResult
     @inline(__always)
-    public
-    static
-    func | (image: Image, renderingMode: RenderingMode) -> UIImageView {
-        (image | renderingMode)|
+    func round(to radius: CGFloat, done: @escaping (UIImage)->() ) -> Self {
+
+        let once = self.once
+        handler = { image in
+
+            let size = image.size
+            let rounded = UIGraphicsImageRenderer(size: size).image { c in
+                let rect = CGRect(origin: .zero, size: size)
+                UIBezierPath(roundedRect: rect, cornerRadius: radius).addClip()
+                image.draw(in: rect)
+            }
+
+            done(rounded)
+            return once
+        }
+
+        return self
+
     }
 
 }
