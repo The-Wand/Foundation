@@ -30,6 +30,11 @@ import XCTest
 final
 class Image_Tests: ImageTestCase {
 
+    override
+    func setUpWithError() throws {
+        print("Image loaded: \(image)")
+    }
+
     func test_Image_Round() {
         let e = expectation()
 

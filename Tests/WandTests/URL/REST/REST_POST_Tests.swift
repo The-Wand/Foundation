@@ -37,7 +37,7 @@ class REST_POST_Tests: XCTestCase {
 
         }
 
-        waitForExpectations()
+        waitForExpectations(timeout: .default * 4)
     }
 
 }

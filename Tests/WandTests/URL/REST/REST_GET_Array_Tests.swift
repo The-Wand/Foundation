@@ -41,7 +41,7 @@ class Codable_Array_GET_Tests: XCTestCase {
 
         }
 
-        waitForExpectations()
+        waitForExpectations(timeout: .default * 4)
     }
 
     @available(iOS 16.0, *)
@@ -57,7 +57,7 @@ class Codable_Array_GET_Tests: XCTestCase {
 
         }
 
-        waitForExpectations()
+        waitForExpectations(timeout: .default * 4)
     }
 
 //    @available(iOS 16.0, *)

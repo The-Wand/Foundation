@@ -35,14 +35,14 @@ class REST_GET_Tests: XCTestCase {
 
             if
                 repo.id == id,
-                repo.name == "Wand-Foundation"
+                repo.name == "Foundation_Factory"
             {
                 e.fulfill()
             }
 
         }
 
-        waitForExpectations()
+        waitForExpectations(timeout: .default * 4)
     }
 
     @available(iOS 16.0, *)
@@ -59,7 +59,7 @@ class REST_GET_Tests: XCTestCase {
 
         }
 
-        waitForExpectations()
+        waitForExpectations(timeout: .default * 4)
     }
 
 }

@@ -37,6 +37,11 @@ class Image_Resize_Tests: ImageTestCase {
     lazy
     var size = CGSize(width: dimension, height: dimension)
 
+    override 
+    func setUpWithError() throws {
+        print("Image loaded: \(image)")
+    }
+
     func test_Image_Fill() {
         let e = expectation()
 

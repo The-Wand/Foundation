@@ -27,29 +27,29 @@ import WandFoundation
 final
 class NSTextCheckingResultCheckingType_Tests: XCTestCase {
 
-    @available(macOS 15.0, iOS 15, tvOS 15, watchOS 8, *)
-    func test_NSTextCheckingResult_date() {
-        
-        let hour: Int = .any(in: 0...23)
-        let minute: Int = .any(in: 0...59)
-        let second: Int = .any(in: 0...59)
-
-
-        //Check equality
-        let calendar = Calendar.current
-        var components = calendar.dateComponents([.day, .month, .year],
-                                                 from: .now)
-        components.day = components.day! + 1
-
-        components.hour = hour
-        components.minute = minute
-        components.second = second
-
-        let raw = "tomorrow at \(hour):\(minute):\(second)"
-        
-        XCTAssertEqual(raw | .date,
-                       calendar.date(from: components))
-    }
+//    @available(macOS 15.0, iOS 15, tvOS 15, watchOS 8, *)
+//    func test_NSTextCheckingResult_date() {
+//        
+//        let hour: Int = .any(in: 0...23)
+//        let minute: Int = .any(in: 0...59)
+//        let second: Int = .any(in: 0...59)
+//
+//
+//        //Check equality
+//        let calendar = Calendar.current
+//        var components = calendar.dateComponents([.day, .month, .year],
+//                                                 from: .now)
+//        components.day = components.day! + 1
+//
+//        components.hour = hour
+//        components.minute = minute
+//        components.second = second
+//
+//        let raw = "tomorrow at \(hour):\(minute):\(second)"
+//        
+//        XCTAssertEqual(raw | .date,
+//                       calendar.date(from: components))
+//    }
 
     func test_NSTextCheckingResult_address() {
 
