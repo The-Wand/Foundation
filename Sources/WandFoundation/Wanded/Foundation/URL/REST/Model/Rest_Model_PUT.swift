@@ -31,8 +31,9 @@ import Wand
 @available(visionOS, unavailable)
 @inline(__always)
 @discardableResult
-public func |<T: Rest.Model> (dto: T, put: Ask<T>.Put) -> Wand {
-    
+public 
+func |<T: Rest.Model> (dto: T, put: Ask<T>.Put) -> Wand {
+
     let wand: Wand = nil
 
     let path = T.path
@@ -53,7 +54,8 @@ public func |<T: Rest.Model> (dto: T, put: Ask<T>.Put) -> Wand {
 @available(visionOS, unavailable)
 @inline(__always)
 @discardableResult
-public func |<T: Rest.Model> (wand: Wand, put: Ask<T>.Put) -> Wand {
+public 
+func |<T: Rest.Model> (wand: Wand, put: Ask<T>.Put) -> Wand {
 
     wand.save(Rest.Method.PUT)
 

@@ -109,7 +109,7 @@ func |<T: Rest.Model> (get: Ask<[T]>.Get) -> Wand {
 @inline(__always)
 public
 func |<C, T: Rest.Model> (context: C?, handler: @escaping ([T])->() ) -> Wand {
-    Wand.attach(to: context) | .get(handler: handler)
+    Wand.to(context) | .get(handler: handler)
 }
 
 /// Ask
@@ -123,7 +123,7 @@ func |<C, T: Rest.Model> (context: C?, handler: @escaping ([T])->() ) -> Wand {
 @discardableResult
 public 
 func |<C, T: Rest.Model> (context: C?, get: Ask<[T]>.Get) -> Wand {
-    Wand.attach(to: context) | get
+    Wand.to(context) | get
 }
 
 public

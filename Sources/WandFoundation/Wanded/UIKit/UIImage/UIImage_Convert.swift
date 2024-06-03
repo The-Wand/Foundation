@@ -18,28 +18,23 @@
 /// Created by Alex Kozin
 /// 2020 El Machine
 
-import Foundation
+#if canImport(UIKit)
+import UIKit.UIImage
+
+public
+typealias Image = UIImage
 
 import Wand
 
-internal
-struct Point: Equatable, Any_ {
-
-    let id: Int
-
-    let x, y, z: Float
-    var t: TimeInterval
-
-
-    static var any: Point {
-        .init(id: .any(in: 0...4), x: .any, y: .any, z: .any, t: .any)
-    }
+/// Convert
+///
+/// let image: UIImage? = path|
+///
+@inline(__always)
+postfix
+public
+func |(url: URL) -> UIImage {
+    Image(data: try! Data(contentsOf: url ) )!
 }
 
-extension Point: AskingNil, Wanded {
-
-    static func wand<T>(_ wand: Wand, asks ask: Ask<T>) {
-        _ = wand.answer(the: ask)
-    }
-
-}
+#endif

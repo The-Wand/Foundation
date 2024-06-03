@@ -31,7 +31,8 @@ import Wand
 @available(visionOS, unavailable)
 @inline(__always)
 @discardableResult
-public func |<T: Rest.Model> (wand: Wand, get: Ask<T>.Get) -> Wand {
+public 
+func |<T: Rest.Model> (wand: Wand, get: Ask<T>.Get) -> Wand {
 
     if (wand.get() as String?) == nil {
         let path = T.path
@@ -43,9 +44,7 @@ public func |<T: Rest.Model> (wand: Wand, get: Ask<T>.Get) -> Wand {
     _ = wand.answer(the: get)
     return wand | .one { (data: Data) in
 
-        do {
-
-            if
+        do { if
                 let method: Rest.Method = wand.get(),
                 method != .GET,
                 let object: T = wand.get()
@@ -53,8 +52,9 @@ public func |<T: Rest.Model> (wand: Wand, get: Ask<T>.Get) -> Wand {
                 wand.add(object)
             } else {
 
-                let parsed = try JSONDecoder().decode(T.self, from: data)
-                wand.add(parsed as! T)
+                let parsed = try JSONDecoder().decode(T.self, 
+                                                      from: data)
+                wand.add(parsed)
             }
         } catch(let e) {
             wand.add(e)
@@ -72,8 +72,9 @@ public func |<T: Rest.Model> (wand: Wand, get: Ask<T>.Get) -> Wand {
 @available(visionOS, unavailable)
 @inline(__always)
 @discardableResult
-public func |<C, T: Rest.Model> (context: C?, get: Ask<T>.Get) -> Wand {
-    Wand.attach(to: context) | get
+public 
+func |<C, T: Rest.Model> (context: C?, get: Ask<T>.Get) -> Wand {
+    Wand.to(context) | get
 }
 
 #endif

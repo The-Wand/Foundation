@@ -44,7 +44,7 @@ func |(url: URL?) -> Data? {
     guard let url else {
         return nil
     }
-    
+
     return url|
 }
 
@@ -101,6 +101,38 @@ public
 func |(resource: Wand.Resource) throws -> [String: Any]? {
     let data: Data = try Data(contentsOf: resource|)
     return try data|
+}
+
+
+//Data
+@inline(__always)
+public
+postfix func |(data: Data) -> String {
+    String(data: data, encoding: .utf8)!
+}
+
+@inline(__always)
+public
+postfix func |(data: Data) -> String? {
+    String(data: data, encoding: .utf8)
+}
+
+@inline(__always)
+public
+postfix func |(data: Data?) -> String {
+    guard let data else {
+        fatalError()
+    }
+    return String(data: data, encoding: .utf8)!
+}
+
+@inline(__always)
+public
+postfix func |(data: Data?) -> String? {
+    guard let data else {
+        return nil
+    }
+    return String(data: data, encoding: .utf8)
 }
 
 #endif

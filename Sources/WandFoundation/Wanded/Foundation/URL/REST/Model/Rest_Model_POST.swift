@@ -31,8 +31,9 @@ import Wand
 @available(visionOS, unavailable)
 @inline(__always)
 @discardableResult
-public func |<T: Rest.Model> (dto: T, post: Ask<T>.Post) -> Wand {
-    
+public 
+func |<T: Rest.Model> (dto: T, post: Ask<T>.Post) -> Wand {
+
     let wand: Wand = nil
 
     if (wand.get() as String?) == nil {
@@ -62,7 +63,8 @@ public func |<T: Rest.Model> (dto: T, post: Ask<T>.Post) -> Wand {
 @available(visionOS, unavailable)
 @inline(__always)
 @discardableResult
-public func |<T: Rest.Model> (wand: Wand, post: Ask<T>.Post) -> Wand {
+public 
+func |<T: Rest.Model> (wand: Wand, post: Ask<T>.Post) -> Wand {
     (wand.get()! as T) | post
 }
 

@@ -62,6 +62,7 @@ func | (url: URL, handler: @escaping ([Any])->() ) -> Wand {
                    "Content-Type": "application/json"]
     wand.save(headers)
 
+    //Perfom request
     url | .one { (data: Data) in
         do {
             let parsed = try JSONSerialization.jsonObject(with: data)
@@ -116,6 +117,7 @@ func | (url: URL, handler: @escaping ([String: Any])->() ) -> Wand {
                    "Content-Type": "application/json"]
     wand.save(headers)
 
+    //Perfom request
     url | .one { (data: Data) in
         do {
             let parsed = try JSONSerialization.jsonObject(with: data)

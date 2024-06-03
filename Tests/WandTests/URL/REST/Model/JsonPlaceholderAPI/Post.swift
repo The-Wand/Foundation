@@ -20,6 +20,8 @@
 
 import Foundation
 
+import Any_
+
 public
 extension TypicodeAPI {
 
@@ -37,7 +39,9 @@ extension TypicodeAPI {
 
 extension TypicodeAPI.Post: Any_ {
 
-    static var any: Self {
+    public
+    static
+    var any: Self {
         Self(id: .any,
              userId: .any,
              title: .any,

@@ -31,6 +31,7 @@ extension Notification.Name {
 
 }
 
+final
 class Notification_Tests: XCTestCase {
 
     func test_Notification_one() {

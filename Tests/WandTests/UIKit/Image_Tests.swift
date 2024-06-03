@@ -18,19 +18,40 @@
 /// Created by Alex Kozin
 /// 2020 El Machine
 
-import Foundation
+#if canImport(UIKit)
+import UIKit
 
+import Any_
+import WandFoundation
+import Wand
 
-extension String: Any_ {
+import XCTest
 
-    static var any: Self {
+final
+class Image_Tests: XCTestCase {
 
-        #if DEBUG
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent non gravida felis. Vivamus interdum massa nulla, eu egestas ipsum eleifend non. Ut vel augue et orci fermentum consequat eget nec est. Aenean eleifend tempor nibh, a posuere lacus pharetra non. Praesent elementum ac urna convallis porttitor."
-        #else
-            .init()
-        #endif
+    func test_Image_Scale() {
+        let e = expectation()
 
+        let url: URL = "https://www.apple.com/ac/structured-data/images/open_graph_logo.png"|
+
+        let image: UIImage = url|
+        let d: CGFloat = 420
+
+        let size = CGSize(width: d, height: d)
+
+        image | .scale(to: size) { (scaled: UIImage) in
+
+            let size = scaled.size
+            if size.width == d && size.height == d {
+                e.fulfill()
+            }
+
+        }
+
+        waitForExpectations()
     }
 
 }
+
+#endif
