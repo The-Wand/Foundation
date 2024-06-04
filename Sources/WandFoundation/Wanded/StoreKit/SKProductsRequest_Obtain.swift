@@ -18,8 +18,8 @@
 /// Created by Alex Kozin
 /// 2020 El Machine
 
-#if canImport(Foundation)
-import Foundation.NSURLSession
+#if canImport(StoreKit)
+import StoreKit.SKProductsRequest
 import Wand
 
 /// Obtain
@@ -27,22 +27,40 @@ import Wand
 /// let session: URLSession = config|
 ///
 @available(visionOS, unavailable)
-extension URLSession: Obtain {
+extension SKProductsRequest: Obtain {
 
     @inline(__always)
     public 
     static
     func obtain(by wand: Wand?) -> Self {
 
-        let session: Self
+        let ids: Set<String> = wand?.get() ?? []
 
-        if let config: URLSessionConfiguration = wand?.get() {
-            session = Self(configuration: config)
-        } else {
-            session = Self.shared as! Self
+        let wand = wand ?? Wand()
+
+        let source = Self(productIdentifiers: ids)
+        source.delegate = wand.add(Delegate())
+
+        return source
+    }
+
+}
+
+extension SKProductsRequest {
+
+    class Delegate: NSObject, SKProductsRequestDelegate, Wanded {
+
+        func productsRequest(_ request: SKProductsRequest, 
+                             didReceive response: SKProductsResponse) {
+            isWanded?.add(response)
+            isWanded?.add(response.products)
         }
 
-        return session
+        func request(_ request: SKRequest, didFailWithError error: any Error) {
+            isWanded?.add(error)
+        }
+
+
     }
 
 }

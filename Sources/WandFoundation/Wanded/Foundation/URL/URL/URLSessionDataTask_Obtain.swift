@@ -31,7 +31,8 @@ extension URLSessionDataTask: Obtain {
 
     @inline(__always)
     public 
-    static func obtain(by wand: Wand?) -> Self {
+    static 
+    func obtain(by wand: Wand?) -> Self {
 
         let wand = wand ?? Wand()
 

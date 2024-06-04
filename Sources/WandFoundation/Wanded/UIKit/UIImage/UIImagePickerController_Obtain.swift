@@ -22,7 +22,7 @@
 
 #if canImport(UIKit)
 import CoreServices.UTCoreTypes
-import UIKit.UIImagePickerController
+import UIKit
 import UniformTypeIdentifiers
 
 import Wand
@@ -33,7 +33,9 @@ import Wand
 ///
 /// }
 ///
+@available(tvOS, unavailable)
 @available(visionOS, unavailable)
+@available(watchOS, unavailable)
 extension UIImagePickerController: Obtain {
 
     @inline(__always)

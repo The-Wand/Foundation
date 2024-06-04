@@ -58,6 +58,9 @@
 		619435952C0E010A0034554B /* XCTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6194356A2C0E010A0034554B /* XCTestCase.swift */; };
 		619435982C0E015C0034554B /* Any_ in Frameworks */ = {isa = PBXBuildFile; productRef = 619435972C0E015C0034554B /* Any_ */; };
 		6194359B2C0E01600034554B /* Any_ in Frameworks */ = {isa = PBXBuildFile; productRef = 6194359A2C0E01600034554B /* Any_ */; };
+		61DC60252C0F48A4003D5B36 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61DC60242C0F48A4003D5B36 /* StoreKit.framework */; };
+		61DC60292C0F48F8003D5B36 /* SKProduct_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DC60272C0F48F8003D5B36 /* SKProduct_Tests.swift */; };
+		61DC602A2C0F48F8003D5B36 /* SKProduct_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DC60272C0F48F8003D5B36 /* SKProduct_Tests.swift */; };
 		61F648C72BEA122900C2625C /* Wand_Foundation in Frameworks */ = {isa = PBXBuildFile; productRef = 61F648C62BEA122900C2625C /* Wand_Foundation */; };
 /* End PBXBuildFile section */
 
@@ -117,6 +120,9 @@
 		61A37BB42BE24A5F007B7FEE /* PlayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		61B1B41C2BC9696200BD1F36 /* Entitlements.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Entitlements.entitlements; sourceTree = "<group>"; };
 		61B464E72BEB76B70064B4C1 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
+		61DC60242C0F48A4003D5B36 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS17.5.sdk/System/Library/Frameworks/StoreKit.framework; sourceTree = DEVELOPER_DIR; };
+		61DC60262C0F48AD003D5B36 /* watchPlay.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = watchPlay.entitlements; sourceTree = "<group>"; };
+		61DC60272C0F48F8003D5B36 /* SKProduct_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKProduct_Tests.swift; sourceTree = "<group>"; };
 		OBJ_141 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		OBJ_142 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -143,6 +149,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				615159132BF76A8C001646EA /* Wand_Foundation in Frameworks */,
+				61DC60252C0F48A4003D5B36 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -161,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				6194354F2C0E010A0034554B /* Foundation */,
+				61DC60282C0F48F8003D5B36 /* StoreKit */,
 				619435672C0E010A0034554B /* UIKit */,
 				6194356B2C0E010A0034554B /* Unit */,
 				619435642C0E010A0034554B /* URL */,
@@ -291,8 +299,17 @@
 		619435992C0E01600034554B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				61DC60242C0F48A4003D5B36 /* StoreKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		61DC60282C0F48F8003D5B36 /* StoreKit */ = {
+			isa = PBXGroup;
+			children = (
+				61DC60272C0F48F8003D5B36 /* SKProduct_Tests.swift */,
+			);
+			path = StoreKit;
 			sourceTree = "<group>";
 		};
 		OBJ_138 /* Products */ = {
@@ -310,6 +327,7 @@
 		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
+				61DC60262C0F48AD003D5B36 /* watchPlay.entitlements */,
 				6162624428BC8E2A00D63EA5 /* App */,
 				615158EB2BF765A2001646EA /* info.plist */,
 				61B464E72BEB76B70064B4C1 /* Package.swift */,
@@ -528,6 +546,7 @@
 				619435812C0E010A0034554B /* TypicodeAPI.swift in Sources */,
 				619435872C0E010A0034554B /* REST_GET_Tests.swift in Sources */,
 				619435912C0E010A0034554B /* ImageTestCase.swift in Sources */,
+				61DC602A2C0F48F8003D5B36 /* SKProduct_Tests.swift in Sources */,
 				619435892C0E010A0034554B /* REST_POST_Tests.swift in Sources */,
 				619435752C0E010A0034554B /* JSON_Dictionary_Tests.swift in Sources */,
 			);
@@ -564,6 +583,7 @@
 				619435802C0E010A0034554B /* TypicodeAPI.swift in Sources */,
 				619435862C0E010A0034554B /* REST_GET_Tests.swift in Sources */,
 				619435902C0E010A0034554B /* ImageTestCase.swift in Sources */,
+				61DC60292C0F48F8003D5B36 /* SKProduct_Tests.swift in Sources */,
 				619435882C0E010A0034554B /* REST_POST_Tests.swift in Sources */,
 				619435742C0E010A0034554B /* JSON_Dictionary_Tests.swift in Sources */,
 			);
@@ -602,10 +622,12 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = watchPlay.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 195;
+				CURRENT_PROJECT_VERSION = 203;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = LZSP4Z4B6A;
+				ENABLE_HARDENED_RUNTIME = NO;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
@@ -662,11 +684,13 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = watchPlay.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 195;
+				CURRENT_PROJECT_VERSION = 203;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = LZSP4Z4B6A;
+				ENABLE_HARDENED_RUNTIME = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -718,7 +742,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 195;
+				CURRENT_PROJECT_VERSION = 203;
 				DEVELOPMENT_TEAM = LZSP4Z4B6A;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
@@ -766,7 +790,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 195;
+				CURRENT_PROJECT_VERSION = 203;
 				DEVELOPMENT_TEAM = LZSP4Z4B6A;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -828,7 +852,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_ENTITLEMENTS = App/Entitlements.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 195;
+				CURRENT_PROJECT_VERSION = 203;
 				DEVELOPMENT_TEAM = LZSP4Z4B6A;
 				ENABLE_HARDENED_RUNTIME = NO;
 				ENABLE_PREVIEWS = YES;
@@ -928,7 +952,7 @@
 				CODE_SIGN_ENTITLEMENTS = App/Entitlements.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 195;
+				CURRENT_PROJECT_VERSION = 203;
 				DEVELOPMENT_TEAM = LZSP4Z4B6A;
 				ENABLE_HARDENED_RUNTIME = NO;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1003,7 +1027,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 195;
+				CURRENT_PROJECT_VERSION = 203;
 				DEVELOPMENT_TEAM = LZSP4Z4B6A;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
@@ -1057,7 +1081,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 195;
+				CURRENT_PROJECT_VERSION = 203;
 				DEVELOPMENT_TEAM = LZSP4Z4B6A;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;

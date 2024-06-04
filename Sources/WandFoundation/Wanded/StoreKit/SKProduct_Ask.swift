@@ -18,34 +18,37 @@
 /// Created by Alex Kozin
 /// 2020 El Machine
 
-#if canImport(Foundation)
-import Foundation.NSURLSession
+#if canImport(StoreKit)
+import StoreKit.SKProduct
 import Wand
 
-/// Obtain
+/// Ask
 ///
-/// let session: URLSession = config|
+/// |{ (products: [SKProduct]) in
 ///
-@available(visionOS, unavailable)
-extension URLSession: Obtain {
+/// }
+///
+@available(tvOS, unavailable)
+@discardableResult
+@inline(__always)
+prefix
+public
+func | (handler: @escaping ([SKProduct])->() ) -> Wand {
 
-    @inline(__always)
-    public 
-    static
-    func obtain(by wand: Wand?) -> Self {
+    let wand = Wand()
 
-        let session: Self
+    //Save ask
+    _ = wand.answer(the: .one(handler: handler))
 
-        if let config: URLSessionConfiguration = wand?.get() {
-            session = Self(configuration: config)
-        } else {
-            session = Self.shared as! Self
-        }
+    //Request for a first time
 
-        return session
-    }
+    //Prepare context
+    let source: SKProductsRequest = wand.obtain()
 
+    //Make request
+    source.start()
+
+    return wand
 }
 
 #endif
-

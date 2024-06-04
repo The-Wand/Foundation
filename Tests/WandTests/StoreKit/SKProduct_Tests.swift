@@ -18,34 +18,28 @@
 /// Created by Alex Kozin
 /// 2020 El Machine
 
-#if canImport(Foundation)
-import Foundation.NSURLSession
+#if canImport(StoreKit)
+import StoreKit.SKProduct
+
+import WandFoundation
 import Wand
 
-/// Obtain
-///
-/// let session: URLSession = config|
-///
-@available(visionOS, unavailable)
-extension URLSession: Obtain {
+import XCTest
 
-    @inline(__always)
-    public 
-    static
-    func obtain(by wand: Wand?) -> Self {
+@available(tvOS, unavailable)
+final
+class SKProduct_Tests: ImageTestCase {
 
-        let session: Self
+    func test_SKProduct_array_get() {
+        let e = expectation()
 
-        if let config: URLSessionConfiguration = wand?.get() {
-            session = Self(configuration: config)
-        } else {
-            session = Self.shared as! Self
+        |{ (products: [SKProduct]) in
+            e.fulfill()
         }
 
-        return session
+        waitForExpectations()
     }
 
 }
 
 #endif
-

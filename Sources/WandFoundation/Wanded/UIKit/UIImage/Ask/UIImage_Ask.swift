@@ -38,9 +38,11 @@ extension Image: AskingNil, Wanded {
             return
         }
 
-        //Request for a first time
-        let source: UIImagePickerController = wand.obtain()
-        source.presentOnVisible()
+        #if os(iOS)
+            //Request for a first time
+            let source: UIImagePickerController = wand.obtain()
+            source.presentOnVisible()
+        #endif
     }
 
 
