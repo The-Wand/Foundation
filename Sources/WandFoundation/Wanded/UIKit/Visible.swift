@@ -9,24 +9,32 @@
 #if canImport(UIKit) && !os(watchOS) && !os(visionOS)
 import UIKit
 
-public extension UIViewController {
+public 
+extension UIViewController {
 
-    @objc fileprivate var visible: UIViewController {
+    @inline(__always)
+    @objc
+    fileprivate
+    var visible: UIViewController {
         presentedViewController?.visible ?? self
     }
 
+    @inline(__always)
     var container: UIViewController? {
         tabBarController ?? navigationController ?? splitViewController
     }
 
+    @inline(__always)
     var isRoot: Bool {
         UIApplication.shared.visibleWindow?.rootViewController == self
     }
 
+    @inline(__always)
     var isVisible: Bool {
         UIApplication.shared.visibleViewController == self
     }
     
+    @inline(__always)
     func presentOnVisible(animated: Bool = true, completion: (() -> Void)? = nil) {
         UIApplication.shared.visibleViewController?.present(self,
                                                             animated: animated,
@@ -35,34 +43,47 @@ public extension UIViewController {
 
 }
 
-public extension UINavigationController {
+public 
+extension UINavigationController {
 
+    @inline(__always)
     @objc
-    override var visible: UIViewController {
+    override 
+    var visible: UIViewController {
         visibleViewController?.visible ?? self
     }
 
 }
 
-public extension UITabBarController {
+public 
+extension UITabBarController {
 
+    @inline(__always)
     @objc
-    override var visible: UIViewController {
+    override 
+    var visible: UIViewController {
         selectedViewController?.visible ?? self
     }
 
 }
 
-public extension UIApplication {
+public 
+extension UIApplication {
 
+    @inline(__always)
+    public
     var visibleViewController: UIViewController? {
         visibleWindow?.rootViewController?.visible
     }
 
+    @inline(__always)
+    public
     var rootViewController: UIViewController? {
         visibleWindow?.rootViewController
     }
 
+    @inline(__always)
+    public
     var visibleWindow: UIWindow? {
         if #available(iOS 13, tvOS 13, *) {
 
