@@ -182,8 +182,8 @@
 			children = (
 				6162624728BC8E2B00D63EA5 /* Assets.xcassets */,
 				61B1B41C2BC9696200BD1F36 /* Entitlements.entitlements */,
-				6162624528BC8E2A00D63EA5 /* Play.swift */,
 				615158E82BF761DC001646EA /* info.plist */,
+				6162624528BC8E2A00D63EA5 /* Play.swift */,
 				618F8F182BEA00D400618E7C /* testPlan.xctestplan */,
 				615158E92BF761DC001646EA /* watchInfo.plist */,
 				618F8F272BEA04BF00618E7C /* watchTestPlan.xctestplan */,

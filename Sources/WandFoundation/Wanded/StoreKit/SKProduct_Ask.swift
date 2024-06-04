@@ -31,11 +31,11 @@ import Wand
 @available(tvOS, unavailable)
 @discardableResult
 @inline(__always)
-prefix
 public
-func | (handler: @escaping ([SKProduct])->() ) -> Wand {
+func | (ids: Set<String>, handler: @escaping ([SKProduct])->() ) -> Wand {
 
     let wand = Wand()
+    wand.save(ids)
 
     //Save ask
     _ = wand.answer(the: .one(handler: handler))
