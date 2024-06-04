@@ -48,6 +48,19 @@ class Image_Tests: ImageTestCase {
         waitForExpectations()
     }
 
+    func test_Image_() {
+        let e = expectation()
+
+        |{ (image: UIImage) in
+
+            //TODO: if rounded.isRounded() {
+            e.fulfill()
+
+        }
+
+        waitForExpectations()
+    }
+
 }
 
 #endif

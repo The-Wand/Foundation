@@ -18,7 +18,8 @@
 /// Created by Alex Kozin
 /// 2020 El Machine
 
-import Foundation
+#if canImport(UIKit)
+import UIKit
 import XCTest
 
 import WandFoundation
@@ -38,3 +39,5 @@ class ImageTestCase: XCTestCase {
     var inSize = image.size
 
 }
+
+#endif

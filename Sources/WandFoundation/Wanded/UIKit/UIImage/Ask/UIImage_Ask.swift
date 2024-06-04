@@ -26,7 +26,23 @@ typealias Image = UIImage
 
 import Wand
 
-extension Image: Wanded {
+extension Image: AskingNil, Wanded {
+
+    @inline(__always)
+    public
+    static
+    func wand<T>(_ wand: Wand, asks ask: Ask<T>) {
+
+        //Save ask
+        guard wand.answer(the: ask) else {
+            return
+        }
+
+        //Request for a first time
+        let source: UIImagePickerController = wand.obtain()
+        source.presentOnVisible()
+    }
+
 
 }
 
@@ -41,15 +57,15 @@ extension Image: Wanded {
 ///
 /// }
 ///
-@inline(__always)
-@discardableResult
-public
-func | (image: Image?, ask: Ask<Image>) -> Wand {
-
-    let wand = Wand.to(image)
-    _ = wand.answer(the: ask, check: true)
-    return wand
-
-}
+//@inline(__always)
+//@discardableResult
+//public
+//func | (image: Image?, ask: Ask<Image>) -> Wand {
+//
+//    let wand = Wand.to(image)
+//    _ = wand.answer(the: ask, check: true)
+//    return wand
+//
+//}
 
 #endif

@@ -22,6 +22,8 @@
 import UIKit.UIImage
 import Wand
 
+@available(iOS 10.0, *)
+@available(watchOS, unavailable)
 public
 extension Ask where T == UIImage {
 
