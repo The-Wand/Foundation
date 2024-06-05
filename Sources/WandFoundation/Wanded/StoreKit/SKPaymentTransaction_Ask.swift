@@ -22,13 +22,9 @@
 import StoreKit.SKProduct
 import Wand
 
-extension SKProduct: Wanded {
-    
-}
-
 /// Ask
 ///
-/// |{ (products: [SKProduct]) in
+/// ids | { (transactions: [SKPaymentTransaction]) in
 ///
 /// }
 ///
@@ -36,14 +32,35 @@ extension SKProduct: Wanded {
 @discardableResult
 @inline(__always)
 public
-func | (ids: Set<String>, handler: @escaping ([SKProduct])->() ) -> Wand {
+func | (product: SKProduct, handler: @escaping ([SKPaymentTransaction])->() ) -> Wand {
 
-    ids | { (response: SKProductsResponse) in
+    let wand = product.wand
+    let ask = Ask.one(handler: handler)
 
-        let products = response.wand.save(sequence: response.products)
-        handler(products)
+    let queue: SKPaymentQueue = wand.obtain()
+
+    defer {
+        //Add payment anyway
+        let payment = SKPayment(product: product)
+        queue.add(payment)
     }
 
+    //Save ask
+    guard wand.answer(the: ask) else {
+        return wand
+    }
+
+    //Prepare first request
+    let delegate = wand.save(SKPaymentQueue.Delegate())
+    queue.add(delegate)
+
+    //Set the cleaner
+    wand.setCleaner(for: ask) {
+        queue.remove(delegate)
+    }
+
+    return wand
 }
 
 #endif
+

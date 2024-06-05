@@ -19,31 +19,41 @@
 /// 2020 El Machine
 
 #if canImport(StoreKit)
-import StoreKit.SKProduct
+import StoreKit
 import Wand
 
-extension SKProduct: Wanded {
+/// Obtain
+///
+/// let q: SKPaymentQueue = nil|
+///
+extension SKPaymentQueue: Obtain {
+
+    @inline(__always)
+    public 
+    static
+    func obtain(by wand: Wand?) -> Self {
+        Self.default()
+    }
     
 }
 
-/// Ask
-///
-/// |{ (products: [SKProduct]) in
-///
-/// }
-///
-@available(tvOS, unavailable)
-@discardableResult
-@inline(__always)
-public
-func | (ids: Set<String>, handler: @escaping ([SKProduct])->() ) -> Wand {
+extension SKPaymentQueue {
 
-    ids | { (response: SKProductsResponse) in
+    class Delegate: NSObject, SKPaymentTransactionObserver, Wanded {
+        
+        @inlinable
+        func paymentQueue(_ queue: SKPaymentQueue,
+                          updatedTransactions transactions: [SKPaymentTransaction]) {
+            isWanded?.add(transactions)
+        }
+        
+        @inlinable
+        func paymentQueue(_ queue: SKPaymentQueue, restoreCompletedTransactionsFailedWithError error: any Error) {
+            isWanded?.add(error)
+        }
 
-        let products = response.wand.save(sequence: response.products)
-        handler(products)
     }
-
+    
 }
 
 #endif

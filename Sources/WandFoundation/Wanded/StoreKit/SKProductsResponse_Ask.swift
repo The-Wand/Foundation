@@ -22,28 +22,57 @@
 import StoreKit.SKProduct
 import Wand
 
-extension SKProduct: Wanded {
-    
-}
-
 /// Ask
 ///
-/// |{ (products: [SKProduct]) in
+/// ids | { (productsResponse: SKProductsResponse) in
 ///
 /// }
 ///
 @available(tvOS, unavailable)
-@discardableResult
-@inline(__always)
-public
-func | (ids: Set<String>, handler: @escaping ([SKProduct])->() ) -> Wand {
+extension SKProductsResponse: Asking, Wanded {
 
-    ids | { (response: SKProductsResponse) in
+    @inline(__always)
+    public
+    static
+    func wand<T>(_ wand: Wand, asks ask: Ask<T>) {
 
-        let products = response.wand.save(sequence: response.products)
-        handler(products)
+        //Save ask
+        _ = wand.answer(the: ask)
+
+        //Request for a first time
+
+        //Prepare context
+        let source: SKProductsRequest = wand.obtain()
+
+        //Make request
+        source.start()
+
     }
+    
 
 }
+
+
+//@discardableResult
+//
+//public
+//func | (ids: Set<String>, handler: @escaping (SKProductsResponse)->() ) -> Wand {
+//
+//    let wand = Wand()
+//    wand.save(ids)
+//
+//    //Save ask
+//    _ = wand.answer(the: .one(handler: handler))
+//
+//    //Request for a first time
+//
+//    //Prepare context
+//    let source: SKProductsRequest = wand.obtain()
+//
+//    //Make request
+//    source.start()
+//
+//    return wand
+//}
 
 #endif

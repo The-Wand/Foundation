@@ -28,13 +28,13 @@
 //
 //@available(tvOS, unavailable)
 //final
-//class SKProduct_Tests: ImageTestCase {
+//class SKPaymentTransaction_Tests: ImageTestCase {
 //
-//    func test_SKProduct_array_get() {
+//    func test_SKPaymentTransaction_array_get() {
 //        let e = expectation()
 //
-//        let ids = Set<String>(arrayLiteral: "book")
-//        ids | { (products: [SKProduct]) in
+//        let product = SKProduct()
+//        product | { (transactions: [SKPaymentTransaction]) in
 //            e.fulfill()
 //        }
 //
