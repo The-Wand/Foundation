@@ -17,54 +17,56 @@
 ///
 /// Created by Alex Kozin
 /// 2020 El Machine
-//
-//import UIKit.UIGestureRecognizer
-//import Wand
-//
-//extension UIGestureRecognizer: Wanded {
-//
-//}
-//
-//
-//@discardableResult
-//public
-//func |<T: UIGestureRecognizer> (view: UIView, handler: @escaping (T)->()) -> T {
-//    view | .every(handler: handler)
-//}
-//
-//@discardableResult
-//public
-//func |<T: UIGestureRecognizer> (view: UIView, ask: Ask<T>) -> T {
-//
-//    typealias Delegate = UIGestureRecognizer.Delegate
-//
-//    let pipe = Pipe()
-//
-//
-//    let recognizer = T()
-//
-//    ask.key = recognizer.address|
-//    _ = pipe.ask(for: ask)
-//
-//
-//    let delegate = pipe.put(Delegate())
-//    recognizer.addTarget(delegate,
-//                         action: #selector(Delegate.handle(sender:)))
-//
-//    view.addGestureRecognizer(recognizer)
-//
-//    return pipe.put(recognizer)
-//}
-//
-//extension UIGestureRecognizer {
-//
-//    class Delegate: NSObject, Pipable {
-//
-//        @objc
-//        func handle(sender: UIGestureRecognizer) {
-//            isPiped?.put(sender, key: sender.address|)
-//        }
-//
-//    }
-//
-//}
+
+import UIKit.UIGestureRecognizer
+import Wand
+
+extension UIView: Wanded {
+
+}
+
+extension UIGestureRecognizer: Wanded {
+
+}
+
+
+@discardableResult
+public
+func |<T: UIGestureRecognizer> (view: UIView, handler: @escaping (T)->()) -> T {
+    view | .every(handler: handler)
+}
+
+@discardableResult
+public
+func |<T: UIGestureRecognizer> (view: UIView, ask: Ask<T>) -> T {
+
+    typealias Delegate = UIGestureRecognizer.Delegate
+
+    let wand = view.wand
+
+    let recognizer = T()
+
+    ask.key = recognizer|
+    _ = wand.answer(the: ask)
+
+    let delegate = wand.add(Delegate())
+    recognizer.addTarget(delegate,
+                         action: #selector(Delegate.handle(sender:)))
+
+    view.addGestureRecognizer(recognizer)
+
+    return wand.add(recognizer)
+}
+
+extension UIGestureRecognizer {
+
+    class Delegate: NSObject, Wanded {
+
+        @objc
+        func handle(sender: UIGestureRecognizer) {
+            isWanded?.add(sender, for: sender|)
+        }
+
+    }
+
+}
