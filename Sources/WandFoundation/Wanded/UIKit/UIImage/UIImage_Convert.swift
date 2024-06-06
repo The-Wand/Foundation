@@ -50,28 +50,32 @@ extension Image {
         image.withRenderingMode(renderingMode)
     }
 
-    /// Convert
-    ///
-    /// let view: UIImageView = image|
-    ///
-    @inline(__always)
-    postfix
-    public
-    static
-    func | (image: Image) -> UIImageView {
-        UIImageView(image: image)
-    }
+    #if !os(watchOS)
 
-    /// Convert
-    ///
-    /// let view: UIImageView = image | .alwaysTemplate
-    ///
-    @inline(__always)
-    public
-    static
-    func | (image: Image, renderingMode: RenderingMode) -> UIImageView {
-        (image | renderingMode)|
-    }
+        /// Convert
+        ///
+        /// let view: UIImageView = image|
+        ///
+        @inline(__always)
+        postfix
+        public
+        static
+        func | (image: Image) -> UIImageView {
+            UIImageView(image: image)
+        }
+
+        /// Convert
+        ///
+        /// let view: UIImageView = image | .alwaysTemplate
+        ///
+        @inline(__always)
+        public
+        static
+        func | (image: Image, renderingMode: RenderingMode) -> UIImageView {
+            (image | renderingMode)|
+        }
+
+    #endif
 
 }
 
