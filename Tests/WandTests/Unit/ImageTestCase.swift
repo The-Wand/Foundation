@@ -32,11 +32,11 @@ class ImageTestCase: XCTestCase {
 
     internal
     lazy
-    var image: UIImage = url|
-    
+    var image: UIImage? = url|
+
     internal
     lazy
-    var inSize = image.size
+    var inSize = image!.size
 
 }
 

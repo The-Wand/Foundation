@@ -37,68 +37,70 @@ class Image_Resize_Tests: ImageTestCase {
     lazy
     var size = CGSize(width: dimension, height: dimension)
 
-    override 
+    override
     func setUpWithError() throws {
-        print("Image loaded: \(image)")
+        guard image == nil else {
+            return
+        }
     }
 
-//    func test_Image_Fill() {
-//        let e = expectation()
-//
-//        let result =  floor( inSize.width / (inSize.height / dimension) )
-//
-//        image | .fill(to: size) { (out: UIImage) in
-//
-//            let fitted = out.size
-//            if
-//                fitted.height.isEqual(to: self.dimension),
-//                floor(fitted.width).isEqual(to: result)
-//            {
-//                e.fulfill()
-//            }
-//
-//        }
-//
-//        waitForExpectations()
-//    }
-//
-//    func test_Image_Fit() {
-//        let e = expectation()
-//
-//        let result = floor( inSize.height / (inSize.width / dimension) )
-//
-//        image | .fit(to: size) { (out: UIImage) in
-//
-//            let fitted = out.size
-//
-//            if
-//                fitted.width.isEqual(to: self.dimension),
-//                floor(fitted.height).isEqual(to: result)
-//            {
-//                e.fulfill()
-//            }
-//
-//        }
-//
-//        waitForExpectations()
-//    }
+    func test_Image_Fill() {
+        let e = expectation()
 
-//    func test_Image_Scale() {
-//        let e = expectation()
-//
-//        let d = dimension
-//
-//        image | .scale(to: size) { (scaled: UIImage) in
-//
-//            let size = scaled.size
-//            if size.width == d && size.height == d {
-//                e.fulfill()
-//            }
-//
-//        }
-//
-//        waitForExpectations()
-//    }
+        let calculated =  round( inSize.width / (inSize.height / dimension) )
+
+        image | .fill(to: size) { (out: UIImage) in
+
+            let size = out.size
+            if
+                round(size.height).isEqual(to: self.dimension),
+                round(size.width).isEqual(to: calculated)
+            {
+                e.fulfill()
+            }
+
+        }
+
+        waitForExpectations()
+    }
+
+    func test_Image_Fit() {
+        let e = expectation()
+print("ddd: %i", dimension)
+        let calculated = round( inSize.height / (inSize.width / dimension) )
+
+        image | .fit(to: size) { (out: UIImage) in
+
+            let size = out.size
+
+            if
+                round(size.width).isEqual(to: self.dimension),
+                round(size.height).isEqual(to: calculated)
+            {
+                e.fulfill()
+            }
+
+        }
+
+        waitForExpectations()
+    }
+
+    func test_Image_Scale() {
+        let e = expectation()
+
+        let d = dimension
+
+        image | .scale(to: size) { (scaled: UIImage) in
+
+            let size = scaled.size
+            if size.width == d && size.height == d {
+                e.fulfill()
+            }
+
+        }
+
+        waitForExpectations()
+    }
 
 }
 

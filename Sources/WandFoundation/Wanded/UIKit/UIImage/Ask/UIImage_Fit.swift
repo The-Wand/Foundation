@@ -22,9 +22,10 @@
 import UIKit.UIImage
 import Wand
 
+public
 extension Ask {
 
-    class Fit: Ask {
+    class Fit: Operation {
     }
 
 }

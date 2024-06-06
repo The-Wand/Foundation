@@ -22,9 +22,10 @@
 import UIKit.UIImage
 import Wand
 
+public
 extension Ask {
 
-    class Fill: Ask {
+    class Fill: Operation {
     }
 
 }

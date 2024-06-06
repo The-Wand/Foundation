@@ -22,9 +22,10 @@
 import UIKit.UIImage
 import Wand
 
+public
 extension Ask {
 
-    class Scale: Ask {
+    class Scale: Operation {
     }
     
 }
@@ -36,7 +37,6 @@ extension Ask where T == UIImage {
 
     @discardableResult
     @inline(__always)
-    public
     static
     func scale (to size: CGSize, done: @escaping (UIImage)->() ) -> Self {
         .one().scale(to: size, done: done)

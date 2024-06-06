@@ -22,9 +22,10 @@
 import UIKit.UIImage
 import Wand
 
+public
 extension Ask {
 
-    class Round: Ask {
+    class Round: Operation {
     }
 
 }
@@ -58,7 +59,7 @@ extension Ask where T == UIImage {
             }
 
             done(rounded)
-            return once
+            return !once
         }
 
         return self
