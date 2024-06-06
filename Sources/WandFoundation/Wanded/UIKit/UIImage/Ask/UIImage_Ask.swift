@@ -20,10 +20,6 @@
 
 #if canImport(UIKit) && !os(watchOS)
 import UIKit.UIImage
-
-public
-typealias Image = UIImage
-
 import Wand
 
 extension Image: AskingNil, Wanded {
