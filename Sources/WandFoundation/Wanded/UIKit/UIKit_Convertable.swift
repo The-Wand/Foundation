@@ -22,7 +22,7 @@
 import UIKit
 import Wand
 
-//IndexPath
+///IndexPath
 extension Array {
     
     static public postfix func |(p: Self) -> [IndexPath] {

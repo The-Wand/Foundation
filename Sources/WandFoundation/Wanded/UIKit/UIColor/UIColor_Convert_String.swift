@@ -19,18 +19,19 @@
 /// 2020 El Machine
 
 #if canImport(UIKit)
-import UIKit.UIImage
+import UIKit.UIColor
 import Wand
 
-public postfix func |(name: String) -> UIColor {
+@inline(__always)
+postfix
+public
+func |(name: String) -> UIColor {
     UIColor(named: name)!
 }
 
-//public postfix func |(hex: String) -> UIColor? {
-//    hex | 1
-//}
-
-public func |(hex: String, alpha: CGFloat) -> UIColor? {
+@inline(__always)
+public
+func |(hex: String, alpha: CGFloat) -> UIColor? {
     var string = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
     
     if string.hasPrefix("#") {
@@ -50,23 +51,17 @@ public func |(hex: String, alpha: CGFloat) -> UIColor? {
                    alpha:   alpha)
 }
 
-public func |(color: UIColor, alpha: CGFloat) -> UIColor {
+@inline(__always)
+public
+func |(color: UIColor, alpha: CGFloat) -> UIColor {
     color.withAlphaComponent(alpha)
 }
 
-public postfix func |(piped: (white: CGFloat, alpha:CGFloat)) -> UIColor {
+@inline(__always)
+postfix
+public
+func |(piped: (white: CGFloat, alpha:CGFloat)) -> UIColor {
     UIColor(white: piped.white, alpha: piped.alpha)
-}
-
-public postfix func |<T: FixedWidthInteger>(color: T) -> UIColor {
-    color | 1
-}
-
-public func |<T: FixedWidthInteger>(color: T, alpha: CGFloat) -> UIColor {
-    UIColor(red:  CGFloat((color & 0xFF0000) >> 16) / 255.0,
-            green:  CGFloat((color & 0x00FF00) >> 8) / 255.0,
-            blue:  CGFloat((color & 0x0000FF)) / 255.0,
-            alpha: alpha)
 }
 
 #endif

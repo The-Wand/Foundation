@@ -18,6 +18,7 @@
 /// Created by Alex Kozin
 /// 2020 El Machine
 
+#if canImport(UIKit)
 import UIKit.UIGestureRecognizer
 import Wand
 
@@ -29,14 +30,27 @@ extension UIGestureRecognizer: Wanded {
 
 }
 
-
+/// Ask
+///
+/// view | { (tap: UI<#Tap#>GestureRecognizer) in
+///
+/// }
+///
 @discardableResult
+@inline(__always)
 public
 func |<T: UIGestureRecognizer> (view: UIView, handler: @escaping (T)->()) -> T {
     view | .every(handler: handler)
 }
 
+/// Ask
+///
+/// view | .while { (tap: UI<#Tap#>GestureRecognizer) in
+///    true
+/// }
+///
 @discardableResult
+@inline(__always)
 public
 func |<T: UIGestureRecognizer> (view: UIView, ask: Ask<T>) -> T {
 
@@ -63,6 +77,8 @@ extension UIGestureRecognizer {
     class Delegate: NSObject, Wanded {
 
         @objc
+        @inline(__always)
+        public
         func handle(sender: UIGestureRecognizer) {
             isWanded?.add(sender, for: sender|)
         }
@@ -70,3 +86,5 @@ extension UIGestureRecognizer {
     }
 
 }
+
+#endif

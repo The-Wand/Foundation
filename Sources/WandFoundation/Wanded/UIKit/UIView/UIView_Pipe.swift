@@ -18,61 +18,70 @@
 /// Created by Alex Kozin
 /// 2020 El Machine
 
-#if !os(watchOS) && canImport(UIKit)
-
-import UIKit
+#if canImport(UIKit) && !os(watchOS)
+import UIKit.UIView
 import Wand
 
-//UIView
+///UIView
+@inline(__always)
+postfix
 public
-postfix func |(view: UIView) -> CGSize {
+func |(view: UIView) -> CGSize {
     view.frame.size
 }
 
+@inline(__always)
 public
 func | (view: UIView, contentMode: UIView.ContentMode) -> UIView {
     view.contentMode = contentMode
     return view
 }
 
+@inline(__always)
+postfix
 public
-postfix func |(rect: CGRect) -> UIView {
+func |(rect: CGRect) -> UIView {
     UIView(frame: rect)
 }
 
 //Animations
+@inline(__always)
 public
 func |(interval: TimeInterval, animations: @escaping ()->()) {
     UIView.animate(withDuration: interval, animations: animations)
 }
 
+@inline(__always)
 public
-func |(piped: (duration: TimeInterval, delay: TimeInterval),
+func |(wanded: (duration: TimeInterval, delay: TimeInterval),
        animations: @escaping ()->()) {
 
-    UIView.animate(withDuration: piped.duration,
-                   delay: piped.delay,
+    UIView.animate(withDuration: wanded.duration,
+                   delay: wanded.delay,
                    options: [],
                    animations: animations)
 }
 
+@inline(__always)
 public
-func |(piped: (duration: TimeInterval, options: UIView.AnimationOptions),
+func |(wanded: (duration: TimeInterval, options: UIView.AnimationOptions),
               animations: @escaping ()->() ) {
-    UIView.animate(withDuration: piped.duration,
+    UIView.animate(withDuration: wanded.duration,
                    delay: 0,
-                   options: piped.options,
+                   options: wanded.options,
                    animations: animations)
 }
 
-public func |(piped: (duration: TimeInterval,
-                      options: UIView.AnimationOptions),
-                blocks: (animations: ()->(),
-                         completion: (Bool)->())
+@inline(__always)
+public
+func |(wanded: (duration: TimeInterval,
+               options: UIView.AnimationOptions),
+       blocks: (animations: ()->(),
+                completion: (Bool)->())
 ) {
-    UIView.animate(withDuration: piped.duration,
+    UIView.animate(withDuration: wanded.duration,
                    delay: 0,
-                   options: piped.options,
+                   options: wanded.options,
                    animations: blocks.animations,
                    completion: blocks.completion)
 }
