@@ -15,9 +15,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "Wand_Foundation"
-               BuildableName = "Wand_Foundation"
-               BlueprintName = "Wand_Foundation"
+               BlueprintIdentifier = "WandFoundation"
+               BuildableName = "WandFoundation"
+               BlueprintName = "WandFoundation"
                ReferencedContainer = "container:">
             </BuildableReference>
          </BuildActionEntry>
@@ -30,7 +30,7 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <TestPlans>
          <TestPlanReference
-            reference = "container:../Wand/Tests/Package.xctestplan"
+            reference = "container:Tests/wandTests/Package.xctestplan"
             default = "YES">
          </TestPlanReference>
       </TestPlans>
@@ -42,16 +42,6 @@
                BlueprintIdentifier = "wandTests"
                BuildableName = "wandTests"
                BlueprintName = "wandTests"
-               ReferencedContainer = "container:">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "WandTests"
-               BuildableName = "WandTests"
-               BlueprintName = "WandTests"
                ReferencedContainer = "container:">
             </BuildableReference>
          </TestableReference>
@@ -77,9 +67,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "Wand_Foundation"
-            BuildableName = "Wand_Foundation"
-            BlueprintName = "Wand_Foundation"
+            BlueprintIdentifier = "WandFoundation"
+            BuildableName = "WandFoundation"
+            BlueprintName = "WandFoundation"
             ReferencedContainer = "container:">
          </BuildableReference>
       </MacroExpansion>

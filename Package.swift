@@ -23,7 +23,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "Wand_Foundation",
+    name: "WandFoundation",
     defaultLocalization: "ru",
 
     platforms: [
@@ -34,7 +34,7 @@ let package = Package(
     ],
 
     products: [
-        .library(name: "Wand_Foundation", targets: ["WandFoundation"])
+        .library(name: "WandFoundation", targets: ["WandFoundation"])
     ],
 
     dependencies: [
