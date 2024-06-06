@@ -18,40 +18,58 @@
 /// Created by Alex Kozin
 /// 2020 El Machine
 
+#if canImport(Foundation)
 import Foundation
+import Wand
 
 //Substring
-public func |(p: String, range: PartialRangeThrough<Int>) -> String {
+@inline(__always)
+public
+func |(p: String, range: PartialRangeThrough<Int>) -> String {
     String(p.suffix(range.upperBound))
 }
 
-public func |(p: String, range: PartialRangeFrom<Int>) -> String {
+@inline(__always)
+public
+func |(p: String, range: PartialRangeFrom<Int>) -> String {
     String(p.prefix(range.lowerBound))
 }
 
-public func |(p: String, range: Range<Int>) -> String {
+@inline(__always)
+public
+func |(p: String, range: Range<Int>) -> String {
     let from = p.index(p.startIndex, offsetBy: range.lowerBound)
     let to = p.index(p.startIndex, offsetBy: range.upperBound)
 
     return p | (from..<to)
 }
 
-public func |(p: String, range: Range<String.Index>) -> String {
+@inline(__always)
+public
+func |(p: String, range: Range<String.Index>) -> String {
     String(p[range])
 }
 
 //Replace
-public func |(p: String, replace: (bounds: Range<Int>, to: String)) -> String {
+@inline(__always)
+public
+func |(p: String, replace: (bounds: Range<Int>, to: String)) -> String {
     let from = p.index(p.startIndex, offsetBy: replace.bounds.lowerBound)
     let to = p.index(p.startIndex, offsetBy:  replace.bounds.upperBound)
 
     return p | (bounds: from..<to, to: replace.to)
 }
 
-public func |(piped: String?, range: PartialRangeFrom<Int>?) -> (String, String)? {
+@inline(__always)
+public
+func |(piped: String?, range: PartialRangeFrom<Int>?) -> (String, String)? {
     piped == nil || range == nil ? nil : piped! | range!
 }
 
-public func |(piped: String, range: PartialRangeFrom<Int>) -> (String, String) {
+@inline(__always)
+public
+func |(piped: String, range: PartialRangeFrom<Int>) -> (String, String) {
     (String(piped.prefix(range.lowerBound)), String(piped.suffix(piped.count - range.lowerBound)))
 }
+
+#endif

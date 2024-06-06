@@ -71,38 +71,14 @@ func |(string: String, encoding: String.Encoding) -> Data {
 
 /// Convert
 ///
-/// let data: Data = string | .utf8
+/// let data: Data = (name: "icon", type: "png")|
 ///
-@inline(__always)
-postfix
-public
-func |<T: Codable>(model: T) -> Data {
-    try! JSONEncoder().encode(model)
-}
-
 @inline(__always)
 postfix
 public
 func |(resource: Wand.Resource) throws -> Data {
     try Data(contentsOf: resource|)
 }
-
-@inline(__always)
-postfix
-public
-func |<T: Decodable> (resource: Wand.Resource) throws -> T {
-    let data: Data = try Data(contentsOf: resource|)
-    return try data|
-}
-
-@inline(__always)
-postfix
-public
-func |(resource: Wand.Resource) throws -> [String: Any]? {
-    let data: Data = try Data(contentsOf: resource|)
-    return try data|
-}
-
 
 //Data
 @inline(__always)

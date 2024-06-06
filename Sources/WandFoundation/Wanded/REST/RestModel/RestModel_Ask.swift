@@ -19,20 +19,52 @@
 /// 2020 El Machine
 
 #if canImport(Foundation)
-import Foundation.NSNotification
+import Foundation
 import Wand
 
-/// Obtain
-///
-/// let center: NotificationCenter = nil|
-///
-extension NotificationCenter: Obtain {
+public
+extension Ask { // where T: Rest.Model { where T: CloudKit.Model {
+
+    class Get: Ask {
+    }
+
+    class Post: Ask {
+    }
+
+    class Put: Ask {
+    }
+
+    class Delete: Ask {
+    }
+
+}
+
+@available(visionOS, unavailable)
+public
+extension Ask where T: Rest.Model {
 
     @inline(__always)
-    public
-    static 
-    func obtain(by wand: Wand?) -> Self {
-        Self.default as! Self
+    static
+    func get(handler: @escaping (T)->() ) -> Get {
+        .one(handler: handler)
+    }
+
+    @inline(__always)
+    static
+    func post(handler: @escaping (T)->() ) -> Post {
+        .one(handler: handler)
+    }
+
+    @inline(__always)
+    static
+    func put(handler: @escaping (T)->() ) -> Put {
+        .one(handler: handler)
+    }
+
+    @inline(__always)
+    static
+    func delete(handler: @escaping (T)->() ) -> Delete {
+        Delete.one(handler: handler)
     }
 
 }

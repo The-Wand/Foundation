@@ -15,26 +15,32 @@
 /// See the License for the specific language governing permissions and
 /// limitations under the License.
 ///
-/// Created by Alex Kozin
-/// 2020 El Machine
 
-#if canImport(Foundation)
-import Foundation.NSNotification
+import Foundation
 import Wand
 
-/// Obtain
-///
-/// let center: NotificationCenter = nil|
-///
-extension NotificationCenter: Obtain {
+@inline(__always)
+postfix
+public
+func |<T: Model>(raw: [String: Any]?) throws -> T {
+    try (raw!)|
+}
+
+@inline(__always)
+postfix
+public
+func |<T: Model>(raw: [String: Any]) throws -> T {
+    try JSONDecoder().decode(T.self, from: raw|)
+}
+
+extension Array {
 
     @inline(__always)
+    postfix
     public
-    static 
-    func obtain(by wand: Wand?) -> Self {
-        Self.default as! Self
+    static
+    func |<T: Model>(raw: Self) throws -> [T] {
+        try JSONDecoder().decode([T].self, from: raw|)
     }
 
 }
-
-#endif

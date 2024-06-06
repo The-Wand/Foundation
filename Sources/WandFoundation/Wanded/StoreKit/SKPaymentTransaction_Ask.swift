@@ -39,8 +39,7 @@ func | (product: SKProduct, handler: @escaping ([SKPaymentTransaction])->() ) ->
 
     let queue: SKPaymentQueue = wand.obtain()
 
-    defer {
-        //Add payment anyway
+    defer { //Add payment anyway
         let payment = SKPayment(product: product)
         queue.add(payment)
     }
@@ -63,4 +62,3 @@ func | (product: SKProduct, handler: @escaping ([SKPaymentTransaction])->() ) ->
 }
 
 #endif
-

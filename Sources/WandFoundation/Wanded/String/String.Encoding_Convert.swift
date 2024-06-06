@@ -18,22 +18,32 @@
 /// Created by Alex Kozin
 /// 2020 El Machine
 
+#if canImport(Foundation)
 import Foundation
+import Wand
 
-public func |(p: Data, encoding: String.Encoding) -> String {
+@inline(__always)
+public
+func |(p: Data, encoding: String.Encoding) -> String {
     String(data: p, encoding: encoding)!
 }
 
-public func |(p: Data?, encoding: String.Encoding) -> String {
+@inline(__always)
+public
+func |(p: Data?, encoding: String.Encoding) -> String {
     guard let piped = p else {
         return ""
     }
     return String(data: piped, encoding: encoding)!
 }
 
-public func |(p: Data?, encoding: String.Encoding) -> String? {
+@inline(__always)
+public
+func |(p: Data?, encoding: String.Encoding) -> String? {
     guard let piped = p else {
         return nil
     }
     return String(data: piped, encoding: encoding)
 }
+
+#endif

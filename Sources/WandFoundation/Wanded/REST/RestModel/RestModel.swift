@@ -26,8 +26,10 @@ import Wand
 public
 protocol Rest_Model: Model, Codable {
 
-    static 
+    
+    static
     var base: String? {get}
+
     static
     var path: String {get}
 
@@ -51,49 +53,6 @@ extension Rest_Model {
         nil
     }
     
-}
-
-public
-extension Ask {
-
-    class Get: Ask {
-    }
-
-    class Post: Ask {
-    }
-
-    class Put: Ask {
-    }
-
-    class Delete: Ask {
-    }
-
-}
-
-@available(visionOS, unavailable)
-public
-extension Ask where T: Rest.Model {
-
-    static 
-    func get(handler: @escaping (T)->() ) -> Get {
-        .one(handler: handler)
-    }
-
-    static 
-    func post(handler: @escaping (T)->() ) -> Post {
-        Post.one(handler: handler)
-    }
-
-    static 
-    func put(handler: @escaping (T)->() ) -> Put {
-        .one(handler: handler)
-    }
-
-    static 
-    func delete(handler: @escaping (T)->() ) -> Delete {
-        .one(handler: handler)
-    }
-
 }
 
 #endif

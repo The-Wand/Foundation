@@ -28,6 +28,17 @@ import Wand
 
 extension Image: AskingNil, Wanded {
 
+    /// Ask
+    /// - .scale
+    /// - .fit
+    /// - .fill
+    ///
+    /// - .round
+    ///
+    /// image | .operation(to:) { done: Image in
+    ///
+    /// }
+    ///
     @inline(__always)
     public
     static
@@ -47,27 +58,5 @@ extension Image: AskingNil, Wanded {
 
 
 }
-
-/// Ask
-/// - .scale
-/// - .fit
-/// - .fill
-///
-/// - .round
-///
-/// image | .operation(to:) { done: Image in
-///
-/// }
-///
-//@inline(__always)
-//@discardableResult
-//public
-//func | (image: Image?, ask: Ask<Image>) -> Wand {
-//
-//    let wand = Wand.to(image)
-//    _ = wand.answer(the: ask, check: true)
-//    return wand
-//
-//}
 
 #endif

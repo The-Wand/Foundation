@@ -18,6 +18,7 @@
 /// Created by Alex Kozin
 /// 2020 El Machine
 
+#if canImport(Foundation)
 import Foundation
 import XCTest
 
@@ -56,3 +57,5 @@ class Data_Tests: XCTestCase {
     }
 
 }
+
+#endif

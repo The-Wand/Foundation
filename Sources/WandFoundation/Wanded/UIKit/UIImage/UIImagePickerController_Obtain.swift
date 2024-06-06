@@ -27,11 +27,9 @@ import UniformTypeIdentifiers
 
 import Wand
 
-/// Ask
+/// Obtain
 ///
-/// |{ (image: Image) in
-///
-/// }
+/// let ctrl: UIImagePickerController = nil|
 ///
 @available(tvOS, unavailable)
 @available(visionOS, unavailable)

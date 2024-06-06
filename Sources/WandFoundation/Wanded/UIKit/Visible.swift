@@ -71,19 +71,16 @@ public
 extension UIApplication {
 
     @inline(__always)
-    public
     var visibleViewController: UIViewController? {
         visibleWindow?.rootViewController?.visible
     }
 
     @inline(__always)
-    public
     var rootViewController: UIViewController? {
         visibleWindow?.rootViewController
     }
 
     @inline(__always)
-    public
     var visibleWindow: UIWindow? {
         if #available(iOS 13, tvOS 13, *) {
 

@@ -53,17 +53,14 @@ extension SKProductsRequest {
         func productsRequest(_ request: SKProductsRequest, 
                              didReceive response: SKProductsResponse) {
             isWanded?.add(response)
-//            isWanded?.add(response.products)
         }
 
         func request(_ request: SKRequest, didFailWithError error: any Error) {
             isWanded?.add(error)
         }
 
-
     }
 
 }
 
 #endif
-

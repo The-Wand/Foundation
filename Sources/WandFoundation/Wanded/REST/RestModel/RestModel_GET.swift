@@ -39,7 +39,7 @@ func |<T: Rest.Model> (wand: Wand, get: Ask<T>.Get) -> Wand {
         wand.save(path)
     }
     
-    wand.save(Rest.Method.GET)
+    wand.store(Rest.Method.GET)
 
     _ = wand.answer(the: get)
     return wand | .one { (data: Data) in
@@ -51,10 +51,7 @@ func |<T: Rest.Model> (wand: Wand, get: Ask<T>.Get) -> Wand {
             {
                 wand.add(object)
             } else {
-
-                let parsed = try JSONDecoder().decode(T.self, 
-                                                      from: data)
-                wand.add(parsed)
+                wand.add(try data| as T)
             }
         } catch(let e) {
             wand.add(e)

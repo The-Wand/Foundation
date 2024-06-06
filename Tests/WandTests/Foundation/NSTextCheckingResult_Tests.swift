@@ -18,6 +18,7 @@
 /// Created by Alex Kozin
 /// 2020 El Machine
 
+#if canImport(Foundation)
 import Foundation.NSTextCheckingResult
 import XCTest
 
@@ -80,3 +81,5 @@ class NSTextCheckingResultCheckingType_Tests: XCTestCase {
     }
 
 }
+
+#endif

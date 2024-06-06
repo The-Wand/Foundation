@@ -22,16 +22,21 @@
 import UIKit.UIImage
 import Wand
 
+extension Ask {
+
+    class Scale: Ask {
+    }
+    
+}
+
 @available(iOS 10.0, *)
 @available(watchOS, unavailable)
 public
 extension Ask where T == UIImage {
 
-    class Scale: Ask {
-    }
-
     @discardableResult
     @inline(__always)
+    public
     static
     func scale (to size: CGSize, done: @escaping (UIImage)->() ) -> Self {
         .one().scale(to: size, done: done)

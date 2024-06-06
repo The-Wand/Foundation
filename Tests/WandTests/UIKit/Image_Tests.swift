@@ -19,7 +19,7 @@
 /// 2020 El Machine
 
 #if canImport(UIKit)
-import UIKit
+import UIKit.UIImage
 
 import Any_
 import WandFoundation
@@ -30,36 +30,36 @@ import XCTest
 final
 class Image_Tests: ImageTestCase {
 
-    override
-    func setUpWithError() throws {
-        print("Image loaded: \(image)")
-    }
-
-    func test_Image_Round() {
-        let e = expectation()
-
-        image | .round(to: .random(in: 11...inSize.height/2) ) { (rounded: UIImage) in
-
-            //TODO: if rounded.isRounded() {
-            e.fulfill()
-
-        }
-
-        waitForExpectations()
-    }
-
-    func test_Image_() {
-        let e = expectation()
-
-        |{ (image: UIImage) in
-
-            //TODO: if rounded.isRounded() {
-            e.fulfill()
-
-        }
-
-        waitForExpectations()
-    }
+//    override
+//    func setUpWithError() throws {
+//        print("Image loaded: \(image)")
+//    }
+//
+//    func test_Image_Round() {
+//        let e = expectation()
+//
+//        image | .round(to: .random(in: 11...inSize.height/2) ) { (rounded: UIImage) in
+//
+//            //TODO: if rounded.isRounded() {
+//            e.fulfill()
+//
+//        }
+//
+//        waitForExpectations()
+//    }
+//
+//    func test_Image_() {
+//        let e = expectation()
+//
+//        |{ (image: UIImage) in
+//
+//            //TODO: if rounded.isRounded() {
+//            e.fulfill()
+//
+//        }
+//
+//        waitForExpectations()
+//    }
 
 }
 

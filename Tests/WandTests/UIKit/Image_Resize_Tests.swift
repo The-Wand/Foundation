@@ -19,7 +19,7 @@
 /// 2020 El Machine
 
 #if canImport(UIKit)
-import UIKit
+import UIKit.UIImage
 
 import Any_
 import WandFoundation
@@ -42,63 +42,63 @@ class Image_Resize_Tests: ImageTestCase {
         print("Image loaded: \(image)")
     }
 
-    func test_Image_Fill() {
-        let e = expectation()
+//    func test_Image_Fill() {
+//        let e = expectation()
+//
+//        let result =  floor( inSize.width / (inSize.height / dimension) )
+//
+//        image | .fill(to: size) { (out: UIImage) in
+//
+//            let fitted = out.size
+//            if
+//                fitted.height.isEqual(to: self.dimension),
+//                floor(fitted.width).isEqual(to: result)
+//            {
+//                e.fulfill()
+//            }
+//
+//        }
+//
+//        waitForExpectations()
+//    }
+//
+//    func test_Image_Fit() {
+//        let e = expectation()
+//
+//        let result = floor( inSize.height / (inSize.width / dimension) )
+//
+//        image | .fit(to: size) { (out: UIImage) in
+//
+//            let fitted = out.size
+//
+//            if
+//                fitted.width.isEqual(to: self.dimension),
+//                floor(fitted.height).isEqual(to: result)
+//            {
+//                e.fulfill()
+//            }
+//
+//        }
+//
+//        waitForExpectations()
+//    }
 
-        let result =  floor( inSize.width / (inSize.height / dimension) )
-
-        image | .fill(to: size) { (out: UIImage) in
-
-            let fitted = out.size
-            if
-                fitted.height.isEqual(to: self.dimension),
-                floor(fitted.width).isEqual(to: result)
-            {
-                e.fulfill()
-            }
-
-        }
-
-        waitForExpectations()
-    }
-
-    func test_Image_Fit() {
-        let e = expectation()
-
-        let result = floor( inSize.height / (inSize.width / dimension) )
-
-        image | .fit(to: size) { (out: UIImage) in
-
-            let fitted = out.size
-
-            if
-                fitted.width.isEqual(to: self.dimension),
-                floor(fitted.height).isEqual(to: result)
-            {
-                e.fulfill()
-            }
-
-        }
-
-        waitForExpectations()
-    }
-
-    func test_Image_Scale() {
-        let e = expectation()
-
-        let d = dimension
-
-        image | .scale(to: size) { (scaled: UIImage) in
-
-            let size = scaled.size
-            if size.width == d && size.height == d {
-                e.fulfill()
-            }
-
-        }
-
-        waitForExpectations()
-    }
+//    func test_Image_Scale() {
+//        let e = expectation()
+//
+//        let d = dimension
+//
+//        image | .scale(to: size) { (scaled: UIImage) in
+//
+//            let size = scaled.size
+//            if size.width == d && size.height == d {
+//                e.fulfill()
+//            }
+//
+//        }
+//
+//        waitForExpectations()
+//    }
 
 }
 

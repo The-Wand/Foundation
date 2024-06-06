@@ -54,11 +54,7 @@ func |<T: Rest.Model> (wand: Wand, get: Ask<[T]>.Get) -> Wand {
             {
                 wand.add(object)
             } else {
-
-                let D = [T].self as Decodable.Type
-                let parsed = try JSONDecoder().decode(D.self, from: data)
-
-                wand.add(parsed as! [T])
+                wand.add(try data| as [T])
             }
         } catch(let e) {
             wand.add(e)

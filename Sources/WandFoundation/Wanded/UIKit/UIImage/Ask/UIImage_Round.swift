@@ -22,13 +22,17 @@
 import UIKit.UIImage
 import Wand
 
+extension Ask {
+
+    class Round: Ask {
+    }
+
+}
+
 @available(iOS 10.0, *)
 @available(watchOS, unavailable)
 public
 extension Ask where T == UIImage {
-
-    class Round: Ask {
-    }
 
     @available(iOS 13.0, *)
     @discardableResult

@@ -48,31 +48,7 @@ extension SKProductsResponse: Asking, Wanded {
         source.start()
 
     }
-    
 
 }
-
-
-//@discardableResult
-//
-//public
-//func | (ids: Set<String>, handler: @escaping (SKProductsResponse)->() ) -> Wand {
-//
-//    let wand = Wand()
-//    wand.save(ids)
-//
-//    //Save ask
-//    _ = wand.answer(the: .one(handler: handler))
-//
-//    //Request for a first time
-//
-//    //Prepare context
-//    let source: SKProductsRequest = wand.obtain()
-//
-//    //Make request
-//    source.start()
-//
-//    return wand
-//}
 
 #endif

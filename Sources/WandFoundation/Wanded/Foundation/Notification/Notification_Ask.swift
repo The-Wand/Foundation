@@ -58,8 +58,6 @@ extension Notification: Asking, Wanded {
         //Set the cleaner
         wand.setCleaner(for: ask) {
             center.removeObserver(token)
-
-//            Wand.log("|🌜 Cleaned '\(ask.key)'")
         }
 
     }

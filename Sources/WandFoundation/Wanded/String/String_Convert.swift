@@ -22,16 +22,11 @@
 import Foundation
 import Wand
 
-////Description
-//@inline(__always)
-//public
-//postfix func |(piped: Any) -> String {
-//    String(describing: piped)
-//}
-
+///| unwrap
 @inline(__always)
+postfix
 public
-postfix func |<T: LosslessStringConvertible>(p: T?) -> String {
+func |<T: LosslessStringConvertible>(p: T?) -> String {
     guard let piped = p else {
         return ""
     }
@@ -39,22 +34,21 @@ postfix func |<T: LosslessStringConvertible>(p: T?) -> String {
     return String(piped)
 }
 
-extension Substring {
-
-    @inline(__always)
-    public
-    static prefix func |(sub: Substring) -> String {
-        String(sub)
-    }
-
+@inline(__always)
+prefix
+public
+func |(sub: Substring) -> String {
+    String(sub)
 }
 
 @inline(__always)
+prefix
 public
-prefix func |(self: String?) -> String {
+func |(self: String?) -> String {
     self ?? ""
 }
 
+/// CharacterSet
 @inline(__always)
 public
 func |(p: String?, filtering: CharacterSet) -> String? {
@@ -72,6 +66,8 @@ func |(p: String, filtering: CharacterSet) -> String {
         filtering.contains($0)
     })
 }
+
+///Range
 @inline(__always)
 public 
 func |(p: String, replace: (bounds: Range<String.Index>, to: String)) -> String {
@@ -98,20 +94,6 @@ func |(p: String, range: NSRange) -> String {
 }
 
 @inline(__always)
-postfix func |(piped: NSRange) -> Range<Int> {
-    Range(uncheckedBounds: (piped.lowerBound, piped.upperBound))
-}
-
-@inline(__always)
-public 
-func |(p: String, range: NSRange) -> Range<String.Index> {
-    let from = p.index(p.startIndex, offsetBy: range.lowerBound)
-    let to = p.index(p.startIndex, offsetBy: range.upperBound)
-
-    return (from..<to)
-}
-
-@inline(__always)
 public
 func |(piped: String, replace: (bounds: NSRange, to: String)) -> String {
     var string = piped
@@ -121,7 +103,7 @@ func |(piped: String, replace: (bounds: NSRange, to: String)) -> String {
     return string
 }
 
-//Components
+///Components
 @inline(__always)
 public
 func |(piped: String?, separator: any StringProtocol) -> [String]? {

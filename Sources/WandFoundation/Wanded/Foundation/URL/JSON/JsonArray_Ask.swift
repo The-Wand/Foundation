@@ -22,7 +22,7 @@
 import Foundation
 import Wand
 
-/// Ask JSON Array
+/// Ask
 ///
 /// "https://api.github.com/gists" | { (array: [Any]) in
 ///
@@ -36,7 +36,7 @@ func | (path: String, handler: @escaping ([Any])->() ) -> Wand {
     URL(string: path)! | handler
 }
 
-/// Ask JSON Array
+/// Ask
 ///
 /// URL(string: "https://api.github.com/gists") | { (array: [Any]) in
 ///
@@ -58,7 +58,7 @@ func | (url: URL, handler: @escaping ([Any])->() ) -> Wand {
     //Prepare context
     wand.save(url)
 
-    let headers = ["Accept": "application/json",
+    let headers = ["Accept": "application/json", //TODO: remove c-p JsonArray_Ask
                    "Content-Type": "application/json"]
     wand.save(headers)
 
@@ -67,61 +67,6 @@ func | (url: URL, handler: @escaping ([Any])->() ) -> Wand {
         do {
             let parsed = try JSONSerialization.jsonObject(with: data)
             wand.add(parsed as! [Any])
-        } catch(let e) {
-            wand.add(e)
-        }
-    }
-
-    return wand
-}
-
-/// Ask 
-/// JSON Dictionary
-///
-/// "https://api.github.com/gists" | { (dictionary: [String: Any]) in
-///
-/// }
-///
-@available(visionOS, unavailable)
-@discardableResult
-@inline(__always)
-public
-func | (path: String, handler: @escaping ([String: Any])->() ) -> Wand {
-    URL(string: path)! | handler
-}
-
-/// Ask 
-/// JSON Array
-///
-/// URL(string: "https://api.github.com/gists") | { (array: [Any]) in
-///
-/// }
-///
-@available(visionOS, unavailable)
-@discardableResult
-@inline(__always)
-public
-func | (url: URL, handler: @escaping ([String: Any])->() ) -> Wand {
-
-    let wand = Wand()
-
-    //Save ask
-    _ = wand.answer(the: .one(handler: handler))
-
-    //Request for a first time
-
-    //Prepare context
-    wand.save(url)
-
-    let headers = ["Accept": "application/json",
-                   "Content-Type": "application/json"]
-    wand.save(headers)
-
-    //Perfom request
-    url | .one { (data: Data) in
-        do {
-            let parsed = try JSONSerialization.jsonObject(with: data)
-            wand.add(parsed as! [String: Any])
         } catch(let e) {
             wand.add(e)
         }

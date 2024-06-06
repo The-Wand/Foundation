@@ -22,13 +22,17 @@
 import UIKit.UIImage
 import Wand
 
+extension Ask {
+
+    class Fill: Ask {
+    }
+
+}
+
 @available(iOS 10.0, *)
 @available(watchOS, unavailable)
 public
 extension Ask where T == UIImage {
-
-    class Fill: Ask {
-    }
 
     @discardableResult
     @inline(__always)
@@ -60,9 +64,7 @@ extension Ask where T == UIImage {
                                       size: canvas))
             }
 
-
             done(out)
-
             return once
         }
 

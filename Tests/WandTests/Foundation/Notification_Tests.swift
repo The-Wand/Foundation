@@ -18,6 +18,7 @@
 /// Created by Alex Kozin
 /// 2020 El Machine
 
+#if canImport(Foundation)
 import Foundation
 import XCTest
 
@@ -83,3 +84,5 @@ class Notification_Tests: XCTestCase {
 #endif
 
 }
+
+#endif

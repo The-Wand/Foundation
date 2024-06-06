@@ -24,7 +24,7 @@ import Wand
 
 /// Obtain
 ///
-/// let pedometer: CMPedometer = nil|
+/// let task: URLSessionDataTask = request|
 ///
 @available(visionOS, unavailable)
 extension URLSessionDataTask: Obtain {
