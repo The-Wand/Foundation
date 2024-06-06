@@ -28,7 +28,11 @@ import Wand
 class ImageTestCase: XCTestCase {
 
     internal
-    let url: URL = "https://www.apple.com/ac/structured-data/images/open_graph_logo.png"|
+    let path = "https://www.apple.com/ac/structured-data/images/open_graph_logo.png"
+
+    internal
+    lazy
+    var url = URL(string: path)!
 
     internal
     lazy
