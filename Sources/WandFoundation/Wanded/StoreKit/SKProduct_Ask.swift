@@ -33,6 +33,7 @@ extension SKProduct: Wanded {
 /// }
 ///
 @available(tvOS, unavailable)
+@available(visionOS, unavailable)
 @discardableResult
 @inline(__always)
 public

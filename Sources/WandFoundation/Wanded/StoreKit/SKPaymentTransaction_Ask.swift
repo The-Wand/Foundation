@@ -29,6 +29,7 @@ import Wand
 /// }
 ///
 @available(tvOS, unavailable)
+@available(visionOS, unavailable)
 @discardableResult
 @inline(__always)
 public

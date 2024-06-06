@@ -26,6 +26,7 @@ import Wand
 ///
 /// let session: URLSession = config|
 ///
+@available(tvOS, unavailable)
 @available(visionOS, unavailable)
 extension SKProductsRequest: Obtain {
 
@@ -46,6 +47,8 @@ extension SKProductsRequest: Obtain {
 
 }
 
+@available(tvOS, unavailable)
+@available(visionOS, unavailable)
 extension SKProductsRequest {
 
     class Delegate: NSObject, SKProductsRequestDelegate, Wanded {

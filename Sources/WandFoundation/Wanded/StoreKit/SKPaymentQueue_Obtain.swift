@@ -26,6 +26,8 @@ import Wand
 ///
 /// let q: SKPaymentQueue = nil|
 ///
+@available(tvOS, unavailable)
+@available(visionOS, unavailable)
 extension SKPaymentQueue: Obtain {
 
     @inline(__always)
@@ -37,6 +39,8 @@ extension SKPaymentQueue: Obtain {
     
 }
 
+@available(tvOS, unavailable)
+@available(visionOS, unavailable)
 extension SKPaymentQueue {
 
     class Delegate: NSObject, SKPaymentTransactionObserver, Wanded {

@@ -29,6 +29,7 @@ import Wand
 /// }
 ///
 @available(tvOS, unavailable)
+@available(visionOS, unavailable)
 extension SKProductsResponse: Asking, Wanded {
 
     @inline(__always)

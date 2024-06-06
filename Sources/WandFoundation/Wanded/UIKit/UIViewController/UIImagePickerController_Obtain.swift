@@ -62,6 +62,9 @@ extension UIImagePickerController: Obtain {
     
 }
 
+@available(tvOS, unavailable)
+@available(visionOS, unavailable)
+@available(watchOS, unavailable)
 extension UIImagePickerController {
     
     class Delegate: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate, Wanded {
