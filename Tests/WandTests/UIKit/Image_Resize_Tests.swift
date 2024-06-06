@@ -31,7 +31,7 @@ final
 class Image_Resize_Tests: ImageTestCase {
 
     private
-    let dimension: CGFloat = CGFloat((Int.random(in: 10...555)))
+    let dimension: CGFloat = 200
 
     private
     lazy

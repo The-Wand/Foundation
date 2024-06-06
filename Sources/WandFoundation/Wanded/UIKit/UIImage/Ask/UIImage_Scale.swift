@@ -18,7 +18,7 @@
 /// Created by Alex Kozin
 /// 2020 El Machine
 
-#if canImport(UIKit)
+#if canImport(UIKit) && !os(watchOS)
 import UIKit.UIImage
 import Wand
 

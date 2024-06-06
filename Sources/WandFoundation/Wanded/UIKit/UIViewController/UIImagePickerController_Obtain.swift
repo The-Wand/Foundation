@@ -20,7 +20,7 @@
 ///
 /// 
 
-#if canImport(UIKit)
+#if canImport(UIKit) && !os(watchOS)
 import CoreServices.UTCoreTypes
 import UIKit
 import UniformTypeIdentifiers
