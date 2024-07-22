@@ -24,7 +24,7 @@ import PackageDescription
 
 let package = Package(
     name: "Wand_Foundation",
-    defaultLocalization: "ru",
+    defaultLocalization: "su",
 
     platforms: [
         .iOS(.v14),
