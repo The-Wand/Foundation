@@ -20,6 +20,10 @@
 
 import SwiftUI
 
+import CoreBluetooth
+import Wand_Foundation
+import Wand
+
 @available(iOS 14, macOS 12, tvOS 14, watchOS 7, *)
 @main
 struct PlayApp: App {
@@ -41,6 +45,18 @@ struct ContentView: View {
             Text("Hello, world!")
         }
         .padding()
+        .onAppear {
+            |{ (peripheral: CBPeripheral) in
+
+                print(peripheral)
+
+            } | { (error: Error) in
+
+                print(error)
+
+            }
+
+        }
 
     }
 }
