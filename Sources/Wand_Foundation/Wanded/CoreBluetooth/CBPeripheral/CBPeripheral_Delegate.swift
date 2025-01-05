@@ -25,6 +25,7 @@ import Wand
 public
 extension CBPeripheral {
 
+    public
     class Delegate: NSObject, CBPeripheralDelegate, Wanded {
 
         @inlinable
@@ -43,8 +44,8 @@ extension CBPeripheral {
                         error: Error?) {
 
             isWanded?.addIf(exist: error)
-            isWanded?.add(service.characteristics,
-                          for: service.uuid.uuidString)
+            isWanded?.addIf(exist: service.characteristics,
+                            for: service.uuid.uuidString)
         }
 
         public

@@ -28,7 +28,8 @@ import Wand_Foundation
 private
 extension Notification.Name {
 
-    static var custom = Self.init(String())
+    static
+    var custom = Self.init(String())
 
 }
 

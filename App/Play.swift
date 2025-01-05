@@ -47,7 +47,6 @@ struct ContentView: View {
         .padding()
         .onAppear {
 
-
             var found: CBPeripheral?
 
             var wand: Wand!
@@ -64,6 +63,11 @@ struct ContentView: View {
             } | { (services: [CBService]) in
 
                 print(services)
+                found!.discoverCharacteristics(nil, for: services.first!)
+
+            } | .one("180A") { (characteristic: [CBCharacteristic]) in
+
+                print(characteristic)
 
             } | { (error: Error) in
 

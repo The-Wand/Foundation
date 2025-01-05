@@ -70,8 +70,6 @@ func |(wand: Wand, ask: Ask<[CBService]>) -> Wand {
     //Request for a first time
 
     //Prepare context
-
-    //Make request
     wand | .didConnect { (connected: CBPeripheral) in
 
         let delegate: CBPeripheralDelegate? = wand.get()
@@ -79,6 +77,7 @@ func |(wand: Wand, ask: Ask<[CBService]>) -> Wand {
             connected.delegate = wand.add(CBPeripheral.Delegate())
         }
 
+        //Make request
         connected.discoverServices(wand.get())
     }
 

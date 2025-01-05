@@ -19,55 +19,30 @@
 /// 2020 El Machine
 
 #if canImport(CoreBluetooth)
-import CoreBluetooth.CBPeripheral
+import CoreBluetooth.CBManager
 import Wand
 
 /// Ask
 ///
-/// any | { (services: [CBService]) in
+/// |{ (state: CBManagerState) in
 ///
 /// }
 ///
-@inline(__always)
-@discardableResult
-public
-func | (wand: Wand, handler: @escaping ([CBCharacteristic])->() ) -> Wand {
-    wand | Ask.every(handler: handler)
-}
+extension CBService: Asking {
 
-/// Ask
-/// - `every`
-/// - `one`
-/// - `while`
-///
-/// any | .one { (services: [CBService]) in
-///
-/// }
-///
-@inline(__always)
-@discardableResult
-public
-func |<C> (context: C, ask: Ask<[CBCharacteristic]>) -> Wand {
-    .to(context) | ask
-}
+    @inline(__always)
+    public
+    static
+    func wand<T>(_ wand: Wand, asks ask: Ask<T>) {
 
-/// Ask
-///
-/// wand | .retrieve { (peripherals: [CBPeripheral]) in
-///
-/// }
-///
-@inline(__always)
-@discardableResult
-public
-func |(wand: Wand, ask: Ask<[CBCharacteristic]>) -> Wand {
+        //Save ask
+        guard wand.answer(the: ask, check: true) else {
+            return
+        }
 
-    //Save ask
-    guard wand.answer(the: ask) else {
-        return wand
     }
+    
 
-    return wand
 }
 
 #endif
