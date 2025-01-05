@@ -28,6 +28,7 @@ import Wand
 ///
 /// }
 ///
+extension CBPeripheral: @retroactive Wanded {}
 extension CBPeripheral: @retroactive Asking {}
 
 extension CBPeripheral: @retroactive AskingNil {
@@ -72,50 +73,37 @@ extension CBPeripheral: @retroactive AskingNil {
 }
 
 public
-extension CBPeripheral {
+extension Ask {
 
-    class Delegate: NSObject, CBPeripheralDelegate, Wanded {
-
-        public
-        func peripheral(_ peripheral: CBPeripheral,
-                        didDiscoverServices error: Error?) {
-
-            isWanded?.addIf(exist: error)
-            isWanded?.add(peripheral.services)
-        }
-
-        public
-        func peripheral(_ peripheral: CBPeripheral,
-                        didDiscoverCharacteristicsFor service: CBService,
-                        error: Error?) {
-
-            isWanded?.addIf(exist: error)
-            isWanded?.add(service.characteristics,
-                          for: service.uuid.uuidString)
-        }
-
-        public
-        func peripheral(_ peripheral: CBPeripheral,
-                        didUpdateValueFor characteristic: CBCharacteristic,
-                        error: Error?) {
-
-            isWanded?.addIf(exist: error)
-            isWanded?.add(characteristic,
-                          for: characteristic.uuid.uuidString)
-        }
-
-        public 
-        func peripheral(_ peripheral: CBPeripheral,
-                        didDiscoverDescriptorsFor characteristic: CBCharacteristic,
-                        error: Error?) {
-
-            isWanded?.addIf(exist: error)
-            isWanded?.add(characteristic.descriptors,
-                          for: characteristic.uuid.uuidString)
-        }
-        
+    class DidConnect: Every {
     }
-    
+
+    class DidDisconnect: Every {
+    }
+
+}
+
+public
+extension Ask where T == CBPeripheral {
+
+    @inline(__always)
+    static
+    func didConnect(handler: @escaping (CBPeripheral)->() ) -> DidConnect {
+        .init(once: false, for: CBCentralManager.Delegate.Keys.didConnect.rawValue) {
+            handler($0)
+            return true
+        }
+    }
+
+
+    static
+    func didDisconnect(handler: @escaping (CBPeripheral)->() ) -> DidDisconnect {
+        .init(once: false, for: CBCentralManager.Delegate.Keys.didDisconnectPeripheral.rawValue) {
+            handler($0)
+            return true
+        }
+    }
+
 }
 
 #endif

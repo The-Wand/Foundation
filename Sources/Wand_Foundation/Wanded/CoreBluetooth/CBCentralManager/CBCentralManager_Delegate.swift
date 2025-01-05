@@ -22,27 +22,6 @@
 import CoreBluetooth.CBCentralManager
 import Wand
 
-/// Obtain
-///
-/// let manager: CBCentralManager = nil|
-///
-extension CBCentralManager: @retroactive Obtain {
-
-    @inline(__always)
-    public
-    static
-    func obtain(by wand: Wand?) -> Self {
-
-        let wand = wand ?? Wand()
-
-        let source = Self(delegate: wand.add(Delegate()),
-                          queue:    wand.get(),
-                          options:  wand.get())
-        return source
-    }
-
-}
-
 public
 extension CBCentralManager {
 
