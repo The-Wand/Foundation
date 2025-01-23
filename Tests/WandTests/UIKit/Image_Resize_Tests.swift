@@ -66,7 +66,7 @@ class Image_Resize_Tests: ImageTestCase {
 
     func test_Image_Fit() {
         let e = expectation()
-print("ddd: %i", dimension)
+
         let calculated = round( inSize.height / (inSize.width / dimension) )
 
         image | .fit(to: size) { (out: UIImage) in
