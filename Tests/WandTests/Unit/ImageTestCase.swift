@@ -22,7 +22,7 @@
 import UIKit
 import XCTest
 
-import Wand_Foundation
+import WandFoundation
 import Wand
 
 class ImageTestCase: XCTestCase {

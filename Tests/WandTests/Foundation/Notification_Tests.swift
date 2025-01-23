@@ -23,7 +23,7 @@ import Foundation
 import XCTest
 
 import Wand
-import Wand_Foundation
+import WandFoundation
 
 private
 extension Notification.Name {

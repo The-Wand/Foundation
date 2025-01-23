@@ -21,7 +21,7 @@
 import SwiftUI
 
 import CoreBluetooth
-import Wand_Foundation
+import WandFoundation
 import Wand
 
 @available(iOS 14, macOS 12, tvOS 14, watchOS 7, *)

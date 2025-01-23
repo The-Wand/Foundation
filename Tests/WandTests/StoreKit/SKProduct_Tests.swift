@@ -21,7 +21,7 @@
 //#if canImport(StoreKit)
 //import StoreKit.SKProduct
 //
-//import Wand_Foundation
+//import WandFoundation
 //import Wand
 //
 //import XCTest

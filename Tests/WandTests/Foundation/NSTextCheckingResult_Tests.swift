@@ -23,7 +23,7 @@ import Foundation.NSTextCheckingResult
 import XCTest
 
 import Wand
-import Wand_Foundation
+import WandFoundation
 
 final
 class NSTextCheckingResultCheckingType_Tests: XCTestCase {

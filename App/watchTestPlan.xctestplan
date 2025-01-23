@@ -15,7 +15,7 @@
       "referenceType" : "built-in"
     },
     "targetForVariableExpansion" : {
-      "containerPath" : "container:Wand-Tools.xcodeproj",
+      "containerPath" : "container:WandFoundation.xcodeproj",
       "identifier" : "613966142BE0F4EF004C18A3",
       "name" : "WatchPlay"
     }
@@ -23,7 +23,7 @@
   "testTargets" : [
     {
       "target" : {
-        "containerPath" : "container:Wand_Foundation.xcodeproj",
+        "containerPath" : "container:WandFoundation.xcodeproj",
         "identifier" : "613966472BE0F87A004C18A3",
         "name" : "watchPlayTests"
       }
