@@ -59,8 +59,8 @@ extension CBPeripheral: @retroactive AskingNil {
                 return true
             }
 
-            let services: [CBUUID]?         = wand.get()
-            let options: [String : Any]?    = wand.get()
+            let services:   [CBUUID]?           = wand.get()
+            let options:    [String : Any]?     = wand.get()
 
             source.scanForPeripherals(withServices: services,
                                       options: options)

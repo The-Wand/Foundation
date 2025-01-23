@@ -67,11 +67,9 @@ extension Ask {
 @discardableResult
 public
 func | (image: Image?, ask: Ask<Image>.Operation) -> Wand {
-
     let wand = Wand.to(image)
     _ = wand.answer(the: ask, check: true)
     return wand
-
 }
 
 #endif
