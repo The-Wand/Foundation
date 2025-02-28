@@ -25,7 +25,6 @@ import Wand
 public
 extension CBCentralManager {
 
-    public
     class Delegate: NSObject, CBCentralManagerDelegate, Wanded {
 
         public

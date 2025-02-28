@@ -25,7 +25,6 @@ import Wand
 public
 extension CBPeripheral {
 
-    public
     class Delegate: NSObject, CBPeripheralDelegate, Wanded {
 
         @inlinable
