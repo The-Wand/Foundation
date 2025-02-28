@@ -26,7 +26,8 @@ import Wand
 ///
 /// let timestamp: Int = date|
 ///
-extension TimeInterval: Obtain {
+extension Double: @retroactive Wanded {}
+extension TimeInterval: @retroactive Obtain {
 
     @inline(__always)
     public

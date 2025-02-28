@@ -22,6 +22,7 @@ import SwiftUI
 
 import CoreBluetooth
 import WandFoundation
+import Vision
 import Wand
 
 @available(iOS 14, macOS 12, tvOS 14, watchOS 7, *)
@@ -47,33 +48,33 @@ struct ContentView: View {
         .padding()
         .onAppear {
 
-            var found: CBPeripheral?
-
-            var wand: Wand!
-            wand = |{ (peripheral: CBPeripheral) in
-
-                if (found != nil) {
-                    return
-                }
-                found = peripheral
-
-                let manager = wand.obtain() as CBCentralManager
-                manager.connect(peripheral)
-
-            } | { (services: [CBService]) in
-
-                print(services)
-                found!.discoverCharacteristics(nil, for: services.first!)
-
-            } | .one("180A") { (characteristic: [CBCharacteristic]) in
-
-                print(characteristic)
-
-            } | { (error: Error) in
-
-                print(error)
-
-            }
+//            var found: CBPeripheral?
+//
+//            var wand: Wand!
+//            wand = |{ (peripheral: CBPeripheral) in
+//
+//                if (found != nil) {
+//                    return
+//                }
+//                found = peripheral
+//
+//                let manager = wand.obtain() as CBCentralManager
+//                manager.connect(peripheral)
+//
+//            } | { (services: [CBService]) in
+//
+//                print(services)
+//                found!.discoverCharacteristics(nil, for: services.first!)
+//
+//            } | .one("180A") { (characteristic: [CBCharacteristic]) in
+//
+//                print(characteristic)
+//
+//            } | { (error: Error) in
+//
+//                print(error)
+//
+//            }
 
         }
 

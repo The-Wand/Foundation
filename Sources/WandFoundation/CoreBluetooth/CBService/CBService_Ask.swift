@@ -28,7 +28,7 @@ import Wand
 ///
 /// }
 ///
-extension CBService: Asking {
+extension CBService: @retroactive Asking {
 
     @inline(__always)
     public
