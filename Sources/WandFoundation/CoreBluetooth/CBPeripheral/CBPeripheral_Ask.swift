@@ -70,10 +70,10 @@ extension CBPeripheral: AskingNil {
 public
 extension Ask {
 
-    class DidConnect: Every {
+    class DidConnect: Ask {
     }
 
-    class DidDisconnect: Every {
+    class DidDisconnect: Ask {
     }
 
 }
