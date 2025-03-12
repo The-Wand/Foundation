@@ -124,7 +124,6 @@ extension VisionObservationExpectable {
 }
 
 @available(iOS 14.0, *)
-extension VNFaceObservation: @retroactive Asking {}
 extension VNFaceObservation: VisionObservationExpectable {
 
     public
@@ -133,7 +132,6 @@ extension VNFaceObservation: VisionObservationExpectable {
 }
 
 @available(iOS 14.0, *)
-extension VNBarcodeObservation: @retroactive Asking {}
 extension VNBarcodeObservation: VisionObservationExpectable {
 
     public
@@ -142,7 +140,6 @@ extension VNBarcodeObservation: VisionObservationExpectable {
 }
 
 @available(iOS 14.0, macOS 11.0, *)
-extension VNHumanHandPoseObservation: @retroactive Asking {}
 extension VNHumanHandPoseObservation: VisionObservationExpectable {
 
     public
@@ -157,7 +154,6 @@ extension VNHumanHandPoseObservation: VisionObservationExpectable {
 }
 
 @available(iOS 14.0, macOS 11.0, *)
-extension VNHumanBodyPoseObservation: @retroactive Asking {}
 extension VNHumanBodyPoseObservation: VisionObservationExpectable {
 
     public
@@ -166,7 +162,6 @@ extension VNHumanBodyPoseObservation: VisionObservationExpectable {
 }
 
 @available(iOS 14.0, *)
-extension VNClassificationObservation: @retroactive Asking {}
 extension VNClassificationObservation: VisionObservationExpectable {
 
     public

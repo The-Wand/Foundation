@@ -26,8 +26,7 @@ import Wand
 ///
 @available(tvOS, unavailable)
 @available(visionOS, unavailable)
-extension SKPaymentQueue: @retroactive Wanded {}
-extension SKPaymentQueue: @retroactive Obtain {
+extension SKPaymentQueue: Obtain {
 
     @inline(__always)
     public 

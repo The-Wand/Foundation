@@ -30,7 +30,7 @@ import Wand
 @available(iOS 11, macOS 10.13, tvOS 11, *)
 @available(watchOS, unavailable)
 @available(visionOS, unavailable)
-extension VNImageRequestHandler: @retroactive Obtain, @retroactive Wanded {
+extension VNImageRequestHandler: Obtain {
 
     @inline(__always)
     public

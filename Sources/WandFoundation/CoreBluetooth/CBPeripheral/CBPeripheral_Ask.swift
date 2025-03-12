@@ -26,10 +26,7 @@ import Wand
 ///
 /// }
 ///
-extension CBPeripheral: @retroactive Wanded {}
-extension CBPeripheral: @retroactive Asking {}
-
-extension CBPeripheral: @retroactive AskingNil {
+extension CBPeripheral: AskingNil {
 
     @inline(__always)
     public

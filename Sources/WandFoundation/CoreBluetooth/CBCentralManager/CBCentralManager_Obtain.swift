@@ -24,7 +24,7 @@ import Wand
 ///
 /// let manager: CBCentralManager = nil|
 ///
-extension CBCentralManager: @retroactive Obtain {
+extension CBCentralManager: Obtain {
 
     @inline(__always)
     public

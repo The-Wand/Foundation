@@ -26,9 +26,7 @@ import Wand
 ///
 /// }
 ///
-extension CBManagerState: @retroactive Asking {}
-
-extension CBManagerState: @retroactive AskingNil {
+extension CBManagerState: AskingNil {
 
     @inline(__always)
     public

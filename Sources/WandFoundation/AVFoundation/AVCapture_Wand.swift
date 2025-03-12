@@ -23,7 +23,7 @@ import Wand
 
 @available(tvOS 17.0, *)
 @available(visionOS, unavailable)
-extension AVCaptureDevice: @retroactive Obtain, @retroactive Wanded {
+extension AVCaptureDevice: Obtain {
 
     public static func obtain(by wand: Wand?) -> Self {
 
@@ -47,7 +47,7 @@ extension AVCaptureDevice: @retroactive Obtain, @retroactive Wanded {
 
 @available(tvOS 17.0, *)
 @available(visionOS, unavailable)
-extension AVCaptureDeviceInput: @retroactive Obtain, @retroactive Wanded {
+extension AVCaptureDeviceInput: Obtain {
 
     public static func obtain(by wand: Wand?) -> Self {
         
@@ -62,7 +62,7 @@ extension AVCaptureDeviceInput: @retroactive Obtain, @retroactive Wanded {
 }
 
 @available(tvOS 17.0, *)
-extension AVCaptureSession: @retroactive Obtain, @retroactive Wanded {
+extension AVCaptureSession: Obtain {
 
     public static func obtain(by wand: Wand?) -> Self {
         wand?.add(Self()) ?? Self()
@@ -72,7 +72,7 @@ extension AVCaptureSession: @retroactive Obtain, @retroactive Wanded {
 
 @available(tvOS 17.0, *)
 @available(visionOS, unavailable)
-extension AVCaptureVideoDataOutput: @retroactive Asking, @retroactive Wanded {
+extension AVCaptureVideoDataOutput: Asking {
 
     public static func wand<T>(_ wand: Wand, asks ask: Ask<T>) {
 
@@ -140,7 +140,7 @@ extension AVCaptureVideoDataOutput {
 
 @available(tvOS 17.0, *)
 @available(visionOS, unavailable)
-extension AVCaptureVideoPreviewLayer: @retroactive Obtain, @retroactive Wanded {
+extension AVCaptureVideoPreviewLayer: Obtain {
 
     public static func obtain(by wand: Wand?) -> Self {
         let layer = Self()

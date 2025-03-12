@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		611B6AD32D81844900FD0BD1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 611B6AD22D81843F00FD0BD1 /* Assets.xcassets */; };
+		611B6AD42D81844900FD0BD1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 611B6AD22D81843F00FD0BD1 /* Assets.xcassets */; };
 		613966272BE0F532004C18A3 /* Play.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6162624528BC8E2A00D63EA5 /* Play.swift */; };
-		613966662BE0FB0D004C18A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6162624728BC8E2B00D63EA5 /* Assets.xcassets */; };
 		615159132BF76A8C001646EA /* WandFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 61F648C62BEA122900C2625C /* WandFoundation */; };
 		6153E3212C119A8100F42709 /* Notification_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6153E2FC2C119A8100F42709 /* Notification_Tests.swift */; };
 		6153E3222C119A8100F42709 /* Notification_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6153E2FC2C119A8100F42709 /* Notification_Tests.swift */; };
@@ -32,7 +33,6 @@
 		6153E3662C119A8100F42709 /* Package.xctestplan in Resources */ = {isa = PBXBuildFile; fileRef = 6153E31E2C119A8100F42709 /* Package.xctestplan */; };
 		6153E3672C119A8100F42709 /* Package.xctestplan in Resources */ = {isa = PBXBuildFile; fileRef = 6153E31E2C119A8100F42709 /* Package.xctestplan */; };
 		6162625428BC8E2B00D63EA5 /* Play.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6162624528BC8E2A00D63EA5 /* Play.swift */; };
-		6162625828BC8E2B00D63EA5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6162624728BC8E2B00D63EA5 /* Assets.xcassets */; };
 		619435982C0E015C0034554B /* Any_ in Frameworks */ = {isa = PBXBuildFile; productRef = 619435972C0E015C0034554B /* Any_ */; };
 		6194359B2C0E01600034554B /* Any_ in Frameworks */ = {isa = PBXBuildFile; productRef = 6194359A2C0E01600034554B /* Any_ */; };
 		61F648C72BEA122900C2625C /* WandFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 61F648C62BEA122900C2625C /* WandFoundation */; };
@@ -56,6 +56,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		611B6AD22D81843F00FD0BD1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		612562EB2D7B1E8600C88123 /* NOTICE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = NOTICE.txt; sourceTree = "<group>"; };
 		613966152BE0F4EF004C18A3 /* watchPlay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = watchPlay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		613966482BE0F87A004C18A3 /* watchPlayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = watchPlayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -74,7 +75,6 @@
 		6153E3072C119A8100F42709 /* XCTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCTestCase.swift; sourceTree = "<group>"; };
 		6153E31E2C119A8100F42709 /* Package.xctestplan */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Package.xctestplan; sourceTree = "<group>"; };
 		6162624528BC8E2A00D63EA5 /* Play.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Play.swift; sourceTree = "<group>"; };
-		6162624728BC8E2B00D63EA5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6162624C28BC8E2B00D63EA5 /* Play.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Play.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6172A0EF2C10A30E00AF925F /* INSPIRATION.TXT */ = {isa = PBXFileReference; lastKnownFileType = text; path = INSPIRATION.TXT; sourceTree = "<group>"; };
 		618D53D12BE3C5120098DB6F /* wandTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = wandTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -83,7 +83,6 @@
 		61A37BB42BE24A5F007B7FEE /* PlayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		61B1B41C2BC9696200BD1F36 /* Entitlements.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Entitlements.entitlements; sourceTree = "<group>"; };
 		61B464E72BEB76B70064B4C1 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
-		61CAAD372C16D5020061DAA5 /* Package.resolved */ = {isa = PBXFileReference; lastKnownFileType = text; name = Package.resolved; path = WandFoundation.xcodeproj/xcshareddata/swiftpm/Package.resolved; sourceTree = "<group>"; };
 		61DC60242C0F48A4003D5B36 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS17.5.sdk/System/Library/Frameworks/StoreKit.framework; sourceTree = DEVELOPER_DIR; };
 		OBJ_141 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		OBJ_142 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -177,7 +176,7 @@
 		6162624428BC8E2A00D63EA5 /* App */ = {
 			isa = PBXGroup;
 			children = (
-				6162624728BC8E2B00D63EA5 /* Assets.xcassets */,
+				611B6AD22D81843F00FD0BD1 /* Assets.xcassets */,
 				61B1B41C2BC9696200BD1F36 /* Entitlements.entitlements */,
 				615158E82BF761DC001646EA /* info.plist */,
 				6162624528BC8E2A00D63EA5 /* Play.swift */,
@@ -222,7 +221,6 @@
 				6162624428BC8E2A00D63EA5 /* App */,
 				615158EB2BF765A2001646EA /* info.plist */,
 				61B464E72BEB76B70064B4C1 /* Package.swift */,
-				61CAAD372C16D5020061DAA5 /* Package.resolved */,
 				OBJ_138 /* Products */,
 				618F8ED22BE9FDCE00618E7C /* Tests */,
 				615159052BF76666001646EA /* CONTRIB.TXT */,
@@ -377,7 +375,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				613966662BE0FB0D004C18A3 /* Assets.xcassets in Resources */,
+				611B6AD42D81844900FD0BD1 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -394,7 +392,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6153E3652C119A8100F42709 /* Package.xctestplan in Resources */,
-				6162625828BC8E2B00D63EA5 /* Assets.xcassets in Resources */,
+				611B6AD32D81844900FD0BD1 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -492,7 +490,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 334;
+				CURRENT_PROJECT_VERSION = 343;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = LZSP4Z4B6A;
 				ENABLE_HARDENED_RUNTIME = NO;
@@ -528,7 +526,7 @@
 				SUPPORTED_PLATFORMS = "watchsimulator watchos";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				TVOS_DEPLOYMENT_TARGET = 14.0;
 				WATCHOS_DEPLOYMENT_TARGET = 7.0;
@@ -555,7 +553,7 @@
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 334;
+				CURRENT_PROJECT_VERSION = 343;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = LZSP4Z4B6A;
 				ENABLE_HARDENED_RUNTIME = NO;
@@ -586,7 +584,7 @@
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "watchsimulator watchos";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				TVOS_DEPLOYMENT_TARGET = 14.0;
 				VALIDATE_PRODUCT = YES;
@@ -610,7 +608,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 334;
+				CURRENT_PROJECT_VERSION = 343;
 				DEVELOPMENT_TEAM = LZSP4Z4B6A;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
@@ -633,7 +631,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/watchPlay.app/watchPlay";
 				TVOS_DEPLOYMENT_TARGET = 14.0;
@@ -658,7 +656,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 334;
+				CURRENT_PROJECT_VERSION = 343;
 				DEVELOPMENT_TEAM = LZSP4Z4B6A;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -676,7 +674,7 @@
 				SUPPORTED_PLATFORMS = "watchos watchsimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/watchPlay.app/watchPlay";
 				TVOS_DEPLOYMENT_TARGET = 14.0;
@@ -720,7 +718,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_ENTITLEMENTS = App/Entitlements.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 334;
+				CURRENT_PROJECT_VERSION = 343;
 				DEVELOPMENT_TEAM = LZSP4Z4B6A;
 				ENABLE_HARDENED_RUNTIME = NO;
 				ENABLE_PREVIEWS = YES;
@@ -778,7 +776,7 @@
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2,3,7";
 				TVOS_DEPLOYMENT_TARGET = 14.0;
 			};
@@ -820,7 +818,7 @@
 				CODE_SIGN_ENTITLEMENTS = App/Entitlements.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 334;
+				CURRENT_PROJECT_VERSION = 343;
 				DEVELOPMENT_TEAM = LZSP4Z4B6A;
 				ENABLE_HARDENED_RUNTIME = NO;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -872,7 +870,7 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2,3,7";
 				TVOS_DEPLOYMENT_TARGET = 14.0;
 				VALIDATE_PRODUCT = YES;
@@ -895,7 +893,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 334;
+				CURRENT_PROJECT_VERSION = 343;
 				DEVELOPMENT_TEAM = LZSP4Z4B6A;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
@@ -922,7 +920,7 @@
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2,3,7";
 				TEST_HOST = "";
 				"TEST_HOST[sdk=*]" = "$(BUILT_PRODUCTS_DIR)/Play.app/Play";
@@ -949,7 +947,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 334;
+				CURRENT_PROJECT_VERSION = 343;
 				DEVELOPMENT_TEAM = LZSP4Z4B6A;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -971,7 +969,7 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2,3,7";
 				TEST_HOST = "";
 				"TEST_HOST[sdk=*]" = "$(BUILT_PRODUCTS_DIR)/Play.app/Play";

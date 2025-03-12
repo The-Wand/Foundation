@@ -25,7 +25,7 @@ import Wand
 ///
 /// let q: VNImageRequestHandler = nil|
 ///
-extension VNRequest: @retroactive Obtain {
+extension VNRequest: Obtain {
 
     @inline(__always)
     public

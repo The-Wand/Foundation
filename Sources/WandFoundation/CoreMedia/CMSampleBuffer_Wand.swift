@@ -24,7 +24,7 @@ import Wand
 
 @available(watchOS 6, tvOS 17.0, *)
 @available(visionOS, unavailable)
-extension CMSampleBuffer: @retroactive Asking {
+extension CMSampleBuffer: Asking {
 
     public static func wand<T>(_ wand: Wand, asks: Ask<T>) {
 
