@@ -17,7 +17,7 @@
 /// El Machine 🤖
 
 import Foundation
-import XCTest
+@preconcurrency import XCTest
 
 import Wand
 
@@ -28,7 +28,8 @@ import Wand
 
 extension TimeInterval {
 
-    static var `default` = 4.2
+    static
+    let `default` = 4.2
 
 }
 
@@ -36,7 +37,7 @@ extension TimeInterval {
 extension [XCTMetric] {
 
     static
-    var `default`: Self = {[
+    let `default`: Self = {[
         XCTCPUMetric(),
         XCTClockMetric(),
         XCTMemoryMetric(),

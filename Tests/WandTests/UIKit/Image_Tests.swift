@@ -35,6 +35,7 @@ class Image_Tests: ImageTestCase {
         }
     }
 
+    @MainActor
     func test_Image_Round() {
         let e = expectation()
 

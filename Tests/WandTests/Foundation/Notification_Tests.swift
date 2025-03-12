@@ -27,13 +27,14 @@ private
 extension Notification.Name {
 
     static
-    var custom = Self.init(String())
+    let custom = Self.init(String())
 
 }
 
 final
 class Notification_Tests: XCTestCase {
 
+    @MainActor
     func test_Notification_one() {
         let e = expectation()
         e.assertForOverFulfill = true

@@ -42,6 +42,7 @@ class Image_Resize_Tests: ImageTestCase {
         }
     }
 
+    @MainActor
     func test_Image_Fill() {
         let e = expectation()
 
@@ -62,6 +63,7 @@ class Image_Resize_Tests: ImageTestCase {
         waitForExpectations()
     }
 
+    @MainActor
     func test_Image_Fit() {
         let e = expectation()
 
@@ -83,6 +85,7 @@ class Image_Resize_Tests: ImageTestCase {
         waitForExpectations()
     }
 
+    @MainActor
     func test_Image_Scale() {
         let e = expectation()
 
