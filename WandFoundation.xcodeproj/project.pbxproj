@@ -58,6 +58,8 @@
 /* Begin PBXFileReference section */
 		611B6AD22D81843F00FD0BD1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		612562EB2D7B1E8600C88123 /* NOTICE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = NOTICE.txt; sourceTree = "<group>"; };
+		6128FA3E2D835494008D5BFA /* Package.resolved */ = {isa = PBXFileReference; lastKnownFileType = text; name = Package.resolved; path = WandFoundation.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved; sourceTree = "<group>"; };
+		6128FA3F2D8354A2008D5BFA /* Package.resolved */ = {isa = PBXFileReference; lastKnownFileType = text; path = Package.resolved; sourceTree = "<group>"; };
 		613966152BE0F4EF004C18A3 /* watchPlay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = watchPlay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		613966482BE0F87A004C18A3 /* watchPlayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = watchPlayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		615158E82BF761DC001646EA /* info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = info.plist; sourceTree = "<group>"; };
@@ -221,6 +223,8 @@
 				6162624428BC8E2A00D63EA5 /* App */,
 				615158EB2BF765A2001646EA /* info.plist */,
 				61B464E72BEB76B70064B4C1 /* Package.swift */,
+				6128FA3F2D8354A2008D5BFA /* Package.resolved */,
+				6128FA3E2D835494008D5BFA /* Package.resolved */,
 				OBJ_138 /* Products */,
 				618F8ED22BE9FDCE00618E7C /* Tests */,
 				615159052BF76666001646EA /* CONTRIB.TXT */,
