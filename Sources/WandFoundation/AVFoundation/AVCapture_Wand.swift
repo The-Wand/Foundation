@@ -16,9 +16,8 @@
 /// Created by Alex Kozin
 /// El Machine 🤖
 
-#if !os(watchOS)
+#if canImport(AVFoundation) && !os(watchOS) && !os(visionOS)
 import AVFoundation
-
 import Wand
 
 @available(tvOS 17.0, *)

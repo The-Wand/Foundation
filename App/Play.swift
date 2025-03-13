@@ -20,7 +20,6 @@ import SwiftUI
 
 import CoreBluetooth
 import WandFoundation
-import Vision
 import Wand
 
 @available(iOS 14, macOS 12, tvOS 14, watchOS 7, *)

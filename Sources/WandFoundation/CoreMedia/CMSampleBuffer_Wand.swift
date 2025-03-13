@@ -16,7 +16,7 @@
 /// Created by Alex Kozin
 /// El Machine 🤖
 ///
-#if canImport(CoreMedia) && !os(watchOS)
+#if canImport(CoreMedia) && !os(watchOS) && !os(visionOS)
 
 import AVFoundation.AVCaptureVideoDataOutput
 import CoreMedia.CMSampleBuffer
