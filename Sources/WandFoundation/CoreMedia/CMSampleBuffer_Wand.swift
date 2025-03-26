@@ -26,7 +26,11 @@ import Wand
 @available(visionOS, unavailable)
 extension CMSampleBuffer: Asking {
 
-    public static func wand<T>(_ wand: Wand, asks: Ask<T>) {
+    public static func wand<T>(_ wand: Wand, asks ask: Ask<T>) {
+
+        guard wand.answer(the: ask) else {
+            return
+        }
 
         //AVCaptureVideoDataOutput will produce CMSampleBuffer
         wand | Ask<AVCaptureVideoDataOutput>.every()

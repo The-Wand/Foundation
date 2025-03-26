@@ -112,7 +112,10 @@ extension AVCaptureVideoDataOutput: Asking {
                                        reason: "Could not add video data output"))
         }
         session.commitConfiguration()
-        session.startRunning()
+
+        Task.detached(priority: .userInitiated) {
+            session.startRunning()
+        }
 
         wand.add(output)
 

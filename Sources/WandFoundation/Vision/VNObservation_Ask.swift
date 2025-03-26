@@ -89,8 +89,6 @@ extension VisionObservationExpectable {
             try! handler.perform([request])
             if let results = request.results, !results.isEmpty {
                 wand.add(results as! [Self])
-            } else {
-                wand.close()
             }
         }
 
@@ -100,7 +98,6 @@ extension VisionObservationExpectable {
         if let handler: VNImageRequestHandler = wand.get() {
             perform(handler)
         } else {
-
 
             #if !os(visionOS)
 
@@ -145,6 +142,7 @@ extension VNHumanHandPoseObservation: VisionObservationExpectable {
     public
     typealias Request = VNDetectHumanHandPoseRequest
 
+    public
     static func | (piped: VNHumanHandPoseObservation,
                    joint: JointName) -> CGPoint {
         let recognized = try! piped.recognizedPoint(joint)
