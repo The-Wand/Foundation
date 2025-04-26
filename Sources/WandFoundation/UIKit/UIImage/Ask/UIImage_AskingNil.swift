@@ -53,21 +53,4 @@ extension Image: AskingNil, Wanded {
 
 }
 
-public
-extension Ask {
-
-    class Operation: Ask {
-    }
-
-}
-
-@inline(__always)
-@discardableResult
-public
-func | (image: Image?, ask: Ask<Image>.Operation) -> Wand {
-    let wand = Wand.to(image)
-    _ = wand.answer(the: ask, check: true)
-    return wand
-}
-
 #endif

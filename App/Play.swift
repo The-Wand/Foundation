@@ -45,6 +45,8 @@ struct ContentView: View {
         .padding()
         .onAppear {
 
+            
+
 //            var found: CBPeripheral?
 //
 //            var wand: Wand!
