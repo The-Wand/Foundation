@@ -17,21 +17,29 @@
 /// El Machine 🤖
 
 #if canImport(Foundation)
-import Foundation.NSNotification
+import Foundation.NSUserDefaults
 import Wand
 
-/// Obtain
+/// Ubiquitous
 ///
-/// let center: NotificationCenter = nil|
+/// let defaults = UserDefaults.self|
 ///
-extension NotificationCenter: Obtain {
+extension UserDefaults: Obtain { //TODO: 2.0 Ubiquitous {
 
     @inline(__always)
     public
-    static 
+    static
     func obtain(by wand: Wand?) -> Self {
-        Self.default as! Self
+        Self.standard as! Self
     }
+    
+    //TODO: 2.0
+//    	@inline(__always)
+//    	static
+//    public
+//    	func access() -> Self {
+//		Self.standard as! Self
+//	}
 
 }
 
