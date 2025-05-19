@@ -31,12 +31,12 @@ import Wand
 @discardableResult
 @inline(__always)
 public
-func | (product: SKProduct, handler: @escaping ([SKPaymentTransaction])->() ) -> Wand {
+func | (product: SKProduct, handler: @escaping ([SKPaymentTransaction])->() ) -> Core {
 
     let wand = product.wand
     let ask = Ask.one(handler: handler)
 
-    let queue: SKPaymentQueue = wand.obtain()
+    let queue: SKPaymentQueue = wand.get()
 
     defer { //Add payment anyway
         let payment = SKPayment(product: product)
@@ -44,18 +44,18 @@ func | (product: SKProduct, handler: @escaping ([SKPaymentTransaction])->() ) ->
     }
 
     //Save ask
-    guard wand.answer(the: ask) else {
+    guard wand.append(ask: ask) else {
         return wand
     }
 
     //Prepare first request
-    let delegate = wand.save(SKPaymentQueue.Delegate())
-    queue.add(delegate)
-
-    //Set the cleaner
-    wand.setCleaner(for: ask) {
-        queue.remove(delegate)
-    }
+//    let delegate = wand.save(SKPaymentQueue.Delegate())
+//    queue.add(delegate)
+//
+//    //Set the cleaner
+//    wand.setCleaner(for: ask) {
+//        queue.remove(delegate)
+//    }
 
     return wand
 }

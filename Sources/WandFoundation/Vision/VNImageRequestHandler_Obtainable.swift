@@ -30,12 +30,13 @@ import Wand
 @available(iOS 11, macOS 10.13, tvOS 11, *)
 @available(watchOS, unavailable)
 @available(visionOS, unavailable)
-extension VNImageRequestHandler: Obtain {
-
-    @inline(__always)
+extension VNImageRequestHandler: Obtainable {
+    
     public
     static
-    func obtain(by wand: Wand?) -> Self {
+    func obtain(by wand: Core?) -> Self {
+
+//        let wand = wand ?? Core()
 
         guard let wand else {
             fatalError()

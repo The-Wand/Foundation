@@ -33,21 +33,26 @@ extension Image: AskingNil, Wanded {
     ///
     /// }
     ///
-    @inline(__always)
+    @inlinable
     public
     static
-    func wand<T>(_ wand: Wand, asks ask: Ask<T>) {
+    func ask<C, T>(with context: C, ask: Ask<T>) -> Core {
 
+        let wand = Wand.Core.to(context)
+        
         //Save ask
-        guard wand.answer(the: ask, check: true) else {
-            return
+        guard wand.append(ask: ask, check: true) else {
+            return wand
         }
 
         #if os(iOS)
             //Request for a first time
-            let source: UIImagePickerController = wand.obtain()
+            let source: UIImagePickerController = wand.get()
             source.presentOnVisible()
         #endif
+        
+        return wand
+        
     }
 
 

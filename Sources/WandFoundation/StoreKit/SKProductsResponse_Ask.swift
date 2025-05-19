@@ -26,28 +26,28 @@ import Wand
 ///
 /// }
 ///
-@available(tvOS, unavailable)
-@available(visionOS, unavailable)
-extension SKProductsResponse: Asking, Wanded {
-
-    @inline(__always)
-    public
-    static
-    func wand<T>(_ wand: Wand, asks ask: Ask<T>) {
-
-        //Save ask
-        _ = wand.answer(the: ask)
-
-        //Request for a first time
-
-        //Prepare context
-        let source: SKProductsRequest = wand.obtain()
-
-        //Make request
-        source.start()
-
-    }
-
-}
+//@available(tvOS, unavailable)
+//@available(visionOS, unavailable)
+//extension SKProductsResponse: Asking, Wanded {
+//
+//    @inline(__always)
+//    public
+//    static
+//    func wand<T>(_ wand: Wand, asks ask: Ask<T>) {
+//
+//        //Save ask
+//        _ = wand.answer(the: ask)
+//
+//        //Request for a first time
+//
+//        //Prepare context
+//        let source: SKProductsRequest = wand.obtain()
+//
+//        //Make request
+//        source.start()
+//
+//    }
+//
+//}
 
 #endif

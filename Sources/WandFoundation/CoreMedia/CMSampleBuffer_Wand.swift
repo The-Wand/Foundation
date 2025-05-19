@@ -25,15 +25,21 @@ import Wand
 @available(watchOS 6, tvOS 17.0, *)
 @available(visionOS, unavailable)
 extension CMSampleBuffer: Asking {
-
-    public static func wand<T>(_ wand: Wand, asks ask: Ask<T>) {
-
-        guard wand.answer(the: ask) else {
-            return
+    
+    @inlinable
+    public
+    static
+    func ask<C, T>(with context: C, ask: Ask<T>) -> Core {
+        
+        let wand = Wand.Core.to(context)
+        
+        //Save ask
+        guard wand.append(ask: ask) else {
+            return wand
         }
 
         //AVCaptureVideoDataOutput will produce CMSampleBuffer
-        wand | Ask<AVCaptureVideoDataOutput>.every()
+        return wand | Ask<AVCaptureVideoDataOutput>.every()
 
     }
 

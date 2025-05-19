@@ -27,21 +27,25 @@ import Wand
 /// }
 ///
 extension CBManagerState: AskingNil {
-
-    @inline(__always)
+    
+    @inlinable
     public
     static
-    func wand<T>(_ wand: Wand, asks ask: Ask<T>) {
-
+    func ask<C, T>(with context: C, ask: Ask<T>) -> Core {
+        
+        let wand = Wand.Core.to(context)
+        
         //Save ask
-        guard wand.answer(the: ask) else {
-            return
+        guard wand.append(ask: ask) else {
+            return wand
         }
 
         //Request for a first time
 
         //Make request
-        _ = wand.obtain() as CBCentralManager
+        _ = wand.get() as CBCentralManager
+        
+        return wand
 
     }
 

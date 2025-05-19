@@ -21,7 +21,7 @@
 import AVFoundation
 import Wand
 
-public postfix func | (piped: Wand.Resource) -> AVPlayerLayer {
+public postfix func | (piped: Core.Resource) -> AVPlayerLayer {
     AVPlayerLayer(player: piped|)
 }
 
@@ -29,7 +29,7 @@ public postfix func | (piped: AVPlayer) -> AVPlayerLayer {
     AVPlayerLayer(player: piped)
 }
 
-public postfix func | (piped: Wand.Resource) -> AVPlayer {
+public postfix func | (piped: Core.Resource) -> AVPlayer {
     AVPlayer(url: piped|)
 }
 

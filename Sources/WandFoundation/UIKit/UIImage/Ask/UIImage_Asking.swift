@@ -31,9 +31,9 @@ extension Ask {
 @inline(__always)
 @discardableResult
 public
-func | (image: Image?, ask: Ask<Image>.Operation) -> Wand {
-    let wand = Wand.to(image)
-    _ = wand.answer(the: ask, check: true)
+func | (image: Image?, ask: Ask<Image>.Operation) -> Core {
+    let wand = Core.to(image)
+    _ = wand.append(ask: ask, check: true)
     return wand
 }
 
@@ -41,8 +41,8 @@ func | (image: Image?, ask: Ask<Image>.Operation) -> Wand {
 @inline(__always)
 @discardableResult
 public
-func | (resource: String, handler: (Image)->()) -> Wand {
-    let wand = Wand.to(resource)
+func | (resource: String, handler: (Image)->()) -> Core {
+    let wand = Core.to(resource)
 
     let cache = URLCache.shared
 
@@ -56,7 +56,7 @@ func | (resource: String, handler: (Image)->()) -> Wand {
     let bSession = URLSession(configuration: .background(withIdentifier: "com.wand.image"))
 
     let task = session.downloadTask(with: request)
-    task.delegate = wand.save(Delegate())
+    task.delegate = wand.put(Delegate())
     task.resume()
 
     return wand

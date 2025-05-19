@@ -26,9 +26,9 @@ extension Array: Asking where Element: Asking {
 
     public
     static
-    func wand<T>(_ wand: Wand, asks ask: Ask<T>) {
+    func ask<C, T>(with context: C, ask: Wand.Ask<T>) -> Wand.Core {
 
-        Element.wand(wand, asks: ask)
+        Element.ask(with: Core.to(context), ask: ask)
 
     }
     
@@ -71,12 +71,13 @@ extension VisionObservationExpectable {
 
     @inline(__always)
     static
-    func wand<T>(_ wand: Wand, asks ask: Ask<T>) {
+    func ask<C, T>(with context: C, ask: Ask<T>) -> Core {
 
+        let wand = Core.to(context)
 
         //Save ask
-        guard wand.answer(the: ask, check: true) else {
-            return
+        guard wand.append(ask: ask, check: true) else {
+            return wand
         }
 
         //Request for a first time
@@ -84,7 +85,7 @@ extension VisionObservationExpectable {
         //Prepare context
 
         let perform = { (handler: VNImageRequestHandler) in
-            let request: Request = wand.obtain()
+            let request: Request = wand.get()
 
             try! handler.perform([request])
             if let results = request.results, !results.isEmpty {
@@ -116,6 +117,9 @@ extension VisionObservationExpectable {
 
             #endif
         }
+        
+        return wand
+        
     }
 
 }

@@ -22,9 +22,11 @@ import Wand
 
 @available(tvOS 17.0, *)
 @available(visionOS, unavailable)
-extension AVCaptureDevice: Obtain {
-
-    public static func obtain(by wand: Wand?) -> Self {
+extension AVCaptureDevice: Obtainable {
+    
+    public
+    static
+    func obtain(by wand: Core?) -> Self {
 
         let deviceType: AVCaptureDevice.DeviceType = wand?.get()
                                                     ?? .builtInWideAngleCamera
@@ -46,24 +48,28 @@ extension AVCaptureDevice: Obtain {
 
 @available(tvOS 17.0, *)
 @available(visionOS, unavailable)
-extension AVCaptureDeviceInput: Obtain {
-
-    public static func obtain(by wand: Wand?) -> Self {
+extension AVCaptureDeviceInput: Obtainable {
+    
+    public
+    static
+    func obtain(by wand: Core?) -> Self {
         
         guard let wand else {
             fatalError()
         }
 
-        let device: AVCaptureDevice = wand.obtain()
+        let device: AVCaptureDevice = wand.get()
         return wand.add(try! Self(device: device))
     }
 
 }
 
 @available(tvOS 17.0, *)
-extension AVCaptureSession: Obtain {
+extension AVCaptureSession: Obtainable {
 
-    public static func obtain(by wand: Wand?) -> Self {
+    public
+    static
+    func obtain(by wand: Core?) -> Self {
         wand?.add(Self()) ?? Self()
     }
 
@@ -72,21 +78,25 @@ extension AVCaptureSession: Obtain {
 @available(tvOS 17.0, *)
 @available(visionOS, unavailable)
 extension AVCaptureVideoDataOutput: Asking {
+    
+    public
+    static
+    func ask<C, T>(with context: C, ask: Ask<T>) -> Core {
 
-    public static func wand<T>(_ wand: Wand, asks ask: Ask<T>) {
-
-        guard wand.answer(the: ask) else {
-            return
+        let wand = Wand.Core.to(context)
+        
+        guard wand.append(ask: ask) else {
+            return wand
         }
 
-        let session: AVCaptureSession = wand.obtain()
+        let session: AVCaptureSession = wand.get()
         session.beginConfiguration()
 
         let preset: AVCaptureSession.Preset = wand.get() ?? .high
         session.sessionPreset = preset
 
         if session.inputs.isEmpty {
-            let deviceInput: AVCaptureDeviceInput = wand.obtain()
+            let deviceInput: AVCaptureDeviceInput = wand.get()
             session.addInput(deviceInput)
         }
 
@@ -108,7 +118,7 @@ extension AVCaptureVideoDataOutput: Asking {
 
             output.setSampleBufferDelegate(delegate, queue: queue)
         } else {
-            wand.add(Wand.Error.vision(.internalError,
+            wand.add(Core.Error.vision(.internalError,
                                        reason: "Could not add video data output"))
         }
         session.commitConfiguration()
@@ -122,6 +132,8 @@ extension AVCaptureVideoDataOutput: Asking {
         wand.setCleaner(for: ask) {
             session.stopRunning()
         }
+        
+        return wand
     }
 
 
@@ -142,14 +154,18 @@ extension AVCaptureVideoDataOutput {
 
 @available(tvOS 17.0, *)
 @available(visionOS, unavailable)
-extension AVCaptureVideoPreviewLayer: Obtain {
+extension AVCaptureVideoPreviewLayer: Obtainable {
+    
+    public
+    static
+    func obtain(by wand: Core?) -> Self {
 
-    public static func obtain(by wand: Wand?) -> Self {
         let layer = Self()
         layer.videoGravity =    wand?.get() ?? .resizeAspectFill
-        layer.session =         wand!.obtain()
+        layer.session =         wand!.get()
 
         return wand?.add(layer) ?? layer
+        
     }
 
 }

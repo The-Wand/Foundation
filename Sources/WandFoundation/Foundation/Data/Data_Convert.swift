@@ -48,7 +48,7 @@ func |(string: String, encoding: String.Encoding) -> Data {
 @inline(__always)
 postfix
 public
-func |(resource: Wand.Resource) throws -> Data {
+func |(resource: Core.Resource) throws -> Data {
     try Data(contentsOf: resource|)
 }
 

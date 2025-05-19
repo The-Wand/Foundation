@@ -26,25 +26,27 @@ import Wand
 ///
 /// }
 ///
-extension Notification: Asking, Wanded {
-
-    @inline(__always)
+extension Notification: Asking, Wanded  {
+    
+    @inlinable
     public
-    static 
-    func wand<T>(_ wand: Wand, asks ask: Ask<T>) {
-
+    static
+    func ask<C, T>(with context: C, ask: Ask<T>) -> Core {
+        
+        let wand = Wand.Core.to(context)
+        
         let name: Notification.Name = wand.get()!
         let key = name.rawValue
 
         ask.key = key
 
         //Save ask
-        guard wand.answer(the: ask) else {
-            return
+        guard wand.append(ask: ask) else {
+            return wand
         }
 
         //Prepare context
-        let center: NotificationCenter = wand.obtain()
+        let center: NotificationCenter = wand.get()
 
         //Start listening
         let token = center.addObserver(forName: name,
@@ -57,6 +59,8 @@ extension Notification: Asking, Wanded {
         wand.setCleaner(for: ask) {
             center.removeObserver(token)
         }
+        
+        return wand
 
     }
 
@@ -65,15 +69,15 @@ extension Notification: Asking, Wanded {
 @discardableResult
 @inline(__always)
 public
-func | (name: Notification.Name, handler: @escaping (Notification)->() ) -> Wand {
-    Wand(for: name) | .every(handler: handler)
+func | (name: Notification.Name, handler: @escaping (Notification)->() ) -> Core {
+    Core.to(name) | .every(handler: handler)
 }
 
 @discardableResult
 @inline(__always)
 public
-func | (name: Notification.Name, ask: Ask<Notification>) -> Wand {
-    Wand(for: name) | ask
+func | (name: Notification.Name, ask: Ask<Notification>) -> Core {
+    Core.to(name) | ask
 }
 
 #endif

@@ -29,7 +29,7 @@ import Wand
 @inline(__always)
 @discardableResult
 public
-func | (wand: Wand, handler: @escaping ([CBService])->() ) -> Wand {
+func | (wand: Core, handler: @escaping ([CBService])->() ) -> Core {
     wand | Ask.every(handler: handler)
 }
 
@@ -45,7 +45,7 @@ func | (wand: Wand, handler: @escaping ([CBService])->() ) -> Wand {
 @inline(__always)
 @discardableResult
 public
-func |<C> (context: C, ask: Ask<[CBService]>) -> Wand {
+func |<C> (context: C, ask: Ask<[CBService]>) -> Core {
     .to(context) | ask
 }
 
@@ -58,10 +58,10 @@ func |<C> (context: C, ask: Ask<[CBService]>) -> Wand {
 @inline(__always)
 @discardableResult
 public
-func |(wand: Wand, ask: Ask<[CBService]>) -> Wand {
+func |(wand: Core, ask: Ask<[CBService]>) -> Core {
 
     //Save ask
-    guard wand.answer(the: ask) else {
+    guard wand.append(ask: ask) else {
         return wand
     }
 

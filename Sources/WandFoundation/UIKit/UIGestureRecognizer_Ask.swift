@@ -59,7 +59,7 @@ func |<T: UIGestureRecognizer> (view: UIView, ask: Ask<T>) -> T {
     let recognizer = T()
 
     ask.key = recognizer|
-    _ = wand.answer(the: ask)
+    _ = wand.append(ask: ask)
 
     let delegate = wand.add(Delegate())
     recognizer.addTarget(delegate,

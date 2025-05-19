@@ -27,21 +27,23 @@ import Wand
 /// }
 ///
 extension CBPeripheral: AskingNil {
-
-    @inline(__always)
+    
+    @inlinable
     public
     static
-    func wand<T>(_ wand: Wand, asks ask: Ask<T>) {
+    func ask<C, T>(with context: C, ask: Wand.Ask<T>) -> Wand.Core {
+        
+        let wand = Wand.Core.to(context)
 
         //Save ask
-        guard wand.answer(the: ask, check: true) else {
-            return
+        guard wand.append(ask: ask, check: true) else {
+            return wand
         }
 
         //Request for a first time
 
         //Prepare context
-        let source: CBCentralManager = wand.obtain()
+        let source: CBCentralManager = wand.get()
 
         //Set the cleaner
         wand.setCleaner(for: ask) {
@@ -62,6 +64,8 @@ extension CBPeripheral: AskingNil {
 
             return !ask.once
         }
+        
+        return wand
 
     }
 

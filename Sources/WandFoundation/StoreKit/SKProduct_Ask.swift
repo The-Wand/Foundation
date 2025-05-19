@@ -30,19 +30,19 @@ extension SKProduct: Wanded {
 ///
 /// }
 ///
-@available(tvOS, unavailable)
-@available(visionOS, unavailable)
-@discardableResult
-@inline(__always)
-public
-func | (ids: Set<String>, handler: @escaping ([SKProduct])->() ) -> Wand {
-
-    ids | { (response: SKProductsResponse) in
-
-        let products = response.wand.save(sequence: response.products)
-        handler(products)
-    }
-
-}
+//@available(tvOS, unavailable)
+//@available(visionOS, unavailable)
+//@discardableResult
+//@inline(__always)
+//public
+//func | (ids: Set<String>, handler: @escaping ([SKProduct])->() ) -> Core {
+//
+//    ids | { (response: SKProductsResponse) in
+//
+////        let products = response.wand.put(sequence: response.products)
+////        handler(products)
+//    }
+//
+//}
 
 #endif

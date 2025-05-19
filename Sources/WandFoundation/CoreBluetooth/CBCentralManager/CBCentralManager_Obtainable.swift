@@ -24,14 +24,13 @@ import Wand
 ///
 /// let manager: CBCentralManager = nil|
 ///
-extension CBCentralManager: Obtain {
-
-    @inline(__always)
+extension CBCentralManager: Obtainable {
+    
     public
     static
-    func obtain(by wand: Wand?) -> Self {
+    func obtain(by wand: Core?) -> Self {
 
-        let wand = wand ?? Wand()
+        let wand = wand ?? Core()
 
         let source = Self(delegate: wand.add(Delegate()),
                           queue:    wand.get(),

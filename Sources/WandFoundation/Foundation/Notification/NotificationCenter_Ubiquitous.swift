@@ -24,23 +24,24 @@ import Wand
 ///
 /// let center = NotificationCenter.self|
 ///
-extension NotificationCenter: Obtain { //TODO: 2.0 Ubiquitous {
-
+extension NotificationCenter: Ubiquitous {
+    
     @inline(__always)
     public
     static
-    func obtain(by wand: Wand?) -> Self {
+    func access() -> Self {
         Self.default as! Self
     }
     
-    //TODO: 2.0
-//    	@inline(__always)
-    //  public
-//    	static
-//    	func access() -> Self {
-//		Self.default as! Self
-//	}
-
+    @inline(__always)
+    @discardableResult
+    prefix
+    public
+    static
+    func | (the: NotificationCenter) -> Self {
+        the as! Self
+    }
+    
 }
 
 #endif

@@ -24,22 +24,23 @@ import Wand
 ///
 /// let defaults = UserDefaults.self|
 ///
-extension UserDefaults: Obtain { //TODO: 2.0 Ubiquitous {
-
+extension UserDefaults: Ubiquitous {
+    
     @inline(__always)
-    public
     static
-    func obtain(by wand: Wand?) -> Self {
+    public
+    func access() -> Self {
         Self.standard as! Self
     }
     
-    //TODO: 2.0
-//    	@inline(__always)
-//    	static
-//    public
-//    	func access() -> Self {
-//		Self.standard as! Self
-//	}
+    @inline(__always)
+    @discardableResult
+    prefix
+    public
+    static
+    func | (the: UserDefaults) -> Self {
+        the as! Self
+    }
 
 }
 

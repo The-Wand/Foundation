@@ -32,14 +32,13 @@ import Wand
 @available(tvOS, unavailable)
 @available(visionOS, unavailable)
 @available(watchOS, unavailable)
-extension UIImagePickerController: Obtain {
-
-    @inline(__always)
-    public 
+extension UIImagePickerController: Obtainable {
+    
+    public
     static
-    func obtain(by wand: Wand?) -> Self {
+    func obtain(by wand: Core?) -> Self {
 
-        let wand = wand ?? Wand()
+        let wand = wand ?? Core()
 
         let delegate = wand.add(Delegate())
         

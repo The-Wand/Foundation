@@ -56,12 +56,12 @@ func | (date: Date?, format: String) -> String? {
 ///
 /// let formatter: DateFormatter = some|
 ///
-extension DateFormatter: Obtain {
+extension DateFormatter: Obtainable {
 
     @inline(__always)
     public
     static
-    func obtain(by wand: Wand?) -> Self {
+    func obtain(by wand: Core?) -> Self {
         let formatter = Self()
 
         if let style: (date: DateFormatter.Style,

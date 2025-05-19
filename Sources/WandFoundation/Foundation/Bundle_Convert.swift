@@ -20,7 +20,7 @@
 import Foundation.NSBundle
 import Wand
 
-extension Wand {
+extension Core {
 
     public 
     typealias Resource = (name: String, type: String)
@@ -34,7 +34,7 @@ extension Wand {
 @inline(__always)
 postfix
 public
-func | (resource: Wand.Resource) -> URL {
+func | (resource: Core.Resource) -> URL {
     Bundle.main.url(forResource: resource.name, withExtension: resource.type)!
 }
 
@@ -45,7 +45,7 @@ func | (resource: Wand.Resource) -> URL {
 @inline(__always)
 postfix
 public
-func | (resource: Wand.Resource) -> String {
+func | (resource: Core.Resource) -> String {
     Bundle.main.path(forResource: resource.name, ofType: resource.type)!
 }
 

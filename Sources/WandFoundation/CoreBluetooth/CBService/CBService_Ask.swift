@@ -27,16 +27,20 @@ import Wand
 /// }
 ///
 extension CBService: Asking {
-
-    @inline(__always)
+    
+    @inlinable
     public
     static
-    func wand<T>(_ wand: Wand, asks ask: Ask<T>) {
+    func ask<C, T>(with context: C, ask: Wand.Ask<T>) -> Wand.Core {
+        
+        let wand = Wand.Core.to(context)
 
         //Save ask
-        guard wand.answer(the: ask, check: true) else {
-            return
+        guard wand.append(ask: ask, check: true) else {
+            return wand
         }
+        
+        return wand
 
     }
     

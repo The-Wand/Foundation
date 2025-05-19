@@ -24,44 +24,44 @@ import Wand
 ///
 /// let session: URLSession = config|
 ///
-@available(tvOS, unavailable)
-@available(visionOS, unavailable)
-extension SKProductsRequest: Obtain {
-
-    @inline(__always)
-    public 
-    static
-    func obtain(by wand: Wand?) -> Self {
-
-        let ids: Set<String> = wand?.get() ?? []
-
-        let wand = wand ?? Wand()
-
-        let source = Self(productIdentifiers: ids)
-        source.delegate = wand.add(Delegate())
-
-        return source
-    }
-
-}
-
-@available(tvOS, unavailable)
-@available(visionOS, unavailable)
-extension SKProductsRequest {
-
-    class Delegate: NSObject, SKProductsRequestDelegate, Wanded {
-
-        func productsRequest(_ request: SKProductsRequest, 
-                             didReceive response: SKProductsResponse) {
-            isWanded?.add(response)
-        }
-
-        func request(_ request: SKRequest, didFailWithError error: any Error) {
-            isWanded?.add(error)
-        }
-
-    }
-
-}
+//@available(tvOS, unavailable)
+//@available(visionOS, unavailable)
+//extension SKProductsRequest: Obtain {
+//
+//    @inline(__always)
+//    public 
+//    static
+//    func obtain(by wand: Wand?) -> Self {
+//
+//        let ids: Set<String> = wand?.get() ?? []
+//
+//        let wand = wand ?? Wand()
+//
+//        let source = Self(productIdentifiers: ids)
+//        source.delegate = wand.add(Delegate())
+//
+//        return source
+//    }
+//
+//}
+//
+//@available(tvOS, unavailable)
+//@available(visionOS, unavailable)
+//extension SKProductsRequest {
+//
+//    class Delegate: NSObject, SKProductsRequestDelegate, Wanded {
+//
+//        func productsRequest(_ request: SKProductsRequest, 
+//                             didReceive response: SKProductsResponse) {
+//            isWanded?.add(response)
+//        }
+//
+//        func request(_ request: SKRequest, didFailWithError error: any Error) {
+//            isWanded?.add(error)
+//        }
+//
+//    }
+//
+//}
 
 #endif

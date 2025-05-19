@@ -25,14 +25,15 @@ import Wand
 ///
 /// let q: VNImageRequestHandler = nil|
 ///
-extension VNRequest: Obtain {
-
-    @inline(__always)
+extension VNRequest: Obtainable {
+    
     public
     static
-    func obtain(by wand: Wand?) -> Self {
+    func obtain(by wand: Core?) -> Self {
+        
         let request = Self()
         return wand?.add(request) ?? request
+        
     }
 
 }

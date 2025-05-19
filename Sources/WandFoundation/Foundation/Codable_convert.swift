@@ -97,7 +97,7 @@ func |(raw: Data) throws -> [String: Any]? {
 @inline(__always)
 postfix
 public
-func |<T: Decodable> (resource: Wand.Resource) throws -> T {
+func |<T: Decodable> (resource: Core.Resource) throws -> T {
     let data: Data = try Data(contentsOf: resource|)
     return try data|
 }
@@ -109,7 +109,7 @@ func |<T: Decodable> (resource: Wand.Resource) throws -> T {
 @inline(__always)
 postfix
 public
-func |(resource: Wand.Resource) throws -> [String: Any]? {
+func |(resource: Core.Resource) throws -> [String: Any]? {
     let data: Data = try Data(contentsOf: resource|)
     return try data|
 }

@@ -26,12 +26,12 @@ import Wand
 ///
 @available(tvOS, unavailable)
 @available(visionOS, unavailable)
-extension SKPaymentQueue: Obtain {
-
+extension SKPaymentQueue: Obtainable {
+    
     @inline(__always)
-    public 
+    public
     static
-    func obtain(by wand: Wand?) -> Self {
+    func obtain(by wand: Core?) -> Self {
         Self.default()
     }
     
