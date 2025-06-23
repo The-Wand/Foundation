@@ -16,46 +16,45 @@
 /// Created by Alex Kozin
 /// El Machine 🤖
 
-#if canImport(UIKit) && !os(watchOS)
-import UIKit.UIImage
-import Wand
-
-extension Image: AskingNil, Wanded {
-
-    /// Ask
-    /// - .scale
-    /// - .fit
-    /// - .fill
-    ///
-    /// - .round
-    ///
-    /// image | .operation(to:) { done: Image in
-    ///
-    /// }
-    ///
-    @inlinable
-    public
-    static
-    func ask<C, T>(with context: C, ask: Ask<T>) -> Core {
-
-        let wand = Wand.Core.to(context)
-        
-        //Save ask
-        guard wand.append(ask: ask, check: true) else {
-            return wand
-        }
-
-        #if os(iOS)
-            //Request for a first time
-            let source: UIImagePickerController = wand.get()
-            source.presentOnVisible()
-        #endif
-        
-        return wand
-        
-    }
-
-
-}
-
-#endif
+//#if canImport(UIKit) && !os(watchOS)
+//import UIKit.UIImage
+//import Wand
+//
+//extension Image: AskingNil, Wanded {
+//
+//    /// Ask
+//    /// - .scale
+//    /// - .fit
+//    /// - .fill
+//    ///
+//    /// - .round
+//    ///
+//    /// image | .operation(to:) { done: Image in
+//    ///
+//    /// }
+//    ///
+//    @inlinable
+//    public
+//    static
+//    func ask<C, T>(with context: C, ask: Ask<T>) -> Core {
+//
+//        let wand = Wand.Core.to(context)
+//        
+//        //Save ask
+//        guard wand.append(ask: ask, check: true) else {
+//            return wand
+//        }
+//
+//        #if os(iOS)
+//            //Request for a first time
+//            let source: UIImagePickerController = wand.get()
+//            source.presentOnVisible()
+//        #endif
+//        
+//        return wand
+//        
+//    }
+//
+//}
+//
+//#endif

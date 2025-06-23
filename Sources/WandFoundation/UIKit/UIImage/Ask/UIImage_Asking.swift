@@ -41,7 +41,7 @@ func | (image: Image?, ask: Ask<Image>.Operation) -> Core {
 @inline(__always)
 @discardableResult
 public
-func | (resource: String, handler: (Image)->()) -> Core {
+func | (resource: String, handler: (UIImage)->()) -> Core {
     let wand = Core.to(resource)
 
     let cache = URLCache.shared

@@ -32,7 +32,14 @@ import Wand
 postfix
 public
 func |(url: URL) -> UIImage {
-    Image(data: try! Data(contentsOf: url ) )!
+    
+    var image: UIImage? = nil
+    DispatchQueue.global(qos: .default).sync {
+        image = Image(data: try! Data(contentsOf: url ) )!
+    }
+    
+    return image!
+    
 }
 
 extension Image {

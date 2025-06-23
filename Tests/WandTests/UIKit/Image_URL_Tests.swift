@@ -28,6 +28,7 @@ import XCTest
 final
 class Image_URL_Tests: XCTestCase {
 
+    @available(iOS 15.0, *)
     @MainActor
     func test_Path_to_Image() {
         let e = expectation()
@@ -38,6 +39,10 @@ class Image_URL_Tests: XCTestCase {
             //TODO: if rounded.isRounded() {
             e.fulfill()
 
+        } | { (error: Error) in
+            
+            print(error)
+            
         }
 
         waitForExpectations()
