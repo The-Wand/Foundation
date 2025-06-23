@@ -44,29 +44,31 @@ import Wand
 //    }
 //
 //}
-//
-///// AskingNil
-//extension XCTestCase {
-//    
-//    func auto_test<T: AskingNil>(completion:  @escaping (T)->() ) {
-//        auto_test(|, completion: completion)
-//    }
-//
-//    func auto_test<T: AskingNil>(_ api:   ( @escaping (T)->() )->(Wand) ,
-//                               completion:  @escaping (T)->() ) {
-//
-//        let e = expectation()
-//        e.assertForOverFulfill = true
-//
-//        _ = api({ (t: T) in
-//            e.fulfill()
-//            completion(t)
-//        })
-//
-//        waitForExpectations(timeout: .default)
-//    }
-//
-//}
+
+/// AskingNil
+extension XCTestCase {
+    
+    @MainActor
+    func auto_test<T: AskingNil>(completion:  @escaping (T)->() ) {
+        auto_test(|, completion: completion)
+    }
+
+    @MainActor
+    func auto_test<T: AskingNil>(_ api:   ( @escaping (T)->() )->(Core) ,
+                               completion:  @escaping (T)->() ) {
+
+        let e = expectation()
+        e.assertForOverFulfill = true
+
+        _ = api({ (t: T) in
+            e.fulfill()
+            completion(t)
+        })
+
+        waitForExpectations(timeout: .default)
+    }
+
+}
 
 /// Tools
 extension XCTestCase {
