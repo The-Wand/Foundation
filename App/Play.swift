@@ -19,6 +19,7 @@
 import SwiftUI
 
 import CoreBluetooth
+import Network
 import WandFoundation
 import Wand
 
