@@ -45,19 +45,19 @@ struct ContentView: View {
         .padding()
         .onAppear {
 
-            
-
 //            var found: CBPeripheral?
 //
-//            var wand: Wand!
+//            var wand: Core!
 //            wand = |{ (peripheral: CBPeripheral) in
-//
+//                
+//                print(peripheral)
+//                
 //                if (found != nil) {
 //                    return
 //                }
 //                found = peripheral
 //
-//                let manager = wand.obtain() as CBCentralManager
+//                let manager = wand.get() as CBCentralManager
 //                manager.connect(peripheral)
 //
 //            } | { (services: [CBService]) in
