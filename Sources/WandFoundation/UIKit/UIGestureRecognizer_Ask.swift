@@ -37,7 +37,7 @@ extension UIGestureRecognizer: Wanded {
 @discardableResult
 @inline(__always)
 public
-func |<T: UIGestureRecognizer> (view: UIView, handler: @escaping (T)->()) -> T {
+func |<T: UIGestureRecognizer> (view: UIView, handler: @escaping (T)->()) -> UIView {
     view | .every(handler: handler)
 }
 
@@ -50,7 +50,7 @@ func |<T: UIGestureRecognizer> (view: UIView, handler: @escaping (T)->()) -> T {
 @discardableResult
 @inline(__always)
 public
-func |<T: UIGestureRecognizer> (view: UIView, ask: Ask<T>) -> T {
+func |<T: UIGestureRecognizer> (view: UIView, ask: Ask<T>) -> UIView {
 
     typealias Delegate = UIGestureRecognizer.Delegate
 
@@ -66,8 +66,18 @@ func |<T: UIGestureRecognizer> (view: UIView, ask: Ask<T>) -> T {
                          action: #selector(Delegate.handle(sender:)))
 
     view.addGestureRecognizer(recognizer)
+    
+    wand.setCleaner(for: ask) { [weak view, weak recognizer] in
+        guard let recognizer else {
+            return
+        }
+        
+        view?.removeGestureRecognizer(recognizer)
+    }
 
-    return wand.add(recognizer)
+    wand.add(recognizer)
+    
+    return view
 }
 
 extension UIGestureRecognizer {
