@@ -41,19 +41,17 @@ func | (image: Image?, ask: Ask<Image>.Operation) -> Core {
 @inline(__always)
 @discardableResult
 public
-func | (resource: String, handler: (UIImage)->()) -> Core {
-    let wand = Core.to(resource)
+func | (url: URL, handler: (UIImage)->()) -> Core {
+    let wand = Core.to(url)
 
-    let cache = URLCache.shared
-
-    let customCache = URLCache(memoryCapacity: 8, diskCapacity: 8, directory: nil)
-
-    let url: URL = URL(string: resource)!// path|
-
+//    let cache = URLCache.shared
+//
+//    let customCache = URLCache(memoryCapacity: 8, diskCapacity: 8, directory: nil)
+//
     let request = URLRequest(url: url, timeoutInterval: 30)
-
+//
     let session = URLSession(configuration: .default)
-    let bSession = URLSession(configuration: .background(withIdentifier: "com.wand.image"))
+//    let bSession = URLSession(configuration: .background(withIdentifier: "com.wand.image"))
 
     let task = session.downloadTask(with: request)
     task.delegate = wand.put(Delegate())
