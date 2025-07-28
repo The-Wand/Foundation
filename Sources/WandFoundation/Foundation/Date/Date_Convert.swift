@@ -74,4 +74,20 @@ func |(date: Date) -> String {
     return formatted!
 }
 
+/// Convert
+///
+/// let string: String? = string|
+///
+@inline(__always)
+postfix
+public
+func |(string: String?) -> Date? {
+    guard let string else {
+        return nil
+    }
+
+    let formatter = DateFormatter.self|
+    return formatter.date(from: string)
+}
+
 #endif
