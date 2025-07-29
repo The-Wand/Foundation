@@ -20,7 +20,7 @@ extension UIViewController {
     }
 
     @inline(__always)
-    var container: UIViewController? {
+    var containerController: UIViewController? {
         tabBarController ?? navigationController ?? splitViewController
     }
 
