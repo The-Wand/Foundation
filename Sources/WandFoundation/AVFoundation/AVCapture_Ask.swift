@@ -21,50 +21,6 @@ import AVFoundation
 import Wand
 
 @available(tvOS 17.0, *)
-@available(visionOS, unavailable)
-extension AVCaptureDevice: Obtainable {
-    
-    public
-    static
-    func obtain(by wand: Core?) -> Self {
-
-        let deviceType: AVCaptureDevice.DeviceType = wand?.get()
-                                                    ?? .builtInWideAngleCamera
-
-        let mediaType: AVMediaType = wand?.get()
-                                    ?? .video
-
-        let position: AVCaptureDevice.Position = wand?.get()
-                                                ?? .front
-
-        let device = Self.default(deviceType,
-                                  for: mediaType,
-                                  position: position) as! Self
-
-        return wand?.add(device) ?? device
-    }
-
-}
-
-@available(tvOS 17.0, *)
-@available(visionOS, unavailable)
-extension AVCaptureDeviceInput: Obtainable {
-    
-    public
-    static
-    func obtain(by wand: Core?) -> Self {
-        
-        guard let wand else {
-            fatalError()
-        }
-
-        let device: AVCaptureDevice = wand.get()
-        return wand.add(try! Self(device: device))
-    }
-
-}
-
-@available(tvOS 17.0, *)
 extension AVCaptureSession: Obtainable {
 
     public
