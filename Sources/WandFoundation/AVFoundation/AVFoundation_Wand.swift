@@ -21,16 +21,32 @@
 import AVFoundation
 import Wand
 
-public postfix func | (piped: Core.Resource) -> AVPlayerLayer {
+
+postfix
+public
+func | (piped: Core.Resource) -> AVPlayerLayer {
     AVPlayerLayer(player: piped|)
 }
 
-public postfix func | (piped: AVPlayer) -> AVPlayerLayer {
+postfix
+public
+func | (piped: AVPlayer) -> AVPlayerLayer {
     AVPlayerLayer(player: piped)
 }
 
-public postfix func | (piped: Core.Resource) -> AVPlayer {
+postfix
+public
+func | (piped: Core.Resource) -> AVPlayer {
     AVPlayer(url: piped|)
+}
+
+public
+extension Core.Error {
+
+    static func avFoundation(_ code: AVError.Code, reason: String? = nil) -> Error {
+        Self(code: code.rawValue, reason: reason ?? "")
+    }
+
 }
 
 #endif
