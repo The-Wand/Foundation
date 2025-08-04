@@ -16,12 +16,13 @@
 /// Created by Alex Kozin
 /// El Machine 🤖
 
-import SwiftUI
-
+import AVFoundation
 import CoreBluetooth
 import Network
 import WandFoundation
 import Wand
+
+import SwiftUI
 
 @available(iOS 14, macOS 12, tvOS 14, watchOS 7, *)
 @main
@@ -45,6 +46,10 @@ struct ContentView: View {
         }
         .padding()
         .onAppear {
+            
+//            AVCaptureDevice.TorchMode.on | .one { done in
+//                print(done.rawValue)
+//            }
 
 //            var found: CBPeripheral?
 //
