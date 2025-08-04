@@ -70,6 +70,59 @@ extension XCTestCase {
 
 }
 
+/// Asking with condition
+extension XCTestCase {
+    
+    @MainActor
+    func condition_test<T: AskingNil>(completion:  @escaping (T)->(Bool) ) {
+        condition_test(|, completion: completion)
+    }
+
+    @MainActor
+    func condition_test<T: AskingNil>(_ api:   ( @escaping (T)->() )->(Core) ,
+                               completion:  @escaping (T)->(Bool) ) {
+
+        let e = expectation()
+        e.assertForOverFulfill = true
+
+        _ = api({ (t: T) in
+            
+            if completion(t) {
+                e.fulfill()
+            }
+            
+        })
+
+        waitForExpectations(timeout: .default)
+    }
+    
+//    @MainActor
+//    func condition_test<C, T: Asking>(_ context: C,
+//                                      completion:  @escaping (T)->(Bool) ) {
+//        condition_test(context, api: |, completion: completion)
+//    }
+//
+//    @MainActor
+//    func condition_test<C, T: Asking>(_ context:      C,
+//                                      api:          ( C, @escaping (T)->() )->(Core) ,
+//                                      completion:   @escaping (T)->(Bool) ) {
+//
+//        let e = expectation()
+//        e.assertForOverFulfill = true
+//
+//        _ = api(context, { (t: T) in
+//            
+//            if completion(t) {
+//                e.fulfill()
+//            }
+//            
+//        })
+//
+//        waitForExpectations(timeout: .default)
+//    }
+
+}
+
 /// Tools
 extension XCTestCase {
 
