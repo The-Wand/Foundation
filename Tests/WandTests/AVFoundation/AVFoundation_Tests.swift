@@ -16,7 +16,7 @@
 /// Created by Alex Kozin
 /// El Machine 🤖
 
-#if canImport(AVFoundation)
+#if canImport(AVFoundation) && !targetEnvironment(simulator)
 import AVFoundation
 import XCTest
 
@@ -27,22 +27,43 @@ final
 class AVFoundation_Tests: XCTestCase {
 
     @MainActor
-    func test_AVCaptureDevice_TorchMode() {
-        
+    func test_AVCaptureDevice_TorchMode_Get() {
+
+        let e = expectation()
+        e.assertForOverFulfill = true
+        |.one { (mode: AVCaptureDevice.TorchMode) in
+
+            if mode == self.torchMode()  {
+                e.fulfill()
+            }
+
+        }
+
+        waitForExpectations()
+
+    }
+    @MainActor
+    func test_AVCaptureDevice_TorchMode_Set() {
+
         let e = expectation()
         e.assertForOverFulfill = true
 
         let mode = AVCaptureDevice.TorchMode.on
         mode | .one { (done: AVCaptureDevice.TorchMode) in
-            
-            if mode == done {
+
+            if mode == self.torchMode()  {
                 e.fulfill()
             }
-            
+
         }
 
         waitForExpectations()
-        
+
+    }
+
+    private
+    func torchMode() -> AVCaptureDevice.TorchMode? {
+        AVCaptureDevice.default(for: .video)?.torchMode
     }
 
 }
