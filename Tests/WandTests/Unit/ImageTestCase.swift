@@ -21,7 +21,6 @@ import UIKit
 import XCTest
 
 import WandFoundation
-import Wand
 
 class ImageTestCase: XCTestCase {
 
@@ -34,7 +33,7 @@ class ImageTestCase: XCTestCase {
 
     internal
     lazy
-    var image: UIImage? = url|
+    var image: UIImage? = UIImage(data: try! Data(contentsOf: url)) // url|
 
     internal
     lazy

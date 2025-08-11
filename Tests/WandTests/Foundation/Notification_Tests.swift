@@ -20,7 +20,6 @@
 import Foundation
 import XCTest
 
-import Wand
 import WandFoundation
 
 private
