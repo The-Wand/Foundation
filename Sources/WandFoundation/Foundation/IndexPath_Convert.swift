@@ -42,4 +42,43 @@ func | (path: IndexPath) -> (Int, Int) {
     (path.row, path.section)
 }
 
+extension Array {
+
+    @inline(__always)
+    postfix
+    public
+    static
+    func |(p: Self) -> [IndexPath] {
+        (0..<p.count)|
+    }
+}
+
+extension Range where Bound == Int {
+
+    @inline(__always)
+    postfix
+    public
+    static
+    func |(p: Self) -> [IndexPath] {
+        p.map {
+            IndexPath(row: $0, section: 0)
+        }
+    }
+
+}
+
+extension ClosedRange where Bound == Int {
+
+    @inline(__always)
+    postfix
+    public
+    static
+    func |(p: Self) -> [IndexPath] {
+        p.map {
+            IndexPath(row: $0, section: 0)
+        }
+    }
+
+}
+
 #endif
