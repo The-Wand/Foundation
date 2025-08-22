@@ -31,6 +31,8 @@
 		6153E3662C119A8100F42709 /* Package.xctestplan in Resources */ = {isa = PBXBuildFile; fileRef = 6153E31E2C119A8100F42709 /* Package.xctestplan */; };
 		6153E3672C119A8100F42709 /* Package.xctestplan in Resources */ = {isa = PBXBuildFile; fileRef = 6153E31E2C119A8100F42709 /* Package.xctestplan */; };
 		6162625428BC8E2B00D63EA5 /* Play.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6162624528BC8E2A00D63EA5 /* Play.swift */; };
+		616516982E585E41002A6C6D /* IndexPath_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616516972E585E41002A6C6D /* IndexPath_Tests.swift */; };
+		616516992E585E41002A6C6D /* IndexPath_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616516972E585E41002A6C6D /* IndexPath_Tests.swift */; };
 		619435982C0E015C0034554B /* Any_ in Frameworks */ = {isa = PBXBuildFile; productRef = 619435972C0E015C0034554B /* Any_ */; };
 		6194359B2C0E01600034554B /* Any_ in Frameworks */ = {isa = PBXBuildFile; productRef = 6194359A2C0E01600034554B /* Any_ */; };
 		61F648C72BEA122900C2625C /* WandFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 61F648C62BEA122900C2625C /* WandFoundation */; };
@@ -75,6 +77,7 @@
 		6153E31E2C119A8100F42709 /* Package.xctestplan */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Package.xctestplan; sourceTree = "<group>"; };
 		6162624528BC8E2A00D63EA5 /* Play.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Play.swift; sourceTree = "<group>"; };
 		6162624C28BC8E2B00D63EA5 /* Play.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Play.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		616516972E585E41002A6C6D /* IndexPath_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexPath_Tests.swift; sourceTree = "<group>"; };
 		6172A0EF2C10A30E00AF925F /* INSPIRATION.TXT */ = {isa = PBXFileReference; lastKnownFileType = text; path = INSPIRATION.TXT; sourceTree = "<group>"; };
 		618D53D12BE3C5120098DB6F /* wandTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = wandTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		618F8F182BEA00D400618E7C /* testPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = testPlan.xctestplan; sourceTree = "<group>"; };
@@ -135,6 +138,7 @@
 		6153E2FE2C119A8100F42709 /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
+				616516972E585E41002A6C6D /* IndexPath_Tests.swift */,
 				6153E2FC2C119A8100F42709 /* Notification_Tests.swift */,
 				6153E2FD2C119A8100F42709 /* NSTextCheckingResult_Tests.swift */,
 			);
@@ -432,6 +436,7 @@
 				6153E3252C119A8100F42709 /* NSTextCheckingResult_Tests.swift in Sources */,
 				6153E3342C119A8100F42709 /* ImageTestCase.swift in Sources */,
 				6153E32B2C119A8100F42709 /* SKProduct_Tests.swift in Sources */,
+				616516992E585E41002A6C6D /* IndexPath_Tests.swift in Sources */,
 				611AADDB2E3CA0930056ED96 /* AVFoundation_Tests.swift in Sources */,
 				6153E3222C119A8100F42709 /* Notification_Tests.swift in Sources */,
 				6153E3282C119A8100F42709 /* SKPaymentTransaction_Tests.swift in Sources */,
@@ -455,6 +460,7 @@
 				6153E3242C119A8100F42709 /* NSTextCheckingResult_Tests.swift in Sources */,
 				6153E3332C119A8100F42709 /* ImageTestCase.swift in Sources */,
 				6153E32A2C119A8100F42709 /* SKProduct_Tests.swift in Sources */,
+				616516982E585E41002A6C6D /* IndexPath_Tests.swift in Sources */,
 				611AADDA2E3CA0930056ED96 /* AVFoundation_Tests.swift in Sources */,
 				6153E3212C119A8100F42709 /* Notification_Tests.swift in Sources */,
 				6153E3272C119A8100F42709 /* SKPaymentTransaction_Tests.swift in Sources */,
