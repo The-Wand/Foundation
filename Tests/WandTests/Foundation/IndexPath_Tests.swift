@@ -20,62 +20,31 @@
 import Foundation.NSTextCheckingResult
 import XCTest
 
+import Any_
 import Wand
 import WandFoundation
 
 final
-class NSTextCheckingResultCheckingType_Tests: XCTestCase {
+class IndexPath_Tests: XCTestCase {
 
-//    @available(macOS 15.0, iOS 15, tvOS 15, watchOS 8, *)
-//    func test_NSTextCheckingResult_date() {
-//        
-//        let hour: Int = .any(in: 0...23)
-//        let minute: Int = .any(in: 0...59)
-//        let second: Int = .any(in: 0...59)
-//
-//
-//        //Check equality
-//        let calendar = Calendar.current
-//        var components = calendar.dateComponents([.day, .month, .year],
-//                                                 from: .now)
-//        components.day = components.day! + 1
-//
-//        components.hour = hour
-//        components.minute = minute
-//        components.second = second
-//
-//        let raw = "tomorrow at \(hour):\(minute):\(second)"
-//        
-//        XCTAssertEqual(raw | .date,
-//                       calendar.date(from: components))
-//    }
+    @MainActor
+    func test_IntInt_to_IndexPath() {
+        typealias T = IndexPath.Element
 
-    func test_NSTextCheckingResult_address() {
+        let raw = (T.any, T.any)
+        let path: IndexPath = raw|
 
-        let raw = "1 Infinite Loop in Cupertino, California, United States"
-        
-        XCTAssertEqual(raw | .address,
-                       [NSTextCheckingKey.state: "California",
-                        NSTextCheckingKey.city: "Cupertino",
-                        NSTextCheckingKey.street: "1 Infinite Loop",
-                        NSTextCheckingKey.country: "United States"])
+        XCTAssertEqual(path,
+                       IndexPath(row: raw.0, section: raw.1))
     }
 
-    func test_NSTextCheckingResult_url() {
+    @MainActor
+    func test_IndexPath_to_IntInt() {
+        let path = IndexPath(row: .any, section: .any)
+        let tuple: (Int, Int) = path|
 
-        let raw = "1 Infinite Loop in Cupht//www.apple.com California, United States"
-
-        XCTAssertEqual(raw | .link,
-                       URL(string: "http://www.apple.com"))
-
-    }
-
-    func test_NSTextCheckingResult_phoneNumber() {
-        let found: String? = "1 Inffornia +19323232444,United States" | .phoneNumber
-
-        //Check equality
-        let calculated = "+19323232444"
-        XCTAssertEqual(found, calculated)
+        XCTAssertEqual(tuple.0, path.row)
+        XCTAssertEqual(tuple.1, path.section)
     }
 
 }
