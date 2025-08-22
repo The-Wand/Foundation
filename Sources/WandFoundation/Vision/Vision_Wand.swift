@@ -13,7 +13,8 @@ import Wand
 public
 extension Core.Error {
 
-    static func vision(_ code: VNErrorCode, reason: String? = nil) -> Error {
+    static
+    func vision(_ code: VNErrorCode, reason: String? = nil) -> Error {
         Self(code: code.rawValue, reason: reason ?? "")
     }
 
