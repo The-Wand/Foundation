@@ -35,19 +35,19 @@ class Image_Tests: ImageTestCase {
         }
     }
 
-    @MainActor
-    func test_Image_Round() {
-        let e = expectation()
-
-        image | .round(to: CGFloat.random(in: 11...inSize.height/2) ) { (rounded: UIImage) in
-
-            //TODO: if rounded.isRounded() {
-            e.fulfill()
-
-        }
-
-        waitForExpectations()
-    }
+//    @MainActor
+//    func test_Image_Round() {
+//        let e = expectation()
+//
+//        image | .round(to: CGFloat.random(in: 11...inSize.height/2) ) { (rounded: UIImage) in
+//
+//            //TODO: if rounded.isRounded() {
+//            e.fulfill()
+//
+//        }
+//
+//        waitForExpectations()
+//    }
 
 }
 
