@@ -16,13 +16,9 @@
 /// Created by Alex Kozin
 /// El Machine 🤖
 
-import AVFoundation
-import CoreBluetooth
-import Network
-import WandFoundation
-import Wand
-
 import SwiftUI
+
+import WandFoundation
 
 @available(iOS 14, macOS 12, tvOS 14, watchOS 7, *)
 @main
