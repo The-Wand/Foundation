@@ -17,12 +17,15 @@
 /// El Machine 🤖
 
 #if canImport(Foundation)
+@_exported
 import Foundation.NSRelativeDateTimeFormatter
+@_exported
 import Wand
 
 @inline(__always)
 public
-func | (timestamp: Int, dateTimeStyle: RelativeDateTimeFormatter.DateTimeStyle) -> String {
+func | (timestamp: Int,
+        dateTimeStyle: RelativeDateTimeFormatter.DateTimeStyle) -> String {
     let formatter = RelativeDateTimeFormatter()
     formatter.dateTimeStyle = dateTimeStyle
     return formatter.localizedString(for: Date(timeIntervalSinceNow: -Double(timestamp)),
@@ -31,7 +34,8 @@ func | (timestamp: Int, dateTimeStyle: RelativeDateTimeFormatter.DateTimeStyle) 
 
 @inline(__always)
 public
-func | (timestamp: Int, units: RelativeDateTimeFormatter.UnitsStyle) -> String {
+func | (timestamp: Int,
+        units: RelativeDateTimeFormatter.UnitsStyle) -> String {
     let formatter = RelativeDateTimeFormatter()
     formatter.unitsStyle = units
     return formatter.localizedString(for: Date(timeIntervalSinceNow: -Double(timestamp)),
@@ -40,15 +44,8 @@ func | (timestamp: Int, units: RelativeDateTimeFormatter.UnitsStyle) -> String {
 
 @inline(__always)
 public
-func | (timestamp: Int, relativeTo: Date) -> String {
-    let formatter = RelativeDateTimeFormatter()
-    return formatter.localizedString(for: Date(timeIntervalSinceNow: -Double(timestamp)),
-                                     relativeTo: relativeTo)
-}
-
-@inline(__always)
-public
-func | (date: Date, relativeTo: Date) -> String {
+func | (date: Date,
+        relativeTo: Date) -> String {
     let formatter = RelativeDateTimeFormatter()
     return formatter.localizedString(for: date,
                                      relativeTo: relativeTo)
@@ -56,10 +53,19 @@ func | (date: Date, relativeTo: Date) -> String {
 
 @inline(__always)
 public
-func | (formatter: RelativeDateTimeFormatter, timestamp: Int) -> String {
+func | (formatter: RelativeDateTimeFormatter,
+        timestamp: Int) -> String {
     formatter.localizedString(for: Date(timeIntervalSinceNow: -Double(timestamp)),
                               relativeTo: Date())
 }
 
+@inline(__always)
+public
+func | (timestamp: Int,
+        relativeTo: Date) -> String {
+    let formatter = RelativeDateTimeFormatter()
+    return formatter.localizedString(for: Date(timeIntervalSinceNow: -Double(timestamp)),
+                                     relativeTo: relativeTo)
+}
 
 #endif

@@ -17,10 +17,8 @@
 /// El Machine 🤖
 
 #if canImport(Foundation)
-import Foundation.NSTextCheckingResult
 import XCTest
 
-import Wand
 import WandFoundation
 
 final

@@ -17,7 +17,6 @@
 /// El Machine 🤖
 
 #if canImport(Foundation)
-import Foundation.NSRelativeDateTimeFormatter
 import XCTest
 
 import WandFoundation
@@ -34,74 +33,45 @@ class RelativeDateTimeFormatterDateTimeStyle_Tests: XCTestCase {
 
         var next = 1
         formatTest(60, qual: &next, start: "second") {
-            XCTAssertEqual(formatter | $0, String(format: $2, $1) + $3)
+            XCTAssertEqual(formatter | $0, $1)
         }
 
         formatTest(60, qual: &next, start: "minute") {
-            XCTAssertEqual(formatter | $0, String(format: $2, $1) + $3)
+            XCTAssertEqual(formatter | $0, $1)
         }
 
         formatTest(24, qual: &next, start: "hour") {
-            XCTAssertEqual(formatter | $0, String(format: $2, $1) + $3)
+            XCTAssertEqual(formatter | $0, $1)
         }
 
         formatTest(7, qual: &next, start: "day") {
-            XCTAssertEqual(formatter | $0, String(format: $2, $1) + $3)
+            XCTAssertEqual(formatter | $0, $1)
         }
 
         formatTest(4, qual: &next, start: "week") {
-            XCTAssertEqual(formatter | $0, String(format: $2, $1) + $3)
+            XCTAssertEqual(formatter | $0, $1)
         }
 
         next = 60 * 60 * 24 * 31
         formatTest(12, qual: &next, start: "month") {
-            XCTAssertEqual(formatter | $0, String(format: $2, $1) + $3)
+            XCTAssertEqual(formatter | $0, $1)
         }
 
         next = 60 * 60 * 24 * 366
-        formatTest(12, qual: &next, start: "year") {
-            XCTAssertEqual(formatter | $0, String(format: $2, $1) + $3)
+        formatTest(111, qual: &next, start: "year") {
+            XCTAssertEqual(formatter | $0, $1)
         }
-//
-//
-//            var next = 1
-//            formatTest(60, qual: &next, start: "second") {
-//                XCTAssertEqual(formatter | $0, String(format: $2, $1) + $3)
-//            }
-//
-//            formatTest(60, qual: &next, start: "minute") {
-//                XCTAssertEqual(formatter | $0, String(format: $2, $1) + $3)
-//            }
-//
-//            formatTest(24, qual: &next, start: "hour") {
-//                XCTAssertEqual(formatter | $0, String(format: $2, $1) + $3)
-//            }
-//
-//            formatTest(7, qual: &next, start: "day") {
-//                XCTAssertEqual(formatter | $0, String(format: $2, $1) + $3)
-//            }
-//
-//            formatTest(4, qual: &next, start: "week") {
-//                XCTAssertEqual(formatter | $0, String(format: $2, $1) + $3)
-//            }
-//
-//            //        next = 31536000
-//            //        formatTest(12, qual: &next, start: "month") {
-//            //            XCTAssertEqual(formatter | $0, String(format: $2, $1) + $3)
-//            //        }
-//
-//            next = 31536000
-//            formatTest(12, qual: &next, start: "year") {
-//                XCTAssertEqual(formatter | $0, String(format: $2, $1) + $3)
-//            }
     }
 
-    func formatTest(_ bound: Int, qual: inout Int, start: String, handler: (Int, Int, String, String)->() ) {
-
-        fraction(bound, qual: qual, start: "%i " + start, end: " ago", handler: handler)
+    @inlinable
+    func formatTest(_ bound: Int, qual: inout Int, start: String, handler: (Int, String)->() ) {
+        fraction(bound, qual: qual, start: "%i " + start, end: " ago") {
+            handler($0, String(format: $2, $1) + $3)
+        }
         qual = bound * qual
     }
 
+    @inlinable
     func fraction(_ bound: Int, qual: Int, start: String, end: String, handler: (Int, Int, String, String)->()) {
 
         handler(qual, 1, start, end)
@@ -113,25 +83,6 @@ class RelativeDateTimeFormatterDateTimeStyle_Tests: XCTestCase {
 
         let upper = bound - 1
         handler(upper * qual, upper, start + "s", end)
-    }
-
-    func batch(_ bound: Int, qual: Int, handler: (Int, Int)->()) {
-
-        (1...(1...5).any).forEach { _ in
-            let middle = (2..<bound).any
-            handler(middle * qual, middle)
-        }
-
-        let end = bound - 1
-        handler(end * qual, end)
-    }
-
-    func bound(_ bound: Int, result: Int, handler: (Int, Int)->()) {
-        handler(bound, result)
-    }
-
-    func random(_ bound: Int, handler: (Int)->()) {
-        handler((2..<bound).any)
     }
 
 }
