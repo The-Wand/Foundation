@@ -18,6 +18,7 @@
 
 #if canImport(StoreKit)
 import StoreKit.SKProduct
+@_exported
 import Wand
 
 /// Ask

@@ -20,6 +20,7 @@
 import CoreMedia.CMSampleBuffer
 import Vision.VNObservation
 
+@_exported
 import Wand
 
 extension Array: Asking where Element: Asking {

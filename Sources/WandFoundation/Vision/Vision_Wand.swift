@@ -7,6 +7,7 @@
 
 #if canImport(Vision)
 import Vision
+@_exported
 import Wand
 
 @available(iOS 13.0, *)

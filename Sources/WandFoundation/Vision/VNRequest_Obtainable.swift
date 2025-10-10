@@ -19,6 +19,7 @@
 #if canImport(Vision)
 import Vision
 
+@_exported
 import Wand
 
 /// Obtain

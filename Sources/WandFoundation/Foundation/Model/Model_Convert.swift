@@ -16,7 +16,9 @@
 /// limitations under the License.
 ///
 
+@_exported
 import Foundation
+@_exported
 import Wand
 
 @inline(__always)

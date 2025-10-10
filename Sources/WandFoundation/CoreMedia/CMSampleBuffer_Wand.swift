@@ -17,9 +17,11 @@
 /// El Machine 🤖
 ///
 #if canImport(CoreMedia) && !os(watchOS) && !os(visionOS)
-
+@_exported
 import AVFoundation.AVCaptureVideoDataOutput
+@_exported
 import CoreMedia.CMSampleBuffer
+@_exported
 import Wand
 
 @available(watchOS 6, tvOS 17.0, *)

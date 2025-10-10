@@ -17,7 +17,9 @@
 /// El Machine 🤖
 
 #if canImport(Foundation)
+@_exported
 import Foundation.NSIndexPath
+@_exported
 import Wand
 
 /// Convert

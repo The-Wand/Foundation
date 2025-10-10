@@ -21,6 +21,7 @@ import CoreGraphics.CGImage
 import CoreImage.CIImage
 
 import Vision.VNRequest
+@_exported
 import Wand
 
 /// Obtain

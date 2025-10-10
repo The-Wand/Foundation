@@ -17,7 +17,9 @@
 ///
 
 #if canImport(Foundation)
+@_exported
 import Foundation
+@_exported
 import Wand
 
 /// Codable - Data

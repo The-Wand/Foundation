@@ -17,7 +17,9 @@
 /// El Machine 🤖
 
 #if canImport(AVFoundation) && !os(watchOS) && !os(visionOS)
+@_exported
 import AVFoundation
+@_exported
 import Wand
 
 @available(tvOS 17.0, *)

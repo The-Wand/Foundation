@@ -17,7 +17,9 @@
 /// El Machine 🤖
 
 #if canImport(Foundation)
+@_exported
 import Foundation.NSBundle
+@_exported
 import Wand
 
 /// Convert

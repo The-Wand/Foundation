@@ -6,7 +6,9 @@
 //
 
 #if canImport(AVFoundation)
+@_exported
 import AVFoundation.AVCaptureDevice
+@_exported
 import Wand
 
 extension AVCaptureDevice.TorchMode: AskingNil {

@@ -18,7 +18,9 @@
 
 
 #if !os(watchOS)
+@_exported
 import AVFoundation
+@_exported
 import Wand
 
 

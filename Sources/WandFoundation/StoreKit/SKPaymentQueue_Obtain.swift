@@ -18,6 +18,7 @@
 
 #if canImport(StoreKit)
 import StoreKit
+@_exported
 import Wand
 
 /// Obtain
