@@ -107,5 +107,20 @@ func | (date: Date, pattern: (String, Locale)) -> String {
     return formatter.string(from: date)
 }
 
+/// Convert
+///
+/// let string: String = date | (format, locale, timeZone)
+///
+@inline(__always)
+public
+func | (date: Date, pattern: (String, Locale, TimeZone)) -> String {
+
+    let formatter = DateFormatter()
+    formatter.dateFormat = pattern.0
+    formatter.locale = pattern.1
+    formatter.timeZone = pattern.2
+
+    return formatter.string(from: date)
+}
 
 #endif
