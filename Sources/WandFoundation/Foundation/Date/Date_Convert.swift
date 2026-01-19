@@ -100,7 +100,7 @@ func |(string: String?) -> Date? {
 public
 func | (date: Date, pattern: (String, Locale)) -> String {
 
-    let formatter = DateFormatter()
+    let formatter = DateFormatter.self|
     formatter.dateFormat = pattern.0
     formatter.locale = pattern.1
 
@@ -115,10 +115,25 @@ func | (date: Date, pattern: (String, Locale)) -> String {
 public
 func | (date: Date, pattern: (String, Locale, TimeZone)) -> String {
 
-    let formatter = DateFormatter()
+    let formatter = DateFormatter.self|
     formatter.dateFormat = pattern.0
     formatter.locale = pattern.1
     formatter.timeZone = pattern.2
+
+    return formatter.string(from: date)
+}
+
+/// Convert
+///
+/// let string: String = date | (format, timeZone)
+///
+@inline(__always)
+public
+func | (date: Date, pattern: (String, TimeZone)) -> String {
+
+    let formatter = DateFormatter.self|
+    formatter.dateFormat = pattern.0
+    formatter.timeZone = pattern.1
 
     return formatter.string(from: date)
 }
