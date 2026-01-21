@@ -13,7 +13,7 @@
 /// See the License for the specific language governing permissions and
 /// limitations under the License.
 ///
-/// Created by Alex Kozin
+/// Created by Aleks Kozin
 /// El Machine 🤖
 
 import SwiftUI
@@ -38,43 +38,13 @@ struct ContentView: View {
 
         VStack {
             Image(systemName: "wand.and.stars")
-            Text("Hello, world!")
+            Text("Hello, wand!")
         }
         .padding()
         .onAppear {
             
 //            AVCaptureDevice.TorchMode.on | .one { done in
 //                print(done.rawValue)
-//            }
-
-//            var found: CBPeripheral?
-//
-//            var wand: Core!
-//            wand = |{ (peripheral: CBPeripheral) in
-//                
-//                print(peripheral)
-//                
-//                if (found != nil) {
-//                    return
-//                }
-//                found = peripheral
-//
-//                let manager = wand.get() as CBCentralManager
-//                manager.connect(peripheral)
-//
-//            } | { (services: [CBService]) in
-//
-//                print(services)
-//                found!.discoverCharacteristics(nil, for: services.first!)
-//
-//            } | .one("180A") { (characteristic: [CBCharacteristic]) in
-//
-//                print(characteristic)
-//
-//            } | { (error: Error) in
-//
-//                print(error)
-//
 //            }
 
         }

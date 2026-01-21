@@ -27,7 +27,7 @@ class RelativeDateTimeFormatterDateTimeStyle_Tests: XCTestCase {
     func test_RelativeDateTimeFormatter() {
 
         let formatter = RelativeDateTimeFormatter()
-        formatter.locale = Locale.init(identifier: "en_US")
+        formatter.locale = Locale(identifier: "en_US")
 
         XCTAssertEqual(formatter | 0, "in 0 seconds")
 
