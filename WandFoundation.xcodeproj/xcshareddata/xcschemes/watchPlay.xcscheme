@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1640"
+   LastUpgradeVersion = "2600"
    version = "1.7">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -15,9 +15,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6162624B28BC8E2B00D63EA5"
-               BuildableName = "Play.app"
-               BlueprintName = "Play"
+               BlueprintIdentifier = "613966142BE0F4EF004C18A3"
+               BuildableName = "watchPlay.app"
+               BlueprintName = "watchPlay"
                ReferencedContainer = "container:WandFoundation.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -30,7 +30,7 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <TestPlans>
          <TestPlanReference
-            reference = "container:App/testPlan.xctestplan"
+            reference = "container:App/watchTestPlan.xctestplan"
             default = "YES">
          </TestPlanReference>
       </TestPlans>
@@ -40,9 +40,9 @@
             parallelizable = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "618D53D02BE3C5120098DB6F"
-               BuildableName = "wandTests.xctest"
-               BlueprintName = "wandTests"
+               BlueprintIdentifier = "613966472BE0F87A004C18A3"
+               BuildableName = "watchPlayTests.xctest"
+               BlueprintName = "watchPlayTests"
                ReferencedContainer = "container:WandFoundation.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -62,9 +62,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6162624B28BC8E2B00D63EA5"
-            BuildableName = "Play.app"
-            BlueprintName = "Play"
+            BlueprintIdentifier = "613966142BE0F4EF004C18A3"
+            BuildableName = "watchPlay.app"
+            BlueprintName = "watchPlay"
             ReferencedContainer = "container:WandFoundation.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -79,9 +79,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6162624B28BC8E2B00D63EA5"
-            BuildableName = "Play.app"
-            BlueprintName = "Play"
+            BlueprintIdentifier = "613966142BE0F4EF004C18A3"
+            BuildableName = "watchPlay.app"
+            BlueprintName = "watchPlay"
             ReferencedContainer = "container:WandFoundation.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
