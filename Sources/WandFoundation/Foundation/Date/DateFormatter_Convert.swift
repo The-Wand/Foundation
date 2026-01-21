@@ -45,11 +45,7 @@ func | (date: Date?, style: (date: DateFormatter.Style,
 ///
 @inline(__always)
 public
-func | (date: Date?, format: String) -> String? {
-    guard let date else {
-        return nil
-    }
-
+func | (date: Date, format: String) -> String {
     let formatter: DateFormatter = format|
     return formatter.string(from: date)
 }

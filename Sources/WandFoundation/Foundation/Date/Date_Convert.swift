@@ -46,17 +46,6 @@ func |(int: Int) -> Date {
 
 /// Convert
 ///
-/// let date: Date? = components|
-///
-@inline(__always)
-postfix
-public
-func | (components: DateComponents) -> Date? {
-    Calendar.current.date(from: components)
-}
-
-/// Convert
-///
 /// let string: String? = date|
 ///
 @inline(__always)
@@ -71,7 +60,6 @@ func |(date: Date) -> String {
     } else {
         formatted = date | "dd.MM HH:mm"
     }
-
 
     return formatted!
 }
