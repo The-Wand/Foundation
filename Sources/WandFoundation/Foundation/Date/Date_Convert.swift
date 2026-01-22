@@ -80,6 +80,17 @@ func |(string: String?) -> Date? {
     return formatter.date(from: string)
 }
 
+/// Format
+///
+/// let string: String? = date | format
+///
+@inline(__always)
+public
+func | (date: Date, format: String) -> String {
+    let formatter: DateFormatter = format|
+    return formatter.string(from: date)
+}
+
 /// Convert
 ///
 /// let string: String = date | (format, locale)

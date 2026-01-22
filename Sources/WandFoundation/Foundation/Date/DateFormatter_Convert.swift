@@ -39,32 +39,6 @@ func | (date: Date?, style: (date: DateFormatter.Style,
     return formatter.string(from: date)
 }
 
-/// Format
-///
-/// let string: String? = date | format
-///
-@inline(__always)
-public
-func | (date: Date, format: String) -> String {
-    let formatter: DateFormatter = format|
-    return formatter.string(from: date)
-}
-
-/// Format
-///
-/// let string: String? = date | format
-///
-@inline(__always)
-public
-func | (string: String?, format: String) -> Date? {
-    guard let string else {
-        return nil
-    }
-
-    let formatter: DateFormatter = format|
-    return formatter.date(from: string)
-}
-
 /// Obtain
 ///
 /// let formatter: DateFormatter = some|
