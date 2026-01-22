@@ -16,37 +16,37 @@
 /// Created by Alex Kozin
 /// El Machine 🤖
 
-#if canImport(Foundation)
-import Foundation.NSTextCheckingResult
-import XCTest
-
-import Any_
-import Wand
-import WandFoundation
-
-final
-class IndexPath_Tests: XCTestCase {
-
-    @MainActor
-    func test_IntInt_to_IndexPath() {
-        typealias T = IndexPath.Element
-
-        let raw = (T.any, T.any)
-        let path: IndexPath = raw|
-
-        XCTAssertEqual(path,
-                       IndexPath(row: raw.0, section: raw.1))
-    }
-
-    @MainActor
-    func test_IndexPath_to_IntInt() {
-        let path = IndexPath(row: .any, section: .any)
-        let tuple: (Int, Int) = path|
-
-        XCTAssertEqual(tuple.0, path.row)
-        XCTAssertEqual(tuple.1, path.section)
-    }
-
-}
-
-#endif
+//#if canImport(Foundation)
+//import Foundation.NSTextCheckingResult
+//import XCTest
+//
+//import Any_
+//import Wand
+//import WandFoundation
+//
+//final
+//class IndexPath_Tests: XCTestCase {
+//
+//    @MainActor
+//    func test_IntInt_to_IndexPath() {
+//        typealias T = IndexPath.Element
+//
+//        let raw = (T.any, T.any)
+//        let path: IndexPath = raw|
+//
+//        XCTAssertEqual(path,
+//                       IndexPath(row: raw.0, section: raw.1))
+//    }
+//
+//    @MainActor
+//    func test_IndexPath_to_IntInt() {
+//        let path = IndexPath(row: .any, section: .any)
+//        let tuple: (Int, Int) = path|
+//
+//        XCTAssertEqual(tuple.0, path.row)
+//        XCTAssertEqual(tuple.1, path.section)
+//    }
+//
+//}
+//
+//#endif

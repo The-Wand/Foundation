@@ -16,71 +16,71 @@
 /// Created by Alex Kozin
 /// El Machine 🤖
 
-#if canImport(Foundation) && !os(macOS)
-@_exported
-import Foundation.NSIndexPath
-@_exported
-import Wand
-
-/// Convert
-///
-/// let path: IndexPath = (0, 1)|
-///
-@inline(__always)
-postfix
-public
-func | (raw: (Int, Int)) -> IndexPath {
-    .init(row: raw.0, section: raw.1)
-}
-
-/// Convert
-///
-/// let tuple = path|
-///
-@inline(__always)
-postfix
-public
-func | (path: IndexPath) -> (Int, Int) {
-    (path.row, path.section)
-}
-
-extension Array {
-
-    @inline(__always)
-    postfix
-    public
-    static
-    func |(p: Self) -> [IndexPath] {
-        (0..<p.count)|
-    }
-}
-
-extension Range where Bound == Int {
-
-    @inline(__always)
-    postfix
-    public
-    static
-    func |(p: Self) -> [IndexPath] {
-        p.map {
-            IndexPath(row: $0, section: 0)
-        }
-    }
-
-}
-
-extension ClosedRange where Bound == Int {
-
-    @inline(__always)
-    postfix
-    public
-    static
-    func |(p: Self) -> [IndexPath] {
-        p.map {
-            IndexPath(row: $0, section: 0)
-        }
-    }
-
-}
-
-#endif
+//#if canImport(Foundation) && !os(macOS)
+//@_exported
+//import Foundation.NSIndexPath
+//@_exported
+//import Wand
+//
+///// Convert
+/////
+///// let path: IndexPath = (0, 1)|
+/////
+//@inline(__always)
+//postfix
+//public
+//func | (raw: (Int, Int)) -> IndexPath {
+//    .init(row: raw.0, section: raw.1)
+//}
+//
+///// Convert
+/////
+///// let tuple = path|
+/////
+//@inline(__always)
+//postfix
+//public
+//func | (path: IndexPath) -> (Int, Int) {
+//    (path.row, path.section)
+//}
+//
+//extension Array {
+//
+//    @inline(__always)
+//    postfix
+//    public
+//    static
+//    func |(p: Self) -> [IndexPath] {
+//        (0..<p.count)|
+//    }
+//}
+//
+//extension Range where Bound == Int {
+//
+//    @inline(__always)
+//    postfix
+//    public
+//    static
+//    func |(p: Self) -> [IndexPath] {
+//        p.map {
+//            IndexPath(row: $0, section: 0)
+//        }
+//    }
+//
+//}
+//
+//extension ClosedRange where Bound == Int {
+//
+//    @inline(__always)
+//    postfix
+//    public
+//    static
+//    func |(p: Self) -> [IndexPath] {
+//        p.map {
+//            IndexPath(row: $0, section: 0)
+//        }
+//    }
+//
+//}
+//
+//#endif

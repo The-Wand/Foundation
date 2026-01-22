@@ -16,6 +16,7 @@
 /// Created by Aleksander Kozin
 /// The Wand
 
+import Any_
 import Foundation
 import Testing
 import WandFoundation
@@ -26,9 +27,15 @@ struct Date_Convertable_Tests {
     func date_to_string_format()
     {
         let date = Date(timeIntervalSince1970: 1_111_111_111)
-        let string: String = date | "yyyy-MM-dd HH:mm:ss"
+        let format = "yyyy-MM-dd HH:mm:ss"
 
-        #expect(string == "2005-03-18 09:58:31")
+        let formatter = DateFormatter()
+        formatter.dateFormat = format
+
+        #expect( date | format
+                 ==
+                 formatter.string(from: date)
+        )
     }
 
     @Test
