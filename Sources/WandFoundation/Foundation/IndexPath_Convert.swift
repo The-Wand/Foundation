@@ -16,7 +16,7 @@
 /// Created by Alex Kozin
 /// El Machine 🤖
 
-#if canImport(Foundation)
+#if canImport(Foundation) && !os(macOS)
 @_exported
 import Foundation.NSIndexPath
 @_exported
