@@ -64,22 +64,6 @@ func |(date: Date) -> String {
     return formatted!
 }
 
-/// Convert
-///
-/// let string: String? = string|
-///
-@inline(__always)
-postfix
-public
-func |(string: String?) -> Date? {
-    guard let string else {
-        return nil
-    }
-
-    let formatter = DateFormatter.self|
-    return formatter.date(from: string)
-}
-
 /// Format
 ///
 /// let string: String? = date | format
@@ -135,6 +119,37 @@ func | (date: Date, pattern: (String, TimeZone)) -> String {
     formatter.timeZone = pattern.1
 
     return formatter.string(from: date)
+}
+
+/// Convert
+///
+/// let string: String? = string|
+///
+@inline(__always)
+postfix
+public
+func |(string: String?) -> Date? {
+    guard let string else {
+        return nil
+    }
+
+    let formatter = DateFormatter.self|
+    return formatter.date(from: string)
+}
+
+/// Format
+///
+/// let string: String? = date | format
+///
+@inline(__always)
+public
+func | (string: String?, format: String) -> Date? {
+    guard let string else {
+        return nil
+    }
+
+    let formatter: DateFormatter = format|
+    return formatter.date(from: string)
 }
 
 #endif
