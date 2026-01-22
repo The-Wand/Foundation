@@ -37,47 +37,54 @@ struct Date_Convertable_Tests {
         let date = Date(timeIntervalSince1970: .any)
 
         let format = "yyyy-MM-dd HH:mm:ss"
-        let locale = Locale(identifier: "cn_CN")
+        let locale = Locale(identifier: "zh_Hans_CN")
 
         let formatter = DateFormatter()
         formatter.dateFormat = format
         formatter.locale = locale
 
-        #expect(
-            date | (format, locale)
-            ==
-            formatter.string(from: date)
+        #expect( date | (format, locale)
+                 ==
+                 formatter.string(from: date)
         )
     }
 
-//    @Test
-//    func date_to_string_format_locale()
-//    {
-//        let date = Date.init(timeIntervalSinceReferenceDate: 111_111_111)
-//
-//        let string: String? = date | "yyyy-MM-dd HH:mm:ss"
-//
-//        #expect(string == "")
-//    }
-//
-//    @Test
-//    func date_to_string_format_locale_timezone()
-//    {
-//        let date = Date.init(timeIntervalSinceReferenceDate: 111_111_111)
-//
-//        let string: String? = date | "yyyy-MM-dd HH:mm:ss"
-//
-//        #expect(string == "")
-//    }
-//
-//    @Test
-//    func date_to_string_format_timezone()
-//    {
-//        let date = Date.init(timeIntervalSinceReferenceDate: 111_111_111)
-//
-//        let string: String? = date | "yyyy-MM-dd HH:mm:ss"
-//
-//        #expect(string == "")
-//    }
+    @Test
+    func date_to_string_format_locale_timezone()
+    {
+        let date = Date(timeIntervalSince1970: .any)
+
+        let format = "yyyy-MM-dd HH:mm:ss"
+        let locale = Locale(identifier: "en_US")
+        let timezone = TimeZone(abbreviation: "EST")!
+
+        let formatter = DateFormatter()
+        formatter.dateFormat = format
+        formatter.locale = locale
+        formatter.timeZone = timezone
+
+        #expect( date | (format, locale, timezone)
+                 ==
+                 formatter.string(from: date)
+        )
+    }
+
+    @Test
+    func date_to_string_format_timezone()
+    {
+        let date = Date(timeIntervalSince1970: .any)
+
+        let format = "yyyy-MM-dd HH:mm:ss"
+        let timezone = TimeZone(abbreviation: "EST")!
+
+        let formatter = DateFormatter()
+        formatter.dateFormat = format
+        formatter.timeZone = timezone
+
+        #expect( date | (format, timezone)
+                 ==
+                 formatter.string(from: date)
+        )
+    }
 
 }
