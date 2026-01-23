@@ -17,81 +17,36 @@
 /// The Wand
 
 import Any_
-import Foundation
 import Testing
 import WandFoundation
 
-struct Date_Convertable_Tests {
-
+struct TimeZone_Tests
+{
     @Test
-    func date_to_string_format()
+    func seconds_to_timezone()
     {
-        let date = Date(timeIntervalSince1970: 1_111_111_111)
-        let format = "yyyy-MM-dd HH:mm:ss"
+        let seconds = Int.any
+        let timezone = TimeZone(secondsFromGMT: seconds)
 
-        let formatter = DateFormatter()
-        formatter.dateFormat = format
-
-        #expect( date | format
-                 ==
-                 formatter.string(from: date)
-        )
+        #expect(seconds| == timezone)
     }
 
     @Test
-    func date_to_string_format_locale()
+    func string_abbreviation_to_timezone()
     {
-        let date = Date(timeIntervalSince1970: .any)
+        let abbreviation = "EST"
+        let timezone = TimeZone(abbreviation: abbreviation)
 
-        let format = "yyyy-MM-dd HH:mm:ss"
-        let locale = Locale(identifier: "zh_Hans_CN")
-
-        let formatter = DateFormatter()
-        formatter.dateFormat = format
-        formatter.locale = locale
-
-        #expect( date | (format, locale)
-                 ==
-                 formatter.string(from: date)
-        )
+        #expect(abbreviation| == timezone)
     }
 
     @Test
-    func date_to_string_format_locale_timezone()
+    func string_identifier_to_timezone()
     {
-        let date = Date(timeIntervalSince1970: .any)
+        let identifier = "America/Los_Angeles"
+        let timezone = TimeZone(identifier: identifier)
 
-        let format = "yyyy-MM-dd HH:mm:ss"
-        let locale = Locale(identifier: "en_US")
-        let timezone = TimeZone(abbreviation: "EST")!
-
-        let formatter = DateFormatter()
-        formatter.dateFormat = format
-        formatter.locale = locale
-        formatter.timeZone = timezone
-
-        #expect( date | (format, locale, timezone)
-                 ==
-                 formatter.string(from: date)
-        )
-    }
-
-    @Test
-    func date_to_string_format_timezone()
-    {
-        let date = Date(timeIntervalSince1970: .any)
-
-        let format = "yyyy-MM-dd HH:mm:ss"
-        let timezone = TimeZone(abbreviation: "EST")!
-
-        let formatter = DateFormatter()
-        formatter.dateFormat = format
-        formatter.timeZone = timezone
-
-        #expect( date | (format, timezone)
-                 ==
-                 formatter.string(from: date)
-        )
+        #expect(identifier| == timezone)
     }
 
 }

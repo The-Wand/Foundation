@@ -25,13 +25,13 @@ import Wand
 ///
 /// Convert
 ///
-/// let timeZone: TimeZone? = "usUs"|
+/// let timeZone: TimeZone? = "Pacific/Wallis"|
 ///
 @inline(__always)
 postfix
 public
 func |(string: String) -> TimeZone? {
-    TimeZone(identifier: string) ?? TimeZone(abbreviation: string)
+    TimeZone(abbreviation: string) ?? TimeZone(identifier: string)
 }
 
 ///
