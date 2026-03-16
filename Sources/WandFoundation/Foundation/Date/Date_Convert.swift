@@ -152,4 +152,10 @@ func | (string: String?, format: String) -> Date? {
     return formatter.date(from: string)
 }
 
+@inline(__always)
+public
+func | (date: Date, components: Set<Calendar.Component>) -> DateComponents {
+    Calendar.current.dateComponents(components, from: date)
+}
+
 #endif
