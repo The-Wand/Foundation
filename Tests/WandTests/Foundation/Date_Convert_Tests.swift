@@ -62,8 +62,8 @@ struct Date_Convertable_Tests {
         let date = Date(timeIntervalSince1970: .any)
 
         let format = "yyyy-MM-dd HH:mm:ss"
-        let locale = Locale(identifier: "en_US")
-        let timezone = TimeZone(abbreviation: "EST")!
+        let locale = Locale(identifier: "us_US")
+        let timezone = TimeZone(abbreviation: "GMT")!
 
         let formatter = DateFormatter()
         formatter.dateFormat = format

@@ -16,43 +16,37 @@
 /// Created by Aleksander Kozin
 /// The Wand
 
-import SwiftUI
-
+import Any_
+import Testing
 import WandFoundation
 
-@available(iOS 14, macOS 12, tvOS 14, watchOS 7, *)
-@main
-struct PlayApp: App {
+struct TimeZone_Tests
+{
+    @Test
+    func seconds_to_timezone()
+    {
+        let seconds = Int.any
+        let timezone = TimeZone(secondsFromGMT: seconds)
 
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-        }
+        #expect(seconds| == timezone)
     }
 
-}
+    @Test
+    func string_abbreviation_to_timezone()
+    {
+        let abbreviation = "EST"
+        let timezone = TimeZone(abbreviation: abbreviation)
 
-@available(iOS 14, macOS 12, tvOS 14, watchOS 7, *)
-struct ContentView: View {
-    var body: some View {
-
-        VStack {
-            Image(systemName: "wand.and.stars")
-            Text("Hello, wand!")
-        }
-        .padding()
-        .onAppear {
-            
-//            AVCaptureDevice.TorchMode.on | .one { done in
-//                print(done.rawValue)
-//            }
-
-        }
-
+        #expect(abbreviation| == timezone)
     }
-}
 
-@available(iOS 14, macOS 12, tvOS 14, watchOS 7, *)
-#Preview {
-    ContentView()
+    @Test
+    func string_identifier_to_timezone()
+    {
+        let identifier = "America/Los_Angeles"
+        let timezone = TimeZone(identifier: identifier)
+
+        #expect(identifier| == timezone)
+    }
+
 }
