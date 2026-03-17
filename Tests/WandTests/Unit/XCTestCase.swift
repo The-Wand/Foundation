@@ -49,12 +49,12 @@ import Wand
 extension XCTestCase {
     
     @MainActor
-    func auto_test<T: AskingNil>(completion:  @escaping (T)->() ) {
+    func auto_test<T: Ask.Nil>(completion:  @escaping (T)->() ) {
         auto_test(|, completion: completion)
     }
 
     @MainActor
-    func auto_test<T: AskingNil>(_ api:   ( @escaping (T)->() )->(Core) ,
+    func auto_test<T: Ask.Nil>(_ api:   ( @escaping (T)->() )->(Core) ,
                                completion:  @escaping (T)->() ) {
 
         let e = expectation()
@@ -74,12 +74,12 @@ extension XCTestCase {
 extension XCTestCase {
     
     @MainActor
-    func condition_test<T: AskingNil>(completion:  @escaping (T)->(Bool) ) {
+    func condition_test<T: Ask.Nil>(completion:  @escaping (T)->(Bool) ) {
         condition_test(|, completion: completion)
     }
 
     @MainActor
-    func condition_test<T: AskingNil>(_ api:   ( @escaping (T)->() )->(Core) ,
+    func condition_test<T: Ask.Nil>(_ api:   ( @escaping (T)->() )->(Core) ,
                                completion:  @escaping (T)->(Bool) ) {
 
         let e = expectation()

@@ -27,10 +27,10 @@ import Wand
 /// let timestamp: Int = date|
 ///
 extension TimeInterval: Obtainable {
-    
+
     public
     static
-    func obtain(by wand: Core?) -> Self {
+    func obtain<C>(with scope: C?, by wand: Core?) -> Self {
         (wand?.get() ?? Date()).timeIntervalSince1970
     }
 
