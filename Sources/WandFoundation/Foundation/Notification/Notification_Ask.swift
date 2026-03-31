@@ -28,14 +28,17 @@ import Wand
 ///
 /// }
 ///
-extension Notification: Asking, Wanded  {
-    
-    @inlinable
+extension Notification: Ask.T, Wanded  {
+
+    @inline(__always)
     public
     static
-    func ask<C, T>(with context: C, ask: Ask<T>) -> Core {
-        
-        let wand = Wand.Core.to(context)
+    func ask<C, T>(with scope: C, ask: Ask<T>) -> Core {
+
+        let wand = Core.to(scope)
+        guard wand.append(ask: ask) else {
+            return wand
+        }
         
         let name: Notification.Name = wand.get()!
         let key = name.rawValue
