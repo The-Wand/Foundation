@@ -83,7 +83,7 @@ func | (date: Date, format: String) -> String {
 public
 func | (date: Date, pattern: (String, Locale)) -> String {
 
-    let formatter = DateFormatter.self|
+    let formatter: DateFormatter = DateFormatter.self| //TODO: Remove Type explicit
     formatter.dateFormat = pattern.0
     formatter.locale = pattern.1
 
@@ -98,7 +98,7 @@ func | (date: Date, pattern: (String, Locale)) -> String {
 public
 func | (date: Date, pattern: (String, Locale, TimeZone)) -> String {
 
-    let formatter = DateFormatter.self|
+    let formatter: DateFormatter = DateFormatter.self|
     formatter.dateFormat = pattern.0
     formatter.locale = pattern.1
     formatter.timeZone = pattern.2
@@ -114,7 +114,7 @@ func | (date: Date, pattern: (String, Locale, TimeZone)) -> String {
 public
 func | (date: Date, pattern: (String, TimeZone)) -> String {
 
-    let formatter = DateFormatter.self|
+    let formatter: DateFormatter = DateFormatter.self| //TODO: Remove Type explicit
     formatter.dateFormat = pattern.0
     formatter.timeZone = pattern.1
 
@@ -133,7 +133,7 @@ func |(string: String?) -> Date? {
         return nil
     }
 
-    let formatter = DateFormatter.self|
+    let formatter: DateFormatter = DateFormatter.self|
     return formatter.date(from: string)
 }
 
