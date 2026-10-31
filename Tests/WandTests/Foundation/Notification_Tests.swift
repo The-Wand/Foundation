@@ -40,7 +40,7 @@ class Notification_Tests: XCTestCase {
 
         let name = Notification.Name.custom
 
-        name | .one { n in
+        name | { n in
             e.fulfill()
         }
 

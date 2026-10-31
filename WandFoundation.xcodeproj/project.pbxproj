@@ -32,8 +32,6 @@
 		6183DA782ED42282000CF715 /* Notification_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6183DA4E2ED42282000CF715 /* Notification_Tests.swift */; };
 		6183DA7B2ED42282000CF715 /* ImageTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6183DA592ED42282000CF715 /* ImageTestCase.swift */; };
 		6183DA7C2ED42282000CF715 /* Package.xctestplan in Resources */ = {isa = PBXBuildFile; fileRef = 6183DA5D2ED42282000CF715 /* Package.xctestplan */; };
-		619435982C0E015C0034554B /* Any_ in Frameworks */ = {isa = PBXBuildFile; productRef = 619435972C0E015C0034554B /* Any_ */; };
-		6194359B2C0E01600034554B /* Any_ in Frameworks */ = {isa = PBXBuildFile; productRef = 6194359A2C0E01600034554B /* Any_ */; };
 		61ACF8AE2F235F4400D06D39 /* TimeZone_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61ACF8AD2F235F4400D06D39 /* TimeZone_Tests.swift */; };
 		61ACF8AF2F235F4400D06D39 /* TimeZone_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61ACF8AD2F235F4400D06D39 /* TimeZone_Tests.swift */; };
 		61F648C72BEA122900C2625C /* WandFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 61F648C62BEA122900C2625C /* WandFoundation */; };
@@ -103,7 +101,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6194359B2C0E01600034554B /* Any_ in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,7 +116,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				619435982C0E015C0034554B /* Any_ in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,7 +253,6 @@
 			);
 			name = watchPlayTests;
 			packageProductDependencies = (
-				6194359A2C0E01600034554B /* Any_ */,
 			);
 			productName = WatchPlayTests;
 			productReference = 613966482BE0F87A004C18A3 /* watchPlayTests.xctest */;
@@ -298,7 +293,6 @@
 			);
 			name = wandTests;
 			packageProductDependencies = (
-				619435972C0E015C0034554B /* Any_ */,
 			);
 			productName = Tests;
 			productReference = 618D53D12BE3C5120098DB6F /* wandTests.xctest */;
@@ -343,7 +337,6 @@
 			mainGroup = OBJ_5;
 			packageReferences = (
 				61A37BC52BE24B97007B7FEE /* XCLocalSwiftPackageReference "." */,
-				619435962C0E015C0034554B /* XCRemoteSwiftPackageReference "Any" */,
 			);
 			productRefGroup = OBJ_138 /* Products */;
 			projectDirPath = "";
@@ -1147,28 +1140,7 @@
 		};
 /* End XCLocalSwiftPackageReference section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		619435962C0E015C0034554B /* XCRemoteSwiftPackageReference "Any" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/el-machine/Any";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.1;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
 /* Begin XCSwiftPackageProductDependency section */
-		619435972C0E015C0034554B /* Any_ */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 619435962C0E015C0034554B /* XCRemoteSwiftPackageReference "Any" */;
-			productName = Any_;
-		};
-		6194359A2C0E01600034554B /* Any_ */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 619435962C0E015C0034554B /* XCRemoteSwiftPackageReference "Any" */;
-			productName = Any_;
-		};
 		61F648C62BEA122900C2625C /* WandFoundation */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 61A37BC52BE24B97007B7FEE /* XCLocalSwiftPackageReference "." */;

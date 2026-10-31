@@ -36,7 +36,7 @@ extension Notification: Ask.T, Wanded  {
     func ask<C, T>(with scope: C, ask: Ask<T>) -> Core {
 
         let wand = Core.to(scope)
-        guard wand.append(ask: ask) else {
+        guard wand + ask else {
             return wand
         }
         
@@ -46,7 +46,7 @@ extension Notification: Ask.T, Wanded  {
         ask.key = key
 
         //Save ask
-        guard wand.append(ask: ask) else {
+        guard wand + ask else {
             return wand
         }
 
@@ -57,11 +57,11 @@ extension Notification: Ask.T, Wanded  {
         let token = center.addObserver(forName: name,
                                        object: nil,
                                        queue: nil) { notification in
-            wand.add(notification, for: key)
+            wand + notification & key
         }
 
         //Set the cleaner
-        wand.setCleaner(for: ask) {
+        ask & {
             center.removeObserver(token)
         }
         
